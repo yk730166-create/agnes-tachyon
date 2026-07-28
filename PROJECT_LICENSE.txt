@@ -1,0 +1,52 @@
+AGNES TACHYON AI COMPANION - ORIGINAL PROJECT MATERIALS LICENSE
+
+Copyright (c) 2026 y4x5lol. All rights reserved.
+
+OWNED PROJECT MATERIALS
+
+Subject to the exclusions below, y4x5lol owns the original project materials
+created for this project, including:
+
+- the Python application code under src/;
+- the original options interface, interaction logic, configuration, tests,
+  installer scripts, setup guide, and project documentation;
+- the original Lab Core mascot, procedural animations, synthesized note
+  patterns, and procedural soundtracks;
+- agnes_icon.svg and the icon files directly generated from that original
+  manually-authored vector design; and
+- original build metadata and packaging configuration.
+
+This notice records y4x5lol's claim to the original project materials. It does
+not create rights in any third-party material.
+
+PERMISSION FOR END USERS
+
+An end user may install and use an unmodified compiled copy of the original
+project materials for personal, non-commercial use. No permission is granted
+to sell, relicense, republish, reverse engineer, or redistribute the original
+project materials or source code without y4x5lol's prior written permission,
+except where applicable law requires otherwise.
+
+EXCLUDED MATERIALS
+
+This license does not cover, transfer, or claim ownership of:
+
+- Agnes Tachyon, Umamusume: Pretty Derby, their names, character designs,
+  official artwork, recordings, or other Cygames/rightsholder material;
+- Desktop Gremlin code, binaries, sprites, sounds, or documentation;
+- Tachyon.pth, any Tachyon voice index, training recordings, converted voice
+  output, or any performer's voice, likeness, or publicity/personality rights;
+- Applio, Qt/PySide, Python packages, codecs, fonts, APIs, web services, or
+  other third-party software and content.
+
+Those materials remain subject to their own copyrights, licenses, terms, and
+permissions. See THIRD_PARTY_NOTICES.md and RIGHTS_AUDIT.md.
+
+NO ENDORSEMENT; NO WARRANTY
+
+This is an unofficial fan project. It is not affiliated with, approved by, or
+endorsed by Cygames or any performer, publisher, contributor, or other
+rightsholder.
+
+THE ORIGINAL PROJECT MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
+KIND, TO THE MAXIMUM EXTENT PERMITTED BY LAW.
