@@ -5,7 +5,7 @@ for advice from a qualified intellectual-property lawyer.
 
 | Material | Current status | Public distribution |
 | --- | --- | --- |
-| Original `src/` application code and UI | Claimed for y4x5lol under `PROJECT_LICENSE.txt` | Yes, under y4x5lol's chosen terms |
+| Original application code and UI | Claimed for y4x5lol under `PROJECT_LICENSE.txt` | Yes, under y4x5lol's chosen terms |
 | Original installer/configuration/docs/tests | Claimed for y4x5lol | Yes |
 | Original flask/speed lab icon | Claimed for y4x5lol | Yes |
 | Original animated Lab Core mascot | Claimed for y4x5lol | Yes |

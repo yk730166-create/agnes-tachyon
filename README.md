@@ -4,7 +4,7 @@ A non-commercial, unofficial Windows fan companion with push-to-talk, fast
 cloud Whisper transcription, streaming chat, an original code-drawn Agnes
 desktop companion, multimodal screen awareness, and live web verification.
 
-Version 6.2.0 uses `openai/gpt-oss-120b` for conversation,
+Version 6.2.1 uses `openai/gpt-oss-120b` for conversation,
 `groq/compound-mini` for current facts, `qwen/qwen3.6-27b` for vision, and
 `whisper-large-v3-turbo` for fast speech recognition.
 
@@ -18,13 +18,13 @@ Version 6.2.0 uses `openai/gpt-oss-120b` for conversation,
 - Verified downloads update an existing copy in place, preserve its settings
   and protected credentials, skip first-install pages, and restart Agnes when
   finished.
-- The private owner console can reuse an existing GitHub CLI sign-in, making a
-  signed release possible without copying the same token into another tool.
+- Update checks now use Windows' native trusted certificate store, including
+  checks started by standalone Options. HTTPS verification remains enabled;
+  GitHub host restrictions and signed-manifest/hash checks are unchanged.
 
 ## Easy Options
 
-Open `Options.exe` in an installed build, or run `src/options_main.py` while
-developing, to:
+Open **Agnes Options** from the Start menu to:
 
 - choose Fastest, Balanced, or Smartest mode;
 - click once and press the exact physical push-to-talk key; Numpad and
@@ -62,25 +62,16 @@ live search when web knowledge is enabled. The vision loop observes the active
 monitor, skips repeated static frames, rejects low-confidence events, and
 treats visible screen text as untrusted data.
 
-## Run
+## Start Agnes
 
-1. Open Options and enter the provider key. Agnes
+1. Open Agnes Options and enter the provider key. Agnes
    stores it in Windows Credential Manager; it is never written to `config.toml`.
 
-   An environment variable can be used instead:
+2. Select **Check my setup**, fix anything it clearly reports, and choose
+   **Save & close**.
 
-   ```powershell
-   $env:GROQ_API_KEY = "your-key"
-   ```
-
-2. Start the app:
-
-   ```powershell
-   .\venv\Scripts\python.exe .\src\main.py
-   ```
-
-Supported variables are
-`GROQ_API_KEY`, `OPENAI_API_KEY`, and `GEMINI_API_KEY`.
+3. Start Agnes from the Start menu or desktop shortcut. Her tray icon confirms
+   that she is running.
 
 Only one AI companion instance is allowed at a time. Starting it again asks
 the existing tray process to open Options instead of launching a duplicate.
@@ -89,8 +80,8 @@ Saving Options updates the running talk-button and microphone hooks
 automatically. The tray’s polished **Play with Agnes** menu works independently
 of the automatic AI-reaction toggle. **Make her dance** randomly chooses the
 first of two music-backed routines, then avoids immediately repeating one,
-prevents overlaps, and returns the pet to idle when the track ends. The public
-Lab Core uses two original procedural soundtracks; optional external pets use
+prevents overlaps, and returns the pet to idle when the track ends. The built-in
+companion uses two original procedural soundtracks; optional external pets use
 only locally supplied, licensed media.
 
 Agnes and standalone Options check a pinned, owner-signed update channel after
@@ -122,12 +113,10 @@ pause until the required update is installed or Agnes exits.
 
 ## Windows installer
 
-Run `installer/build_release.ps1` to compile, lint, type-check, test, audit
-dependencies, build both PyInstaller applications, and compile
-`dist/AgnesTachyonSetup.exe`. The release installs only compiled applications,
-runtime configuration, documentation, notices, and the original icon—never
-`src`, build scripts, virtual environments, requirements, VBS, or batch
-launchers.
+Download **AgnesTachyonSetup.exe** from the official GitHub Releases page. The
+setup contains only the compiled applications, runtime configuration, public
+documentation, legal notices, and original icon. It does not contain source
+code, development environments, build tooling, or launch scripts.
 
 The public installer intentionally excludes Desktop Gremlin, extracted
 character assets, and the unlicensed Tachyon voice model. These materials

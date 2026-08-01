@@ -2941,7 +2941,7 @@
       <button class="effects-toggle" id="effectsToggle" type="button" aria-label="Change visual effects level">
         VFX: FULL
       </button>
-      <span class="version-pill">SYSTEM v6.2.0</span>
+      <span class="version-pill">SYSTEM v6.2.1</span>
     </div>
   </header>
 
@@ -3294,9 +3294,9 @@
               <summary><span class="fix-tag">INSTALL</span>Reinstalling did not reset broken settings</summary>
               <p>The installer keeps your settings during updates. To reset them, fully quit Agnes, open the installed Agnes folder, open <strong>Data</strong>, and rename <strong>config.toml</strong> to <strong>config.backup.toml</strong>. Reinstall, then enter the secret key and choices again. Keep the backup until everything works.</p>
             </details>
-            <details data-category="install app" data-keywords="update prompt missing latest release check owner signed">
+            <details data-category="install app" data-keywords="update prompt missing latest release check owner signed certificate tls ssl trust store managed proxy">
               <summary><span class="fix-tag">UPDATE</span>No update prompt appears</summary>
-              <p>Agnes only shows releases newer than the installed version and only accepts notices signed by the owner key built into the app. Use <strong>Check for updates</strong> in the notification-area menu. If the channel cannot be reached, check the connection, firewall, Windows clock, and GitHub access, then try again.</p>
+              <p>Agnes only shows releases newer than the installed version and only accepts notices signed by the owner key built into the app. Use <strong>Check for updates</strong> in the notification-area menu. If the channel cannot be reached, check the connection, firewall, Windows clock, and GitHub access, then try again. Agnes 6.2.1 and newer use certificates Windows already trusts. If 6.2.0 reports a certificate-verification error before it can download this fix, install 6.2.1 once from the official release page in your browser. Future checks will then use the Windows trust store. Never disable certificate checking.</p>
             </details>
             <details data-category="install app" data-keywords="required update download failed retry sha hash size installer">
               <summary><span class="fix-tag">UPDATE</span>A required update will not download</summary>
@@ -3337,7 +3337,7 @@
           <a
             class="button"
             id="feedbackIdeaLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.2.0"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.2.1"
             target="_blank"
             rel="noopener noreferrer"
             data-feedback-action="open"
@@ -3346,7 +3346,7 @@
           <a
             class="button primary"
             id="feedbackBugLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.2.0"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.2.1"
             target="_blank"
             rel="noopener noreferrer"
             data-feedback-action="open"

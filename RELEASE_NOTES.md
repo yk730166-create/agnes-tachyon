@@ -1,7 +1,13 @@
-# Agnes Tachyon AI Companion 6.2.0
+# Agnes Tachyon AI Companion 6.2.1
 
 ## Highlights
 
+- Fixed update checks and downloads on Windows systems where GitHub was
+  trusted by Windows but rejected by Python's bundled certificate list. Agnes
+  and standalone Options now use the native Windows certificate store for
+  HTTPS without disabling certificate validation. GitHub host restrictions,
+  the owner-signed manifest, installer size limit, and SHA-256 verification
+  remain enforced.
 - Replaced the older flask desktop fallback with an original, code-drawn Agnes
   companion. Her expressions, movement, reactions, dances, and interaction
   states are rendered by the app without downloaded sprites or extracted game
@@ -17,9 +23,6 @@
   fresh-setup pages, replaces only compiled app files in the same location,
   preserves settings, protected keys, and voice choices, then restarts Agnes
   automatically with the update.
-- The owner Release Console now reuses an existing GitHub CLI sign-in when one
-  is available, without displaying or persisting another token. A manually
-  pasted fine-grained token remains available as the fallback.
 - Lab Core activation is now a persistent online state instead of a one-second
   flash. Its brighter liquid, pulsing energy ring, faster dual orbits, ambient
   sparks, and `CORE ONLINE` status remain active across guide reloads; clicking
@@ -27,9 +30,8 @@
   also uses a safer responsive scale and column gap so it cannot overlap or
   escape its card at narrow desktop sizes or browser zoom.
 - Added privacy-safe feedback and bug reporting to Options, the tray, and the
-  locally running Setup Lab. Public builds open a pinned, prefilled GitHub issue
-  with no embedded owner token; the owner-only Release Console mirrors reports
-  into a chosen local feedback folder on launch and every five minutes.
+  locally running Setup Lab. Users can type and send without a GitHub account
+  or sign-in, and the public app never contains a private inbox credential.
 - Reworked all four Options tabs with crisp Qt-painted vector symbols instead
   of font-dependent emoji. Labels now elide safely, selection indicators stay
   inside their tab, and hover/selection motion remains smooth from minimum size
@@ -40,19 +42,15 @@
 - The three-step celebration now plays the supplied `yay sound effect.mp3`
   byte-for-byte from the self-contained guide, with no network request or
   generated substitute.
-- Added an owner-controlled update channel. Agnes and standalone Options check
-  a pinned Ed25519-signed release notice in the background, offer optional or
-  required prompts, stream the setup into a private per-user cache, and verify
-  its signed byte size and SHA-256 before launch. One **Download update** click
-  now stays inside Agnes with smooth progress, live transfer details, animated
-  verification, a completion transition, and automatic installer launch.
-  Required notices remain owner-signed and enforced across offline restarts;
-  live listening, vision, speech, and companion actions pause while one is
-  waiting.
-- Added a separate `AgnesReleaseConsole.exe` owner build with the Agnes theme,
-  live publication progress, a required-update checkbox, GitHub release
-  publishing, Windows Credential Manager storage, and encrypted signing-key
-  backup/restore. It is never included in the public installer.
+- Added an authenticated automatic update channel. Agnes and standalone
+  Options check a pinned Ed25519-signed release notice in the background,
+  offer optional or required prompts, stream the setup into a private per-user
+  cache, and verify its signed byte size and SHA-256 before launch. One
+  **Download update** click stays inside Agnes with smooth progress, live
+  transfer details, animated verification, a completion transition, and
+  automatic installer launch. Required notices remain signed and enforced
+  across offline restarts; live listening, vision, speech, and companion
+  actions pause while one is waiting.
 - Rebuilt the locally running Setup Lab logo and responsive layout. Narrow
   windows, browser zoom, long labels, status rows, cards, and troubleshooting
   text now stay inside their containers.
@@ -73,9 +71,9 @@
 - Added two original, procedurally synthesized music tracks for the public Lab
   Core. They add no downloaded assets or multimedia dependency, stop cleanly
   for listening and speech, and keep the release rights-safe.
-- Added release gates for exact installer/spec payload allowlists, embedded
-  audio or third-party pet leaks, publisher metadata, and stale executable
-  versions.
+- Hardened release validation against accidental source or build artifacts,
+  embedded third-party pet media, incorrect publisher metadata, and stale
+  executable versions.
 - Rebuilt the Setup Lab's pointer aura around a self-stopping GPU spring, fixed
   its lag and rubber-banding, and added Full, Calm, and Off VFX profiles that
   respect touch, reduced-motion, and high-contrast settings.
