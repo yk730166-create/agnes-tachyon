@@ -1,12 +1,25 @@
 # Agnes Tachyon AI Companion
 
 A non-commercial, unofficial Windows fan companion with push-to-talk, fast
-cloud Whisper transcription, streaming chat, an original animated Lab Core
-mascot, multimodal screen awareness, and live web verification.
+cloud Whisper transcription, streaming chat, an original code-drawn Agnes
+desktop companion, multimodal screen awareness, and live web verification.
 
-Version 6.1.2 uses `openai/gpt-oss-120b` for conversation,
+Version 6.2.0 uses `openai/gpt-oss-120b` for conversation,
 `groq/compound-mini` for current facts, `qwen/qwen3.6-27b` for vision, and
 `whisper-large-v3-turbo` for fast speech recognition.
+
+## Release highlights
+
+- The installed desktop pet is now an original code-drawn Agnes companion;
+  the flask-shaped Lab Core remains only as the setup guide's decorative
+  control.
+- Groq Orpheus provides lively, direction-aware speech with automatic Edge
+  neural-voice fallback and no bundled character voice clone.
+- Verified downloads update an existing copy in place, preserve its settings
+  and protected credentials, skip first-install pages, and restart Agnes when
+  finished.
+- The private owner console can reuse an existing GitHub CLI sign-in, making a
+  signed release possible without copying the same token into another tool.
 
 ## Easy Options
 
@@ -17,21 +30,31 @@ developing, to:
 - click once and press the exact physical push-to-talk key; Numpad and
   left/right modifier keys stay distinct;
 - select real microphone and speaker devices;
-- configure the built-in animated Lab Core or an optional licensed pet;
+- configure the built-in animated Agnes companion or an optional licensed pet;
 - control live screen reading, spoken pet reactions, and local memory;
 - enable smooth fades, animated tabs, and responsive button effects;
 - allow live web lookup for recent hardware, prices, news, and current facts.
 
-The AI can animate the original Lab Core mascot or talk to an optional
-configured external pet. Deaths, misses, victories, danger warnings,
+The default desktop pet is an original, code-drawn Agnes companion rather than
+the flask fallback used by older builds. The AI can animate her or talk to an
+optional configured external pet. Deaths, misses, victories, danger warnings,
 achievements, clicks, snacks, and tray interactions produce fresh AI-written
 spoken reactions rather than rotating canned lines. Music dances intentionally
 do not start a competing voice response. No speech or thinking textbox is
-displayed.
+displayed. The interactive Lab Core in the locally running setup guide remains
+as a decorative setup control; it is not the desktop pet.
 
-The rights-safe public build uses a standard neural voice. Locally supplied
-voice-conversion files can be configured only when the user has the required
-model, recording, performer, and redistribution permissions.
+The rights-safe public build uses Groq-hosted Orpheus for expressive English
+speech and automatically falls back to the standard Microsoft Edge neural
+voice when Orpheus is unavailable. Neither path is an official Agnes Tachyon
+voice or a bundled voice clone. Locally supplied voice-conversion files can be
+configured only when the user has the required model, recording, performer,
+and redistribution permissions.
+
+Groq may require the account owner to accept the Orpheus model terms once.
+Options provides an **Enable natural voice access** button that opens Groq's
+official approval page. Until that is accepted, speech continues through the
+Edge neural fallback instead of failing or going silent.
 
 At runtime Agnes receives the current date and detected PC/GPU details.
 Time-sensitive questions and unfamiliar product names use Groq Compound Mini
@@ -76,7 +99,11 @@ manifest must verify against the Ed25519 public key embedded in the apps.
 When a user selects **Download update**, the installer streams inside the app
 with animated progress, transfer speed, and clear verification stages. Files
 come only from the pinned GitHub release host; their signed byte size and
-SHA-256 are checked before the verified installer launches automatically.
+SHA-256 are checked before the verified installer launches automatically. If
+Agnes is already installed, the installer switches to a focused in-place
+update, replaces the compiled app files in the same folder, skips fresh-setup
+pages, preserves settings, protected keys, and voice choices, then restarts
+Agnes automatically. A first installation still uses the normal guided setup.
 Signed required notices remain enforced after a restart even when the network
 is unavailable, and live listening, screen reactions, speech, and pet actions
 pause until the required update is installed or Agnes exits.
@@ -88,7 +115,8 @@ pause until the required update is installed or Agnes exits.
 - The active monitor is sampled every few seconds when live awareness is
   enabled. Unchanged frames are skipped to reduce latency, network use, and
   cost.
-- Responses begin speaking sentence-by-sentence while generation continues.
+- Expressive Orpheus speech starts sentence-by-sentence while generation
+  continues, with automatic Edge neural-voice fallback.
 - New speech cancels stale responses, reactions are bounded and deduplicated,
   and recordings stop safely at 90 seconds.
 

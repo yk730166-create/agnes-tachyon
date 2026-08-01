@@ -1,7 +1,25 @@
-# Agnes Tachyon AI Companion 6.1.2
+# Agnes Tachyon AI Companion 6.2.0
 
 ## Highlights
 
+- Replaced the older flask desktop fallback with an original, code-drawn Agnes
+  companion. Her expressions, movement, reactions, dances, and interaction
+  states are rendered by the app without downloaded sprites or extracted game
+  assets. The animated Lab Core remains in the locally running guide as a
+  decorative setup control, not as the desktop pet.
+- Added expressive Groq Orpheus speech with direction-aware delivery and an
+  automatic Microsoft Edge neural-voice fallback. Options links to Groq's
+  official one-time model-terms page when the account has not enabled Orpheus.
+  The public build does not bundle or claim an official character recording,
+  performer voice, or unlicensed voice-conversion model.
+- Rebuilt verified installs as focused in-place updates. After the signed
+  download passes its size and SHA-256 checks, an existing installation skips
+  fresh-setup pages, replaces only compiled app files in the same location,
+  preserves settings, protected keys, and voice choices, then restarts Agnes
+  automatically with the update.
+- The owner Release Console now reuses an existing GitHub CLI sign-in when one
+  is available, without displaying or persisting another token. A manually
+  pasted fine-grained token remains available as the fallback.
 - Lab Core activation is now a persistent online state instead of a one-second
   flash. Its brighter liquid, pulsing energy ring, faster dual orbits, ambient
   sparks, and `CORE ONLINE` status remain active across guide reloads; clicking
@@ -84,6 +102,10 @@
 
 ## Smarter and faster
 
+- Conversation, current-fact research, vision, and transcription keep the
+  proven `openai/gpt-oss-120b`, `groq/compound-mini`, `qwen/qwen3.6-27b`, and
+  `whisper-large-v3-turbo` model paths while speech gains the expressive
+  `canopylabs/orpheus-v1-english` voice path.
 - Current questions use `groq/compound-mini`, while normal conversation stays
   on `openai/gpt-oss-120b` for fast streaming.
 - Vision uses `qwen/qwen3.6-27b` in non-thinking mode, skips static frames,
