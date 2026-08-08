@@ -1,6 +1,24 @@
-# Agnes Tachyon AI Companion 6.2.1
+# Agnes Tachyon AI Companion 6.3.0
 
 ## Highlights
+
+- Fresh installs now launch Agnes herself before the setup guide, and the old
+  glass/flask preview has been replaced by a smooth copper-haired, pale-coat
+  animated Agnes design shared with the built-in desktop companion.
+- Easy OpenAI modes now select the current provider-specific Luna, Terra, and
+  Sol models instead of carrying a Groq model across providers. Wrong-service
+  model IDs are caught before saving while custom local model names stay valid.
+- Live reactions remember recent wording, retry once instead of repeating a
+  canned line, and require explicit confidence before treating screen text as
+  a death, miss, victory, danger, or achievement.
+- Hardened runtime cleanup across microphone hooks, speech subprocesses,
+  screenshot buffers, generated voice files, local memory, diagnostics, and
+  the per-user single-instance channel.
+- Updated the OpenAI SDK, PyInstaller, Ruff, and the cryptography runtime; the
+  latter closes the dependency advisory detected during the release audit.
+- Anonymous feedback remains one-click and sign-in-free. The live receiver now
+  forces every untrusted spreadsheet field to plain text, preventing submitted
+  messages from becoming formulas in the owner inbox.
 
 - Fixed update checks and downloads on Windows systems where GitHub was
   trusted by Windows but rejected by Python's bundled certificate list. Agnes
@@ -11,8 +29,12 @@
 - Replaced the older flask desktop fallback with an original, code-drawn Agnes
   companion. Her expressions, movement, reactions, dances, and interaction
   states are rendered by the app without downloaded sprites or extracted game
-  assets. The animated Lab Core remains in the locally running guide as a
-  decorative setup control, not as the desktop pet.
+  assets. The locally running guide now uses a matching original, code-drawn
+  Agnes preview instead of the old decorative flask.
+- Fixed the fresh-install handoff: setup now starts Agnes automatically while
+  still opening the local guide when Edge is available. On systems without
+  Edge, the same Agnes process opens native Options, avoiding duplicate-window
+  and startup-race bugs.
 - Added expressive Groq Orpheus speech with direction-aware delivery and an
   automatic Microsoft Edge neural-voice fallback. Options links to Groq's
   official one-time model-terms page when the account has not enabled Orpheus.
@@ -23,15 +45,20 @@
   fresh-setup pages, replaces only compiled app files in the same location,
   preserves settings, protected keys, and voice choices, then restarts Agnes
   automatically with the update.
-- Lab Core activation is now a persistent online state instead of a one-second
-  flash. Its brighter liquid, pulsing energy ring, faster dual orbits, ambient
-  sparks, and `CORE ONLINE` status remain active across guide reloads; clicking
-  it again produces a boost burst without switching it off. The hero headline
+- The owner Release Console now reuses an existing GitHub CLI sign-in when one
+  is available, without displaying or persisting another token. A manually
+  pasted fine-grained token remains available as the fallback.
+- Guide Agnes activation is now a persistent online state instead of a
+  one-second flash. Her pulsing energy ring, faster dual orbits, ambient sparks,
+  and online status remain active across guide reloads; clicking her again
+  settles the preview down with its own smooth effect. The hero headline
   also uses a safer responsive scale and column gap so it cannot overlap or
   escape its card at narrow desktop sizes or browser zoom.
 - Added privacy-safe feedback and bug reporting to Options, the tray, and the
-  locally running Setup Lab. Users can type and send without a GitHub account
-  or sign-in, and the public app never contains a private inbox credential.
+  locally running Setup Lab. The anonymous form accepts a typed message without
+  GitHub or any sign-in; the owner-only Release Console securely syncs new
+  reports as readable text files into a chosen local folder on launch and every
+  five minutes.
 - Reworked all four Options tabs with crisp Qt-painted vector symbols instead
   of font-dependent emoji. Labels now elide safely, selection indicators stay
   inside their tab, and hover/selection motion remains smooth from minimum size
@@ -42,15 +69,19 @@
 - The three-step celebration now plays the supplied `yay sound effect.mp3`
   byte-for-byte from the self-contained guide, with no network request or
   generated substitute.
-- Added an authenticated automatic update channel. Agnes and standalone
-  Options check a pinned Ed25519-signed release notice in the background,
-  offer optional or required prompts, stream the setup into a private per-user
-  cache, and verify its signed byte size and SHA-256 before launch. One
-  **Download update** click stays inside Agnes with smooth progress, live
-  transfer details, animated verification, a completion transition, and
-  automatic installer launch. Required notices remain signed and enforced
-  across offline restarts; live listening, vision, speech, and companion
-  actions pause while one is waiting.
+- Added an owner-controlled update channel. Agnes and standalone Options check
+  a pinned Ed25519-signed release notice in the background, offer optional or
+  required prompts, stream the setup into a private per-user cache, and verify
+  its signed byte size and SHA-256 before launch. One **Download update** click
+  now stays inside Agnes with smooth progress, live transfer details, animated
+  verification, a completion transition, and automatic installer launch.
+  Required notices remain owner-signed and enforced across offline restarts;
+  live listening, vision, speech, and companion actions pause while one is
+  waiting.
+- Added a separate `AgnesReleaseConsole.exe` owner build with the Agnes theme,
+  live publication progress, a required-update checkbox, GitHub release
+  publishing, Windows Credential Manager storage, and encrypted signing-key
+  backup/restore. It is never included in the public installer.
 - Rebuilt the locally running Setup Lab logo and responsive layout. Narrow
   windows, browser zoom, long labels, status rows, cards, and troubleshooting
   text now stay inside their containers.
@@ -68,27 +99,27 @@
   prevents immediate repeats and overlapping interactions, and stops the
   animation when the matching song ends. Stale completion events cannot stop a
   newer dance, and external-pet resets never steal keyboard focus.
-- Added two original, procedurally synthesized music tracks for the public Lab
-  Core. They add no downloaded assets or multimedia dependency, stop cleanly
-  for listening and speech, and keep the release rights-safe.
-- Hardened release validation against accidental source or build artifacts,
-  embedded third-party pet media, incorrect publisher metadata, and stale
-  executable versions.
+- Added two original, procedurally synthesized music tracks for the public
+  code-drawn companion. They add no downloaded assets or multimedia dependency,
+  stop cleanly for listening and speech, and keep the release rights-safe.
+- Added release gates for exact installer/spec payload allowlists, embedded
+  audio or third-party pet leaks, publisher metadata, and stale executable
+  versions.
 - Rebuilt the Setup Lab's pointer aura around a self-stopping GPU spring, fixed
   its lag and rubber-banding, and added Full, Calm, and Off VFX profiles that
   respect touch, reduced-motion, and high-contrast settings.
-- Added an interactive Lab Core, ambient telemetry, richer lightweight VFX,
-  smoother card tracking, and a searchable repair center with 28 practical
+- Added an interactive Agnes guide preview, ambient telemetry, richer
+  lightweight VFX, smoother card tracking, and a searchable repair center with 28 practical
   fixes for voice, AI, screen awareness, installation, updates, and app problems.
-- Rebuilt the locally running Setup Lab with the Agnes visual theme, animated lab-core
-  VFX, fluid section reveals, interactive setup progress, responsive layouts,
+- Rebuilt the locally running Setup Lab with the Agnes visual theme, animated
+  companion VFX, fluid section reveals, interactive setup progress, responsive layouts,
   keyboard focus states, high-contrast support, reduced-motion support, and a
   clean print view.
 - The Setup Lab has no trackers, remote assets, account names, or machine
   directories. The installer opens it in Edge application mode when available,
   hiding the local file address; the native Options setup page is the
   privacy-safe fallback when Edge is unavailable.
-- Added an original, rights-safe animated Lab Core desktop mascot. It can be
+- Added an original, rights-safe animated Agnes desktop mascot. It can be
   dragged, clicked, double-clicked, scrolled, fed, poked, surprised, and asked
   to dance. AI and screen events animate it automatically.
 - Rebuilt Options transitions with race-safe sliding tabs, inertial scrolling,

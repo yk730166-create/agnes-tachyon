@@ -4,15 +4,21 @@ A non-commercial, unofficial Windows fan companion with push-to-talk, fast
 cloud Whisper transcription, streaming chat, an original code-drawn Agnes
 desktop companion, multimodal screen awareness, and live web verification.
 
-Version 6.2.1 uses `openai/gpt-oss-120b` for conversation,
+Version 6.3.0 uses `openai/gpt-oss-120b` for conversation,
 `groq/compound-mini` for current facts, `qwen/qwen3.6-27b` for vision, and
 `whisper-large-v3-turbo` for fast speech recognition.
 
 ## Release highlights
 
-- The installed desktop pet is now an original code-drawn Agnes companion;
-  the flask-shaped Lab Core remains only as the setup guide's decorative
-  control.
+- The installed desktop pet and interactive setup preview now share an
+  original, animated copper-haired Agnes lab-companion design. The old flask
+  has been removed from both surfaces.
+- A finished fresh install starts Agnes automatically. If Edge is unavailable,
+  the same one-process launch opens native Options without a duplicate startup
+  race.
+- Easy OpenAI modes now use the current Luna, Terra, and Sol profiles while
+  Groq keeps its own fast and smart profiles; incompatible hosted-model pairs
+  are corrected before saving.
 - Groq Orpheus provides lively, direction-aware speech with automatic Edge
   neural-voice fallback and no bundled character voice clone.
 - Verified downloads update an existing copy in place, preserve its settings
@@ -41,8 +47,8 @@ optional configured external pet. Deaths, misses, victories, danger warnings,
 achievements, clicks, snacks, and tray interactions produce fresh AI-written
 spoken reactions rather than rotating canned lines. Music dances intentionally
 do not start a competing voice response. No speech or thinking textbox is
-displayed. The interactive Lab Core in the locally running setup guide remains
-as a decorative setup control; it is not the desktop pet.
+displayed. The interactive Agnes in the locally running setup guide is a
+self-contained preview; the desktop pet is rendered independently by the app.
 
 The rights-safe public build uses Groq-hosted Orpheus for expressive English
 speech and automatically falls back to the standard Microsoft Edge neural

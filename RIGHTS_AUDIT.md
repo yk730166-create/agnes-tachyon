@@ -5,12 +5,12 @@ for advice from a qualified intellectual-property lawyer.
 
 | Material | Current status | Public distribution |
 | --- | --- | --- |
-| Original application code and UI | Claimed for y4x5lol under `PROJECT_LICENSE.txt` | Yes, under y4x5lol's chosen terms |
+| Original `src/` application code and UI | Claimed for y4x5lol under `PROJECT_LICENSE.txt` | Yes, under y4x5lol's chosen terms |
 | Original installer/configuration/docs/tests | Claimed for y4x5lol | Yes |
-| Original flask/speed lab icon | Claimed for y4x5lol | Yes |
-| Original animated Lab Core mascot | Claimed for y4x5lol | Yes |
+| Original current companion icon | Claimed for y4x5lol | Yes |
+| Original code-drawn Setup Lab Agnes preview/effects | Claimed for y4x5lol; excludes the third-party character identity | Yes, as original project drawing code |
 | Original code and procedural drawing used for the desktop Agnes companion | Claimed for y4x5lol; this does not claim the Agnes Tachyon name, identity, or official design | Yes, as original project material in this unofficial fan project |
-| Original procedural Lab Core dance music | Claimed for y4x5lol; synthesized at runtime with no samples | Yes |
+| Original procedural companion dance music | Claimed for y4x5lol; synthesized at runtime with no samples | Yes |
 | Python and Qt dependencies | Third-party open-source licenses | Yes, only while complying with each license |
 | Applio runtime | Third-party MIT software plus its Terms of Use | Yes, license notices and terms must be preserved |
 | Desktop Gremlin binary/code/assets | Kritzkingvoid/other rightsholders; no license found | **No verified permission** |
@@ -33,11 +33,11 @@ for advice from a qualified intellectual-property lawyer.
    official or exact character voice. A user can configure optional files
    locally only after obtaining the necessary rights.
 5. Added the project license, notices, and this audit to installed copies.
-6. Added two original procedural Lab Core dance tracks with no sampled or
+6. Added two original procedural companion dance tracks with no sampled or
    extracted audio and added release checks that reject packaged media leaks.
-7. Replaced the older flask desktop fallback with original procedural drawing
-   and animation code. The flask-shaped Lab Core remains a decorative control
-   in the self-contained setup guide.
+7. Replaced the older flask desktop fallback and guide control with original
+   procedural drawing and animation code. The self-contained guide preview and
+   the app mascot bundle no extracted character sprite.
 
 ## What cannot be “made yours”
 

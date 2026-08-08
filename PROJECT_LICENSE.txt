@@ -7,11 +7,11 @@ OWNED PROJECT MATERIALS
 Subject to the exclusions below, y4x5lol owns the original project materials
 created for this project, including:
 
-- the original Python application code;
+- the Python application code under src/;
 - the original options interface, interaction logic, configuration, tests,
   installer scripts, setup guide, and project documentation;
-- the original Lab Core mascot, procedural animations, synthesized note
-  patterns, and procedural soundtracks;
+- the original code-drawn Setup Lab Agnes preview and desktop companion, procedural
+  animations, synthesized note patterns, and procedural soundtracks;
 - agnes_icon.svg and the icon files directly generated from that original
   manually-authored vector design; and
 - original build metadata and packaging configuration.

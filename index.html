@@ -181,6 +181,30 @@
       color: inherit;
     }
 
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 200;
+      max-width: calc(100% - 20px);
+      padding: 11px 15px;
+      border: 1px solid #8ecbff;
+      border-radius: 12px;
+      background: #0d1b30;
+      color: white;
+      font-weight: 750;
+      text-decoration: none;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.42);
+      transform: translateY(calc(-100% - 20px));
+      transition: transform 220ms var(--ease-smooth);
+    }
+
+    .skip-link:focus-visible {
+      outline: 2px solid var(--cyan);
+      outline-offset: 3px;
+      transform: translateY(0);
+    }
+
     button,
     a {
       -webkit-tap-highlight-color: transparent;
@@ -768,8 +792,8 @@
       animation: core-glow-shutdown 820ms var(--ease-smooth) both;
     }
 
-    .lab-stage.powering-down .liquid {
-      animation: core-liquid-shutdown 820ms var(--ease-smooth) both;
+    .lab-stage.powering-down .agnes-guide-mascot {
+      animation: companion-power-down 820ms var(--ease-smooth) both;
     }
 
     .lab-stage.core-online::before {
@@ -803,23 +827,20 @@
       animation: core-online-glow 2.4s ease-in-out infinite;
     }
 
-    .lab-stage.core-online .flask {
+    .lab-stage.core-online .agnes-guide-mascot {
       filter:
-        drop-shadow(0 22px 30px rgba(13, 63, 133, 0.4))
-        drop-shadow(0 0 22px rgba(71, 236, 220, 0.24));
+        drop-shadow(0 22px 30px rgba(13, 38, 82, 0.44))
+        drop-shadow(0 0 24px rgba(71, 236, 220, 0.3));
     }
 
-    .lab-stage.core-online .flask-body,
-    .lab-stage.core-online .flask-neck,
-    .lab-stage.core-online .flask-neck::after {
-      border-color: #9cf5ee;
+    .lab-stage.core-online .mascot-accent {
+      stroke: #9cf5ee;
     }
 
-    .lab-stage.core-online .liquid {
-      filter: saturate(1.18) brightness(1.09);
-      box-shadow:
-        0 -8px 34px rgba(71, 236, 220, 0.68),
-        0 0 28px rgba(50, 144, 255, 0.24);
+    .lab-stage.core-online .mascot-status,
+    .lab-stage.core-online .mascot-orb {
+      opacity: 1;
+      filter: saturate(1.2) brightness(1.12);
     }
 
     .lab-stage.core-online .core-hint {
@@ -927,131 +948,63 @@
       animation: breathe 3.2s ease-in-out infinite;
     }
 
-    .flask {
+    .agnes-guide-mascot {
       position: absolute;
-      top: 23%;
+      top: 10%;
       left: 50%;
-      width: 47%;
-      height: 58%;
-      filter: drop-shadow(0 22px 30px rgba(13, 63, 133, 0.4));
+      width: 58%;
+      height: 72%;
+      filter: drop-shadow(0 22px 30px rgba(13, 38, 82, 0.42));
       transform: translateX(-50%);
-      animation: float 4.6s ease-in-out infinite;
+      transform-origin: 50% 88%;
+      transition: filter 360ms ease, opacity 360ms ease;
+      animation: companion-float 4.6s ease-in-out infinite;
     }
 
-    .flask-neck {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 29%;
-      height: 29%;
-      border: 4px solid #85cbff;
-      border-bottom: 0;
-      border-radius: 7px 7px 0 0;
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent);
-      transform: translateX(-50%);
+    .agnes-guide-mascot svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
     }
 
-    .flask-neck::after {
-      position: absolute;
-      top: -7px;
-      left: -7px;
-      width: calc(100% + 14px);
-      height: 8px;
-      border: 3px solid #85cbff;
-      border-radius: 6px;
-      background: #14233b;
-      content: "";
+    .mascot-body {
+      transform-origin: 110px 244px;
+      animation: companion-breathe 3.4s ease-in-out infinite;
     }
 
-    .flask-body {
-      position: absolute;
-      right: 4%;
-      bottom: 0;
-      left: 4%;
-      height: 78%;
-      overflow: hidden;
-      border: 4px solid #85cbff;
-      border-radius: 18% 18% 36% 36% / 15% 15% 22% 22%;
-      background: linear-gradient(120deg, rgba(132, 203, 255, 0.12), rgba(12, 25, 46, 0.46));
-      clip-path: polygon(32% 0, 68% 0, 100% 72%, 100% 87%, 91% 100%, 9% 100%, 0 87%, 0 72%);
-      box-shadow: inset 0 0 30px rgba(88, 177, 255, 0.12);
+    .mascot-eye {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: companion-blink 5.8s infinite;
     }
 
-    .liquid {
-      position: absolute;
-      inset: 43% -12% -8%;
-      border-top: 3px solid #87f5e5;
-      background:
-        radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.85) 0 3px, transparent 4px),
-        radial-gradient(circle at 68% 42%, rgba(255, 255, 255, 0.48) 0 2px, transparent 3px),
-        linear-gradient(#39d8df, #168fe3 66%, #256dcc);
-      box-shadow: 0 -8px 26px rgba(71, 236, 220, 0.42);
-      animation: liquid 5s ease-in-out infinite;
+    .mascot-accent {
+      transition: stroke 320ms ease, filter 320ms ease;
     }
 
-    .face {
-      position: absolute;
-      top: 57%;
-      left: 50%;
-      z-index: 2;
-      width: 50%;
-      height: 25%;
-      transform: translateX(-50%);
+    .mascot-status,
+    .mascot-orb {
+      opacity: 0.72;
+      transform-box: fill-box;
+      transform-origin: center;
+      transition: opacity 320ms ease, filter 320ms ease;
+      animation: mascot-pulse 2.1s ease-in-out infinite;
     }
 
-    .eye {
-      position: absolute;
-      top: 3px;
-      width: 9px;
-      height: 12px;
-      border-radius: 50%;
-      background: #08203a;
-      box-shadow: 0 0 8px rgba(255, 255, 255, 0.22);
-      animation: blink 5.6s infinite;
+    .mascot-orb.two {
+      animation-delay: -0.9s;
     }
 
-    .eye.left {
-      left: 16%;
-    }
-
-    .eye.right {
-      right: 16%;
-    }
-
-    .smile {
-      position: absolute;
-      top: 8px;
-      left: 50%;
-      width: 27px;
-      height: 18px;
-      border-bottom: 3px solid #08203a;
-      border-radius: 0 0 50% 50%;
-      transform: translateX(-50%);
-    }
-
-    .bubble {
-      position: absolute;
-      bottom: 10%;
-      left: 27%;
-      width: 8px;
-      height: 8px;
-      border: 1px solid rgba(221, 255, 255, 0.9);
-      border-radius: 50%;
-      animation: bubble 3.2s ease-in infinite;
-    }
-
-    .bubble.two {
-      bottom: 16%;
-      left: 66%;
-      width: 12px;
-      height: 12px;
-      animation-delay: -1.7s;
-      animation-duration: 4.1s;
+    .lab-stage:hover .agnes-guide-mascot {
+      filter:
+        drop-shadow(0 24px 34px rgba(13, 38, 82, 0.48))
+        drop-shadow(0 0 18px rgba(71, 236, 220, 0.2));
     }
 
     .section {
       padding-top: 104px;
-      scroll-margin-top: 30px;
+      scroll-margin-top: 92px;
     }
 
     .section-head {
@@ -2154,23 +2107,21 @@
       50% { opacity: 0.65; transform: scale(1.16); }
     }
 
-    @keyframes float {
-      50% { transform: translateX(-50%) translateY(-12px) rotate(1.5deg); }
+    @keyframes companion-float {
+      50% { transform: translateX(-50%) translateY(-10px) rotate(1.15deg); }
     }
 
-    @keyframes liquid {
-      50% { transform: rotate(-3deg) translateY(3px); }
+    @keyframes companion-breathe {
+      50% { transform: scaleX(0.992) scaleY(1.008); }
     }
 
-    @keyframes blink {
-      0%, 44%, 48%, 100% { transform: scaleY(1); }
-      46% { transform: scaleY(0.08); }
+    @keyframes companion-blink {
+      0%, 43%, 47%, 100% { transform: scaleY(1); }
+      45% { transform: scaleY(0.08); }
     }
 
-    @keyframes bubble {
-      from { opacity: 0; transform: translateY(8px) scale(0.5); }
-      30% { opacity: 0.8; }
-      to { opacity: 0; transform: translateY(-88px) scale(1.2); }
+    @keyframes mascot-pulse {
+      50% { opacity: 1; transform: scale(1.24); }
     }
 
     @keyframes shield-float {
@@ -2254,10 +2205,10 @@
       100% { opacity: 0.3; filter: blur(10px) brightness(0.72); transform: scale(0.62); }
     }
 
-    @keyframes core-liquid-shutdown {
-      0% { filter: saturate(1.18) brightness(1.09); }
-      45% { filter: saturate(0.9) brightness(0.88); }
-      100% { filter: saturate(0.72) brightness(0.74); }
+    @keyframes companion-power-down {
+      0% { opacity: 1; filter: saturate(1.15) brightness(1.08); }
+      45% { opacity: 0.82; filter: saturate(0.9) brightness(0.9); }
+      100% { opacity: 0.58; filter: saturate(0.72) brightness(0.75); }
     }
 
     @keyframes spark-flight {
@@ -2340,8 +2291,10 @@
     body[data-effects="off"] .lab-stage,
     body[data-effects="off"] .orbit,
     body[data-effects="off"] .core-glow,
-    body[data-effects="off"] .flask,
-    body[data-effects="off"] .bubble {
+    body[data-effects="off"] .agnes-guide-mascot,
+    body[data-effects="off"] .mascot-body,
+    body[data-effects="off"] .mascot-eye,
+    body[data-effects="off"] .mascot-orb {
       animation: none;
     }
 
@@ -2790,6 +2743,7 @@
       .privacy-panel,
       details,
       .button,
+      .skip-link,
       .complete-step,
       .fix-search,
       .fix-filter,
@@ -2825,6 +2779,7 @@
       .cursor-aura,
       .scroll-meter,
       .topbar,
+      .skip-link,
       .lab-stage,
       .complete-step,
       .actions,
@@ -2898,6 +2853,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#setup">Skip to the setup steps</a>
   <div class="aurora-field" aria-hidden="true"></div>
   <div class="cursor-aura" id="cursorAura" aria-hidden="true"></div>
   <canvas class="effects-canvas" id="effectsCanvas" aria-hidden="true"></canvas>
@@ -2941,7 +2897,7 @@
       <button class="effects-toggle" id="effectsToggle" type="button" aria-label="Change visual effects level">
         VFX: FULL
       </button>
-      <span class="version-pill">SYSTEM v6.2.1</span>
+      <span class="version-pill">SYSTEM v6.3.0</span>
     </div>
   </header>
 
@@ -2956,7 +2912,7 @@
         </p>
         <div class="actions">
           <a class="button primary" href="#setup">Start the setup</a>
-          <a class="button" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer">Create a Groq key</a>
+          <a class="button" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" aria-label="Create a Groq key (opens in a new tab)">Create a Groq key</a>
         </div>
         <div class="trust-row" aria-label="Guide privacy summary">
           <span class="trust-chip">Guide runs locally</span>
@@ -2965,24 +2921,55 @@
         </div>
       </div>
 
-      <button class="lab-stage" id="labCore" type="button" aria-label="Toggle the decorative Setup Lab Core">
+      <button class="lab-stage" id="labCore" type="button" aria-label="Wake the animated Agnes guide companion" aria-pressed="false">
         <div class="orbit"></div>
         <div class="orbit second"></div>
         <div class="core-glow"></div>
-        <div class="flask">
-          <div class="flask-neck"></div>
-          <div class="flask-body">
-            <div class="liquid"></div>
-            <div class="face">
-              <span class="eye left"></span>
-              <span class="eye right"></span>
-              <span class="smile"></span>
-            </div>
-            <span class="bubble"></span>
-            <span class="bubble two"></span>
-          </div>
+        <div class="agnes-guide-mascot" aria-hidden="true">
+          <svg viewBox="0 0 220 270" focusable="false">
+            <ellipse cx="110" cy="247" rx="65" ry="13" fill="rgba(2, 10, 28, 0.44)"></ellipse>
+            <circle class="mascot-orb" cx="32" cy="122" r="5" fill="#48efdc"></circle>
+            <circle class="mascot-orb two" cx="190" cy="166" r="4" fill="#69aaff"></circle>
+            <g class="mascot-body">
+              <path d="M82 202 L76 241 Q84 249 96 242 L100 202 Z" fill="#26324d" stroke="#62cde1" stroke-width="2"></path>
+              <path d="M120 202 L124 241 Q136 249 144 241 L138 202 Z" fill="#26324d" stroke="#62cde1" stroke-width="2"></path>
+              <path d="M76 239 Q86 232 99 240 L98 249 Q83 254 72 247 Z" fill="#2b6d8f" stroke="#81e8ee" stroke-width="2"></path>
+              <path d="M122 240 Q135 232 145 239 L149 247 Q137 254 122 249 Z" fill="#2b6d8f" stroke="#81e8ee" stroke-width="2"></path>
+              <path d="M80 72 L66 34 Q91 44 101 68 Z" fill="#9d4d32" stroke="#643238" stroke-width="2"></path>
+              <path d="M140 72 L154 34 Q129 44 119 68 Z" fill="#9d4d32" stroke="#643238" stroke-width="2"></path>
+              <path class="mascot-accent" d="M78 52 L72 43 L90 62 M142 52 L148 43 L130 62" fill="none" stroke="#48efdc" stroke-width="2" stroke-linecap="round"></path>
+              <path d="M60 104 Q59 60 96 52 Q136 45 158 77 Q169 104 149 139 L72 137 Q53 120 60 104 Z" fill="#9d4d32" stroke="#65333a" stroke-width="2.5"></path>
+              <path d="M76 126 Q56 137 49 196 L75 181 L84 142 Z" fill="#edf2ef" stroke="#5bcbd8" stroke-width="2"></path>
+              <path d="M144 126 Q164 137 171 196 L145 181 L136 142 Z" fill="#edf2ef" stroke="#5bcbd8" stroke-width="2"></path>
+              <path d="M79 128 Q65 154 69 216 Q87 226 110 220 Q133 226 151 216 Q155 154 141 128 Q125 116 110 117 Q95 116 79 128 Z" fill="#edf2ef" stroke="#5bcbd8" stroke-width="2.5"></path>
+              <path d="M91 143 Q110 132 129 143 L124 201 Q110 209 96 201 Z" fill="#dbb978" opacity="0.95"></path>
+              <path d="M110 137 L117 150 L110 174 L103 150 Z" fill="#62363e"></path>
+              <path class="mascot-accent" d="M82 134 Q110 151 138 134 M110 149 L110 213" fill="none" stroke="#48efdc" stroke-width="2.5" stroke-linecap="round"></path>
+              <circle class="mascot-status" cx="132" cy="169" r="8" fill="#112a43" stroke="#48efdc" stroke-width="2"></circle>
+              <path d="M129 172 L132 164 L135 172 Z" fill="#48efdc"></path>
+              <rect x="99" y="111" width="22" height="27" rx="10" fill="#eab79d"></rect>
+              <ellipse cx="110" cy="94" rx="40" ry="43" fill="#f2c7aa" stroke="#70414a" stroke-width="2"></ellipse>
+              <path d="M72 85 Q83 52 115 52 Q144 54 151 82 Q130 68 116 75 L111 64 L104 78 Q88 71 72 94 Z" fill="#9d4d32"></path>
+              <path d="M78 84 Q88 70 101 66 L97 88 M118 64 Q137 69 145 86" fill="none" stroke="#efaa6d" stroke-width="3" stroke-linecap="round" opacity="0.64"></path>
+              <g class="mascot-eye">
+                <ellipse cx="94" cy="99" rx="8" ry="6" fill="#fffaf5"></ellipse>
+                <ellipse cx="126" cy="99" rx="8" ry="6" fill="#fffaf5"></ellipse>
+                <circle cx="94" cy="99" r="4.7" fill="#a85339"></circle>
+                <circle cx="126" cy="99" r="4.7" fill="#a85339"></circle>
+                <circle cx="94" cy="99" r="2" fill="#412831"></circle>
+                <circle cx="126" cy="99" r="2" fill="#412831"></circle>
+                <circle cx="92.5" cy="97.5" r="1.2" fill="#ffffff"></circle>
+                <circle cx="124.5" cy="97.5" r="1.2" fill="#ffffff"></circle>
+              </g>
+              <path d="M101 115 Q110 123 119 115" fill="none" stroke="#8a4050" stroke-width="2.5" stroke-linecap="round"></path>
+              <circle cx="82" cy="112" r="6" fill="#e88991" opacity="0.24"></circle>
+              <circle cx="138" cy="112" r="6" fill="#e88991" opacity="0.24"></circle>
+              <path d="M66 82 Q57 84 58 105 L66 113 M154 82 Q163 84 162 105 L154 113" fill="#282b43" stroke="#67dfeb" stroke-width="2.5" stroke-linecap="round"></path>
+              <circle class="mascot-status" cx="158" cy="73" r="4" fill="#48efdc"></circle>
+            </g>
+          </svg>
         </div>
-        <span class="core-hint">GUIDE LAB CORE</span>
+        <span class="core-hint">AGNES · READY</span>
       </button>
       <span class="visually-hidden" id="coreStatus" role="status" aria-live="polite"></span>
     </section>
@@ -3029,7 +3016,7 @@
           </div>
           <h3>Configure provider credentials</h3>
           <p>Open Groq, sign in, create a key, and copy it. The key lets Agnes chat, understand your screen, transcribe speech, and check current information.</p>
-          <a class="small-link" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer">Open Groq securely</a>
+          <a class="small-link" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" aria-label="Open Groq securely (opens in a new tab)">Open Groq securely</a>
         </li>
 
         <li class="glass-card step-card" data-step="2" data-reveal>
@@ -3083,7 +3070,7 @@
         <article class="glass-card feature-card tall" data-reveal>
           <span class="feature-icon" aria-hidden="true">PET</span>
           <h3>Play with desktop Agnes</h3>
-          <p>The installed app now draws an original animated Agnes companion instead of using the older flask fallback. Click, double-click, scroll, or drag her. Right-click her or the tray icon to offer a snack, ask for a reaction, or start a randomized music dance. The flask-shaped Lab Core above is only this guide's decorative control.</p>
+          <p>The installed app draws an original animated Agnes lab companion in warm copper, pale coat, and cyan science accents. Click, double-click, scroll, or drag her. Right-click her or the tray icon to offer a snack, ask for a reaction, or start a randomized music dance. The Agnes above is the guide's interactive preview.</p>
         </article>
 
         <article class="glass-card feature-card" data-reveal>
@@ -3278,9 +3265,9 @@
               <summary><span class="fix-tag">SCREEN</span>Screen awareness uses too much data or feels slow</summary>
               <p>Increase the check interval to 5–10 seconds or turn screen awareness off. Chat and voice still work without it. A 1–2 second interval catches more brief events but makes more paid requests.</p>
             </details>
-            <details data-category="app" data-keywords="mascot desktop agnes lab core flask frozen unresponsive click react">
+            <details data-category="app" data-keywords="mascot desktop agnes guide companion frozen unresponsive click react">
               <summary><span class="fix-tag">APP</span>Desktop Agnes will not react</summary>
-              <p>Music dances return to idle automatically when their track ends. If the code-drawn companion still will not react, confirm Agnes is running in the tray, choose <strong>Quit Agnes</strong>, and start her once. The Lab Core on this page is a separate decorative guide control. For a locally supplied external pet, also keep its keyboard controls enabled so Agnes can perform the automatic idle reset.</p>
+              <p>Music dances return to idle automatically when their track ends. If the code-drawn companion still will not react, confirm Agnes is running in the tray, choose <strong>Quit Agnes</strong>, and start her once. The Agnes preview on this page is a separate decorative guide control. For a locally supplied external pet, also keep its keyboard controls enabled so Agnes can perform the automatic idle reset.</p>
             </details>
             <details data-category="app" data-keywords="lag slow stutter jumpy performance fps size scaling vfx">
               <summary><span class="fix-tag">APP</span>Everything feels slow, jumpy, or too large</summary>
@@ -3337,18 +3324,20 @@
           <a
             class="button"
             id="feedbackIdeaLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.2.1"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.3.0"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Share feedback (opens in a new tab)"
             data-feedback-action="open"
             data-feedback-kind="feedback"
           >Share feedback</a>
           <a
             class="button primary"
             id="feedbackBugLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.2.1"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.3.0"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Report a bug (opens in a new tab)"
             data-feedback-action="open"
             data-feedback-kind="bug"
           >Report a bug</a>
@@ -3356,7 +3345,7 @@
       </article>
 
       <div class="rights-note" data-reveal>
-        <strong>Rights-safe public build.</strong> The installer includes the original app, interface, documentation, icon, and code-drawn desktop companion. The flask-shaped Lab Core is a decorative part of this self-contained guide. Speech uses Groq-hosted Orpheus with automatic Edge neural-voice fallback; neither is presented as an official Agnes Tachyon voice, and no unlicensed character model or voice clone is bundled. Agnes Tachyon, Umamusume: Pretty Derby, and official materials remain with Cygames and their respective rightsholders. Optional custom voice or pet files should only be added when you have permission to use them. Full license and third-party notices are installed beside this guide.
+        <strong>Rights-safe public build.</strong> The installer includes the original app, interface, documentation, icon, and code-drawn desktop companion; the animated Agnes preview above is also drawn entirely inside this guide. Speech uses Groq-hosted Orpheus with automatic Edge neural-voice fallback; neither is presented as an official Agnes Tachyon voice, and no unlicensed character model or voice clone is bundled. Agnes Tachyon, Umamusume: Pretty Derby, and official materials remain with Cygames and their respective rightsholders. Optional custom voice or pet files should only be added when you have permission to use them. Full license and third-party notices are installed beside this guide.
       </div>
     </section>
 
@@ -3388,6 +3377,7 @@
       let requestedEffects = (navigator.hardwareConcurrency || 8) >= 6 ? "full" : "calm";
       let resetAmbientEffects = () => {};
       let updateCanvasMode = () => {};
+      let syncCoreEffects = () => {};
 
       try {
         const savedEffects = localStorage.getItem(effectsStorageKey);
@@ -3424,6 +3414,7 @@
 
         resetAmbientEffects();
         updateCanvasMode();
+        syncCoreEffects();
       };
 
       applyEffects(requestedEffects);
@@ -3539,7 +3530,10 @@
       window.addEventListener("pointerout", (event) => {
         if (!event.relatedTarget) hideAura();
       }, { passive: true });
-      window.addEventListener("blur", hideAura);
+      window.addEventListener("blur", () => {
+        hideAura();
+        resetAmbientEffects();
+      });
 
       const reveals = [...document.querySelectorAll("[data-reveal]")];
       if (motionQuery.matches || !("IntersectionObserver" in window)) {
@@ -3762,6 +3756,12 @@
       let coreSparkTimer = 0;
       let coreReady = true;
 
+      const coreEffectsAllowed = () =>
+        labCore.classList.contains("core-online") &&
+        document.visibilityState === "visible" &&
+        !effectsForcedOff() &&
+        body.dataset.effects !== "off";
+
       const emitCoreSpark = (angle, distance) => {
         const spark = document.createElement("span");
         spark.className = "energy-spark";
@@ -3775,14 +3775,10 @@
 
       const scheduleCoreSpark = () => {
         window.clearTimeout(coreSparkTimer);
-        if (!labCore.classList.contains("core-online")) return;
+        if (!coreEffectsAllowed()) return;
         const calm = body.dataset.effects === "calm";
         coreSparkTimer = window.setTimeout(() => {
-          if (
-            document.visibilityState === "visible" &&
-            !effectsForcedOff() &&
-            body.dataset.effects !== "off"
-          ) {
+          if (coreEffectsAllowed()) {
             const angle = Math.random() * Math.PI * 2;
             emitCoreSpark(angle, 82 + Math.random() * 54);
           }
@@ -3790,19 +3786,24 @@
         }, calm ? 1450 : 680);
       };
 
+      syncCoreEffects = () => {
+        window.clearTimeout(coreSparkTimer);
+        if (coreEffectsAllowed()) {
+          scheduleCoreSpark();
+        } else {
+          labCore.querySelectorAll(".energy-spark").forEach((spark) => spark.remove());
+        }
+      };
+
       const setCoreOnline = (online) => {
         labCore.classList.toggle("core-online", online);
         labCore.setAttribute("aria-pressed", String(online));
         labCore.setAttribute(
           "aria-label",
-          online ? "Turn off the decorative Setup Lab Core" : "Turn on the decorative Setup Lab Core"
+          online ? "Let the animated Agnes guide companion rest" : "Wake the animated Agnes guide companion"
         );
-        coreHint.textContent = online ? "GUIDE CORE · ON" : "GUIDE CORE · OFF";
-        if (online) scheduleCoreSpark();
-        else {
-          window.clearTimeout(coreSparkTimer);
-          labCore.querySelectorAll(".energy-spark").forEach((spark) => spark.remove());
-        }
+        coreHint.textContent = online ? "AGNES · ONLINE" : "AGNES · RESTING";
+        syncCoreEffects();
       };
 
       try {
@@ -3822,8 +3823,8 @@
         setCoreOnline(nextOnline);
         labCore.classList.add(nextOnline ? "charged" : "powering-down");
         coreStatus.textContent = nextOnline
-          ? "Lab Core online. Energy effects will stay active."
-          : "Lab Core powering down. Its offline state will be remembered.";
+          ? "Agnes is online. Her energy effects will stay active."
+          : "Agnes is settling down. Her resting state will be remembered.";
         try {
           localStorage.setItem(coreStorageKey, nextOnline ? "online" : "offline");
         } catch {
@@ -3843,8 +3844,8 @@
         coreResetTimer = window.setTimeout(() => {
           labCore.classList.remove("charged", "powering-down");
           coreStatus.textContent = nextOnline
-            ? "Lab Core remains online."
-            : "Lab Core is offline.";
+            ? "Agnes remains online."
+            : "Agnes is resting.";
           coreReady = true;
         }, 900);
       });
@@ -4084,8 +4085,9 @@
         }, { passive: true });
 
         document.addEventListener("visibilitychange", () => {
+          syncCoreEffects();
           if (document.hidden) {
-            hideAura();
+            resetAmbientEffects();
             stopCanvas();
           } else if (canvasEnabled()) {
             const currentRatio = Math.min(window.devicePixelRatio || 1, 1.5);
