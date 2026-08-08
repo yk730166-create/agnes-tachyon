@@ -4,7 +4,7 @@ A non-commercial, unofficial Windows fan companion with push-to-talk, fast
 cloud Whisper transcription, streaming chat, an original code-drawn Agnes
 desktop companion, multimodal screen awareness, and live web verification.
 
-Version 6.3.1 uses `openai/gpt-oss-120b` for conversation,
+Version 6.3.2 uses `openai/gpt-oss-120b` for conversation,
 `groq/compound-mini` for current facts, `qwen/qwen3.6-27b` for vision, and
 `whisper-large-v3-turbo` for fast speech recognition.
 

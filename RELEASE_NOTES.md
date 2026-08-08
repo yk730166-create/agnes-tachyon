@@ -1,4 +1,16 @@
-# Agnes Tachyon AI Companion 6.3.1
+# Agnes Tachyon AI Companion 6.3.2
+
+## 6.3.2 — Smoother guide model and local spoken answers
+
+- Replaced large-sheet CSS repaints with an anchored 300×300 canvas renderer
+  using the model's intended frame timing.
+- Added a 32 KB instant poster and one-sheet-at-a-time lazy loading. The guide
+  no longer downloads or decodes all animation sheets during startup.
+- Added richer hologram, activity, and local-voice visuals around Agnes.
+- Added six built-in setup questions with cheerful spoken answers through the
+  device voice. They use no AI call, API key, tracking, or screen capture.
+- Hardened animation cancellation, image-load failure handling, reduced-motion
+  behavior, responsive layout, and installer asset verification.
 
 ## 6.3.1 — Setup Lab Agnes model update
 
