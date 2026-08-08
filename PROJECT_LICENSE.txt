@@ -10,8 +10,8 @@ created for this project, including:
 - the Python application code under src/;
 - the original options interface, interaction logic, configuration, tests,
   installer scripts, setup guide, and project documentation;
-- the original code-drawn Setup Lab Agnes preview and desktop companion, procedural
-  animations, synthesized note patterns, and procedural soundtracks;
+- the original code-drawn desktop companion, procedural animations, synthesized
+  note patterns, and procedural soundtracks;
 - agnes_icon.svg and the icon files directly generated from that original
   manually-authored vector design; and
 - original build metadata and packaging configuration.
@@ -34,6 +34,7 @@ This license does not cover, transfer, or claim ownership of:
 - Agnes Tachyon, Umamusume: Pretty Derby, their names, character designs,
   official artwork, recordings, or other Cygames/rightsholder material;
 - Desktop Gremlin code, binaries, sprites, sounds, or documentation;
+- the Agnes sprite sheets under installer/guide_assets/agnes/;
 - Tachyon.pth, any Tachyon voice index, training recordings, converted voice
   output, or any performer's voice, likeness, or publicity/personality rights;
 - Applio, Qt/PySide, Python packages, codecs, fonts, APIs, web services, or

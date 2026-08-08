@@ -33,8 +33,15 @@ The repository did not declare a software license when checked on 27 July
 2026. A public repository and an author credit do not by themselves grant
 permission to copy or redistribute its code, binary, sprites, sounds, or
 documentation. Those materials remain under their respective authors' and
-rightsholders' rights. The rights-safe public setup therefore does not include
-Desktop Gremlin. Obtain written permission before redistributing it.
+rightsholders' rights.
+
+At the project owner's direction, this release includes only the Agnes action
+and emote sprite sheets used by the animated Setup Lab preview, under
+`guide_assets/agnes/`. It does not include the Desktop Gremlin executable,
+source, sounds, or other character packs. The included sheets are third-party
+fan-project material and are not claimed as y4x5lol's original artwork. Obtain
+written permission before redistributing them beyond uses allowed by the
+applicable rightsholders.
 
 ## Tachyon voice-conversion files and voice identity
 

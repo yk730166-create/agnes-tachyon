@@ -1,4 +1,15 @@
-# Agnes Tachyon AI Companion 6.3.0
+# Agnes Tachyon AI Companion 6.3.1
+
+## 6.3.1 — Setup Lab Agnes model update
+
+- Replaced the Setup Lab's simple drawn preview with the actual separately
+  attributed Agnes action and emote sprite sheets.
+- Agnes stays anchored inside the lab core while playing idle, intro, hover,
+  click, sleep, and randomized dance/reaction sequences.
+- Fixed animation pause/resume cleanup when the guide is hidden or VFX is
+  disabled, and added exact sprite-grid and installer-payload regression checks.
+
+## 6.3.0 — Application, guide, and updater refinement
 
 ## Highlights
 

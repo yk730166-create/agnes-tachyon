@@ -8,7 +8,8 @@ for advice from a qualified intellectual-property lawyer.
 | Original `src/` application code and UI | Claimed for y4x5lol under `PROJECT_LICENSE.txt` | Yes, under y4x5lol's chosen terms |
 | Original installer/configuration/docs/tests | Claimed for y4x5lol | Yes |
 | Original current companion icon | Claimed for y4x5lol | Yes |
-| Original code-drawn Setup Lab Agnes preview/effects | Claimed for y4x5lol; excludes the third-party character identity | Yes, as original project drawing code |
+| Setup Lab animation code/effects | Original code claimed for y4x5lol; sprite artwork is excluded | Yes for the code |
+| Setup Lab Agnes sprite sheets | Third-party fan-project artwork; not claimed for y4x5lol | Included at the project owner's direction; permission not independently verified |
 | Original code and procedural drawing used for the desktop Agnes companion | Claimed for y4x5lol; this does not claim the Agnes Tachyon name, identity, or official design | Yes, as original project material in this unofficial fan project |
 | Original procedural companion dance music | Claimed for y4x5lol; synthesized at runtime with no samples | Yes |
 | Python and Qt dependencies | Third-party open-source licenses | Yes, only while complying with each license |
@@ -25,8 +26,10 @@ for advice from a qualified intellectual-property lawyer.
 1. Added a narrow proprietary license for y4x5lol's original project
    materials. It deliberately excludes all third-party content.
 2. Added specific creator attribution and rightsholder notices.
-3. Changed the public installer configuration so it does not bundle Desktop
-   Gremlin, character sprites/sounds, or the unlicensed Tachyon voice model.
+3. The public installer does not bundle the Desktop Gremlin executable, code,
+   sounds, other character packs, or the unlicensed Tachyon voice model. The
+   Setup Lab now includes only the separately attributed Agnes action/emote
+   sprite sheets at the project owner's direction.
 4. Changed release defaults to use Groq-hosted Orpheus speech with automatic
    Edge neural-voice fallback and an original code-drawn desktop companion,
    with no external pet executable. Neither voice path is described as an
@@ -35,9 +38,9 @@ for advice from a qualified intellectual-property lawyer.
 5. Added the project license, notices, and this audit to installed copies.
 6. Added two original procedural companion dance tracks with no sampled or
    extracted audio and added release checks that reject packaged media leaks.
-7. Replaced the older flask desktop fallback and guide control with original
-   procedural drawing and animation code. The self-contained guide preview and
-   the app mascot bundle no extracted character sprite.
+7. Replaced the older flask desktop fallback with original procedural drawing
+   and animation code. The desktop app mascot remains code-drawn. The guide
+   control now animates the separately attributed Agnes sprite sheets in place.
 
 ## What cannot be “made yours”
 
@@ -49,6 +52,6 @@ this specific project. Keep that written permission with the release records.
 
 ## Release rule
 
-Only the output of the current rights-safe installer configuration should be
-shared publicly. Older setup builds that include `Companion` or `Voice` assets
-must be treated as private audit artifacts and must not be redistributed.
+Only the output of the current allowlisted installer configuration should be
+shared. Older setup builds that include `Companion` or `Voice` assets must be
+treated as private audit artifacts and must not be redistributed.

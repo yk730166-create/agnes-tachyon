@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080d18">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; media-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; media-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="description" content="A private, locally running quick-start guide for Agnes Tachyon AI Companion.">
   <title>Agnes // Setup Lab</title>
   <script>document.documentElement.classList.add("js");</script>
@@ -833,16 +833,6 @@
         drop-shadow(0 0 24px rgba(71, 236, 220, 0.3));
     }
 
-    .lab-stage.core-online .mascot-accent {
-      stroke: #9cf5ee;
-    }
-
-    .lab-stage.core-online .mascot-status,
-    .lab-stage.core-online .mascot-orb {
-      opacity: 1;
-      filter: saturate(1.2) brightness(1.12);
-    }
-
     .lab-stage.core-online .core-hint {
       border-color: rgba(83, 234, 217, 0.58);
       background: rgba(22, 86, 92, 0.46);
@@ -950,50 +940,28 @@
 
     .agnes-guide-mascot {
       position: absolute;
-      top: 10%;
+      top: 8%;
       left: 50%;
-      width: 58%;
-      height: 72%;
+      width: 76%;
+      aspect-ratio: 1;
       filter: drop-shadow(0 22px 30px rgba(13, 38, 82, 0.42));
       transform: translateX(-50%);
-      transform-origin: 50% 88%;
+      transform-origin: 50% 82%;
       transition: filter 360ms ease, opacity 360ms ease;
-      animation: companion-float 4.6s ease-in-out infinite;
     }
 
-    .agnes-guide-mascot svg {
+    .agnes-sprite {
       display: block;
       width: 100%;
       height: 100%;
-      overflow: visible;
-    }
-
-    .mascot-body {
-      transform-origin: 110px 244px;
-      animation: companion-breathe 3.4s ease-in-out infinite;
-    }
-
-    .mascot-eye {
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: companion-blink 5.8s infinite;
-    }
-
-    .mascot-accent {
-      transition: stroke 320ms ease, filter 320ms ease;
-    }
-
-    .mascot-status,
-    .mascot-orb {
-      opacity: 0.72;
-      transform-box: fill-box;
-      transform-origin: center;
-      transition: opacity 320ms ease, filter 320ms ease;
-      animation: mascot-pulse 2.1s ease-in-out infinite;
-    }
-
-    .mascot-orb.two {
-      animation-delay: -0.9s;
+      background-color: transparent;
+      background-image: url("guide_assets/agnes/idle.png");
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-size: 1000% 3400%;
+      image-rendering: auto;
+      pointer-events: none;
+      will-change: background-position;
     }
 
     .lab-stage:hover .agnes-guide-mascot {
@@ -2107,23 +2075,6 @@
       50% { opacity: 0.65; transform: scale(1.16); }
     }
 
-    @keyframes companion-float {
-      50% { transform: translateX(-50%) translateY(-10px) rotate(1.15deg); }
-    }
-
-    @keyframes companion-breathe {
-      50% { transform: scaleX(0.992) scaleY(1.008); }
-    }
-
-    @keyframes companion-blink {
-      0%, 43%, 47%, 100% { transform: scaleY(1); }
-      45% { transform: scaleY(0.08); }
-    }
-
-    @keyframes mascot-pulse {
-      50% { opacity: 1; transform: scale(1.24); }
-    }
-
     @keyframes shield-float {
       50% { transform: translateY(-10px); }
     }
@@ -2291,10 +2242,7 @@
     body[data-effects="off"] .lab-stage,
     body[data-effects="off"] .orbit,
     body[data-effects="off"] .core-glow,
-    body[data-effects="off"] .agnes-guide-mascot,
-    body[data-effects="off"] .mascot-body,
-    body[data-effects="off"] .mascot-eye,
-    body[data-effects="off"] .mascot-orb {
+    body[data-effects="off"] .agnes-guide-mascot {
       animation: none;
     }
 
@@ -2897,7 +2845,7 @@
       <button class="effects-toggle" id="effectsToggle" type="button" aria-label="Change visual effects level">
         VFX: FULL
       </button>
-      <span class="version-pill">SYSTEM v6.3.0</span>
+      <span class="version-pill">SYSTEM v6.3.1</span>
     </div>
   </header>
 
@@ -2926,48 +2874,7 @@
         <div class="orbit second"></div>
         <div class="core-glow"></div>
         <div class="agnes-guide-mascot" aria-hidden="true">
-          <svg viewBox="0 0 220 270" focusable="false">
-            <ellipse cx="110" cy="247" rx="65" ry="13" fill="rgba(2, 10, 28, 0.44)"></ellipse>
-            <circle class="mascot-orb" cx="32" cy="122" r="5" fill="#48efdc"></circle>
-            <circle class="mascot-orb two" cx="190" cy="166" r="4" fill="#69aaff"></circle>
-            <g class="mascot-body">
-              <path d="M82 202 L76 241 Q84 249 96 242 L100 202 Z" fill="#26324d" stroke="#62cde1" stroke-width="2"></path>
-              <path d="M120 202 L124 241 Q136 249 144 241 L138 202 Z" fill="#26324d" stroke="#62cde1" stroke-width="2"></path>
-              <path d="M76 239 Q86 232 99 240 L98 249 Q83 254 72 247 Z" fill="#2b6d8f" stroke="#81e8ee" stroke-width="2"></path>
-              <path d="M122 240 Q135 232 145 239 L149 247 Q137 254 122 249 Z" fill="#2b6d8f" stroke="#81e8ee" stroke-width="2"></path>
-              <path d="M80 72 L66 34 Q91 44 101 68 Z" fill="#9d4d32" stroke="#643238" stroke-width="2"></path>
-              <path d="M140 72 L154 34 Q129 44 119 68 Z" fill="#9d4d32" stroke="#643238" stroke-width="2"></path>
-              <path class="mascot-accent" d="M78 52 L72 43 L90 62 M142 52 L148 43 L130 62" fill="none" stroke="#48efdc" stroke-width="2" stroke-linecap="round"></path>
-              <path d="M60 104 Q59 60 96 52 Q136 45 158 77 Q169 104 149 139 L72 137 Q53 120 60 104 Z" fill="#9d4d32" stroke="#65333a" stroke-width="2.5"></path>
-              <path d="M76 126 Q56 137 49 196 L75 181 L84 142 Z" fill="#edf2ef" stroke="#5bcbd8" stroke-width="2"></path>
-              <path d="M144 126 Q164 137 171 196 L145 181 L136 142 Z" fill="#edf2ef" stroke="#5bcbd8" stroke-width="2"></path>
-              <path d="M79 128 Q65 154 69 216 Q87 226 110 220 Q133 226 151 216 Q155 154 141 128 Q125 116 110 117 Q95 116 79 128 Z" fill="#edf2ef" stroke="#5bcbd8" stroke-width="2.5"></path>
-              <path d="M91 143 Q110 132 129 143 L124 201 Q110 209 96 201 Z" fill="#dbb978" opacity="0.95"></path>
-              <path d="M110 137 L117 150 L110 174 L103 150 Z" fill="#62363e"></path>
-              <path class="mascot-accent" d="M82 134 Q110 151 138 134 M110 149 L110 213" fill="none" stroke="#48efdc" stroke-width="2.5" stroke-linecap="round"></path>
-              <circle class="mascot-status" cx="132" cy="169" r="8" fill="#112a43" stroke="#48efdc" stroke-width="2"></circle>
-              <path d="M129 172 L132 164 L135 172 Z" fill="#48efdc"></path>
-              <rect x="99" y="111" width="22" height="27" rx="10" fill="#eab79d"></rect>
-              <ellipse cx="110" cy="94" rx="40" ry="43" fill="#f2c7aa" stroke="#70414a" stroke-width="2"></ellipse>
-              <path d="M72 85 Q83 52 115 52 Q144 54 151 82 Q130 68 116 75 L111 64 L104 78 Q88 71 72 94 Z" fill="#9d4d32"></path>
-              <path d="M78 84 Q88 70 101 66 L97 88 M118 64 Q137 69 145 86" fill="none" stroke="#efaa6d" stroke-width="3" stroke-linecap="round" opacity="0.64"></path>
-              <g class="mascot-eye">
-                <ellipse cx="94" cy="99" rx="8" ry="6" fill="#fffaf5"></ellipse>
-                <ellipse cx="126" cy="99" rx="8" ry="6" fill="#fffaf5"></ellipse>
-                <circle cx="94" cy="99" r="4.7" fill="#a85339"></circle>
-                <circle cx="126" cy="99" r="4.7" fill="#a85339"></circle>
-                <circle cx="94" cy="99" r="2" fill="#412831"></circle>
-                <circle cx="126" cy="99" r="2" fill="#412831"></circle>
-                <circle cx="92.5" cy="97.5" r="1.2" fill="#ffffff"></circle>
-                <circle cx="124.5" cy="97.5" r="1.2" fill="#ffffff"></circle>
-              </g>
-              <path d="M101 115 Q110 123 119 115" fill="none" stroke="#8a4050" stroke-width="2.5" stroke-linecap="round"></path>
-              <circle cx="82" cy="112" r="6" fill="#e88991" opacity="0.24"></circle>
-              <circle cx="138" cy="112" r="6" fill="#e88991" opacity="0.24"></circle>
-              <path d="M66 82 Q57 84 58 105 L66 113 M154 82 Q163 84 162 105 L154 113" fill="#282b43" stroke="#67dfeb" stroke-width="2.5" stroke-linecap="round"></path>
-              <circle class="mascot-status" cx="158" cy="73" r="4" fill="#48efdc"></circle>
-            </g>
-          </svg>
+          <div class="agnes-sprite" id="agnesSprite"></div>
         </div>
         <span class="core-hint">AGNES · READY</span>
       </button>
@@ -3070,7 +2977,7 @@
         <article class="glass-card feature-card tall" data-reveal>
           <span class="feature-icon" aria-hidden="true">PET</span>
           <h3>Play with desktop Agnes</h3>
-          <p>The installed app draws an original animated Agnes lab companion in warm copper, pale coat, and cyan science accents. Click, double-click, scroll, or drag her. Right-click her or the tray icon to offer a snack, ask for a reaction, or start a randomized music dance. The Agnes above is the guide's interactive preview.</p>
+          <p>The installed app draws an animated Agnes lab companion in warm copper, pale coat, and cyan science accents. Click, double-click, scroll, or drag her. Right-click her or the tray icon to offer a snack, ask for a reaction, or start a randomized music dance. The Agnes above is the guide's in-place sprite preview.</p>
         </article>
 
         <article class="glass-card feature-card" data-reveal>
@@ -3267,7 +3174,7 @@
             </details>
             <details data-category="app" data-keywords="mascot desktop agnes guide companion frozen unresponsive click react">
               <summary><span class="fix-tag">APP</span>Desktop Agnes will not react</summary>
-              <p>Music dances return to idle automatically when their track ends. If the code-drawn companion still will not react, confirm Agnes is running in the tray, choose <strong>Quit Agnes</strong>, and start her once. The Agnes preview on this page is a separate decorative guide control. For a locally supplied external pet, also keep its keyboard controls enabled so Agnes can perform the automatic idle reset.</p>
+              <p>Music dances return to idle automatically when their track ends. If the desktop companion still will not react, confirm Agnes is running in the tray, choose <strong>Quit Agnes</strong>, and start her once. The animated sprite on this page is a separate guide control. For a locally supplied external pet, also keep its keyboard controls enabled so Agnes can perform the automatic idle reset.</p>
             </details>
             <details data-category="app" data-keywords="lag slow stutter jumpy performance fps size scaling vfx">
               <summary><span class="fix-tag">APP</span>Everything feels slow, jumpy, or too large</summary>
@@ -3324,7 +3231,7 @@
           <a
             class="button"
             id="feedbackIdeaLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.3.0"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.3.1"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Share feedback (opens in a new tab)"
@@ -3334,7 +3241,7 @@
           <a
             class="button primary"
             id="feedbackBugLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.3.0"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.3.1"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Report a bug (opens in a new tab)"
@@ -3345,7 +3252,7 @@
       </article>
 
       <div class="rights-note" data-reveal>
-        <strong>Rights-safe public build.</strong> The installer includes the original app, interface, documentation, icon, and code-drawn desktop companion; the animated Agnes preview above is also drawn entirely inside this guide. Speech uses Groq-hosted Orpheus with automatic Edge neural-voice fallback; neither is presented as an official Agnes Tachyon voice, and no unlicensed character model or voice clone is bundled. Agnes Tachyon, Umamusume: Pretty Derby, and official materials remain with Cygames and their respective rightsholders. Optional custom voice or pet files should only be added when you have permission to use them. Full license and third-party notices are installed beside this guide.
+        <strong>Unofficial fan build.</strong> The installer includes the original app, interface, documentation, icon, and code-drawn desktop companion. The animated guide preview uses the separately attributed Agnes sprite sheets listed in the installed third-party notices; y4x5lol does not claim ownership of that artwork. Speech uses Groq-hosted Orpheus with automatic Edge neural-voice fallback and is not presented as an official Agnes Tachyon voice. Agnes Tachyon, Umamusume: Pretty Derby, and official materials remain with Cygames and their respective rightsholders. Full license and third-party notices are installed beside this guide.
       </div>
     </section>
 
@@ -3751,10 +3658,125 @@
       const labCore = document.getElementById("labCore");
       const coreHint = labCore.querySelector(".core-hint");
       const coreStatus = document.getElementById("coreStatus");
+      const agnesSprite = document.getElementById("agnesSprite");
       const coreStorageKey = "agnes-setup-core-online-v1";
       let coreResetTimer = 0;
       let coreSparkTimer = 0;
       let coreReady = true;
+
+      const agnesAnimations = Object.freeze({
+        idle: { file: "idle.png", frames: 340, fps: 12 },
+        intro: { file: "intro.png", frames: 50, fps: 12 },
+        hover: { file: "hover.png", frames: 30, fps: 12 },
+        click: { file: "click.png", frames: 117, fps: 15 },
+        sleep: { file: "sleep.png", frames: 255, fps: 20 },
+        emote1: { file: "emote1.png", frames: 24, fps: 12 },
+        emote2: { file: "emote2.png", frames: 42, fps: 12 },
+        emote3: { file: "emote3.png", frames: 189, fps: 15 },
+        emote4: { file: "emote4.png", frames: 42, fps: 12 },
+      });
+      const agnesDances = ["emote1", "emote2", "emote3", "emote4", "click"];
+      let agnesFrameRequest = 0;
+      let agnesAnimationToken = 0;
+      let agnesAutoTimer = 0;
+      let agnesBusy = false;
+
+      Object.values(agnesAnimations).forEach(({ file }) => {
+        const preload = new Image();
+        preload.src = `guide_assets/agnes/${file}`;
+      });
+
+      const agnesMotionAllowed = () =>
+        document.visibilityState === "visible" &&
+        !effectsForcedOff() &&
+        body.dataset.effects !== "off";
+
+      const setAgnesFrame = (animation, frame) => {
+        const columns = 10;
+        const rows = Math.ceil(animation.frames / columns);
+        const column = frame % columns;
+        const row = Math.floor(frame / columns);
+        const x = columns === 1 ? 0 : column / (columns - 1) * 100;
+        const y = rows === 1 ? 0 : row / (rows - 1) * 100;
+        agnesSprite.style.backgroundImage = `url("guide_assets/agnes/${animation.file}")`;
+        agnesSprite.style.backgroundSize = `${columns * 100}% ${rows * 100}%`;
+        agnesSprite.style.backgroundPosition = `${x}% ${y}%`;
+      };
+
+      const playAgnes = (name, { loop = false, hold = false, onComplete = null } = {}) => {
+        const animation = agnesAnimations[name];
+        if (!animation) return;
+        agnesAnimationToken += 1;
+        const token = agnesAnimationToken;
+        window.cancelAnimationFrame(agnesFrameRequest);
+        if (!agnesMotionAllowed()) {
+          setAgnesFrame(animation, hold ? animation.frames - 1 : 0);
+          agnesBusy = false;
+          return;
+        }
+        let lastFrame = -1;
+        let startedAt = 0;
+
+        const render = (timestamp) => {
+          if (token !== agnesAnimationToken) return;
+          if (!agnesMotionAllowed()) {
+            setAgnesFrame(animation, hold ? animation.frames - 1 : 0);
+            return;
+          }
+          if (!startedAt) startedAt = timestamp;
+          const elapsedFrame = Math.floor((timestamp - startedAt) * animation.fps / 1000);
+          if (!loop && elapsedFrame >= animation.frames) {
+            if (hold) setAgnesFrame(animation, animation.frames - 1);
+            agnesBusy = false;
+            if (onComplete) onComplete();
+            return;
+          }
+          const frame = loop ? elapsedFrame % animation.frames : elapsedFrame;
+          if (frame !== lastFrame) {
+            setAgnesFrame(animation, frame);
+            lastFrame = frame;
+          }
+          agnesFrameRequest = window.requestAnimationFrame(render);
+        };
+
+        setAgnesFrame(animation, 0);
+        agnesFrameRequest = window.requestAnimationFrame(render);
+      };
+
+      const scheduleAgnesDance = () => {
+        window.clearTimeout(agnesAutoTimer);
+        if (!labCore.classList.contains("core-online") || !agnesMotionAllowed()) return;
+        agnesAutoTimer = window.setTimeout(() => {
+          if (!agnesBusy && labCore.classList.contains("core-online") && agnesMotionAllowed()) {
+            agnesBusy = true;
+            const dance = agnesDances[Math.floor(Math.random() * agnesDances.length)];
+            playAgnes(dance, { onComplete: () => {
+              playAgnes("idle", { loop: true });
+              scheduleAgnesDance();
+            } });
+          } else {
+            scheduleAgnesDance();
+          }
+        }, 12000 + Math.random() * 8000);
+      };
+
+      const wakeAgnes = () => {
+        window.clearTimeout(agnesAutoTimer);
+        agnesBusy = true;
+        playAgnes("intro", { onComplete: () => {
+          const dance = agnesDances[Math.floor(Math.random() * agnesDances.length)];
+          playAgnes(dance, { onComplete: () => {
+            playAgnes("idle", { loop: true });
+            scheduleAgnesDance();
+          } });
+        } });
+      };
+
+      const restAgnes = () => {
+        window.clearTimeout(agnesAutoTimer);
+        agnesBusy = true;
+        playAgnes("sleep", { hold: true });
+      };
 
       const coreEffectsAllowed = () =>
         labCore.classList.contains("core-online") &&
@@ -3793,6 +3815,16 @@
         } else {
           labCore.querySelectorAll(".energy-spark").forEach((spark) => spark.remove());
         }
+        if (!agnesMotionAllowed()) {
+          agnesAnimationToken += 1;
+          window.cancelAnimationFrame(agnesFrameRequest);
+          setAgnesFrame(agnesAnimations.idle, 0);
+          window.clearTimeout(agnesAutoTimer);
+          agnesBusy = false;
+        } else if (!agnesBusy) {
+          playAgnes("idle", { loop: true });
+          scheduleAgnesDance();
+        }
       };
 
       const setCoreOnline = (online) => {
@@ -3811,6 +3843,22 @@
       } catch {
         setCoreOnline(false);
       }
+      if (labCore.classList.contains("core-online")) {
+        playAgnes("idle", { loop: true });
+        scheduleAgnesDance();
+      } else {
+        setAgnesFrame(agnesAnimations.idle, 0);
+      }
+
+      labCore.addEventListener("pointerenter", () => {
+        if (agnesBusy || !agnesMotionAllowed()) return;
+        window.clearTimeout(agnesAutoTimer);
+        agnesBusy = true;
+        playAgnes("hover", { onComplete: () => {
+          playAgnes("idle", { loop: true });
+          scheduleAgnesDance();
+        } });
+      });
 
       labCore.addEventListener("click", () => {
         if (!coreReady) return;
@@ -3821,6 +3869,8 @@
         labCore.classList.remove("charged", "powering-down");
         void labCore.offsetWidth;
         setCoreOnline(nextOnline);
+        if (nextOnline) wakeAgnes();
+        else restAgnes();
         labCore.classList.add(nextOnline ? "charged" : "powering-down");
         coreStatus.textContent = nextOnline
           ? "Agnes is online. Her energy effects will stay active."
