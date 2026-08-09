@@ -7,6 +7,7 @@
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="description" content="A private, locally running quick-start guide for Agnes Tachyon AI Companion.">
+  <link rel="icon" type="image/webp" href="guide_media/agnes/agnes-icon.webp">
   <title>Agnes // Setup Lab</title>
   <script>document.documentElement.classList.add("js");</script>
   <style>
@@ -324,10 +325,11 @@
       transform: rotate(-4deg) scale(1.07);
     }
 
-    .brand-mark svg {
+    .brand-mark img {
       display: block;
       width: 100%;
       height: 100%;
+      object-fit: contain;
     }
 
     .nav {
@@ -2053,28 +2055,13 @@
       box-shadow: inset 0 1px rgba(255, 255, 255, 0.08), 0 11px 28px rgba(0, 0, 0, 0.2);
     }
 
-    .feedback-mark::before,
-    .feedback-mark::after {
+    .feedback-mark img {
       position: absolute;
-      border: 2px solid #9bd2ff;
-      border-radius: 7px;
-      content: "";
-    }
-
-    .feedback-mark::before {
-      inset: 13px 11px 17px 10px;
-      box-shadow: 0 0 12px rgba(99, 190, 255, 0.22);
-    }
-
-    .feedback-mark::after {
-      right: 12px;
-      bottom: 11px;
-      width: 8px;
-      height: 8px;
-      border-top: 0;
-      border-left: 0;
-      border-radius: 0 0 3px;
-      transform: skewY(-32deg);
+      inset: 3px;
+      width: calc(100% - 6px);
+      height: calc(100% - 6px);
+      object-fit: contain;
+      filter: drop-shadow(0 5px 9px rgba(0, 0, 0, 0.34));
     }
 
     .feedback-kicker {
@@ -2268,9 +2255,15 @@
       border: 2px solid rgba(114, 235, 221, 0.72);
       border-radius: 24px;
       background: linear-gradient(145deg, #173b61, #0b1d34);
-      color: #91fff0;
-      font-size: 38px;
       filter: drop-shadow(0 0 20px rgba(71, 236, 220, 0.42));
+    }
+
+    .completion-emblem img {
+      z-index: 1;
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      transform: translateY(2px);
     }
 
     .completion-emblem::before,
@@ -3141,7 +3134,7 @@
   <div class="completion-celebration" id="completionCelebration" aria-hidden="true">
     <div class="completion-burst">
       <div>
-        <span class="completion-emblem" aria-hidden="true">⚗</span>
+        <span class="completion-emblem" aria-hidden="true"><img src="guide_media/agnes/agnes-icon.webp" alt=""></span>
         <strong>Yay! Agnes is ready.</strong>
         <p>Your local setup checklist is complete. Time for an experiment.</p>
       </div>
@@ -3153,24 +3146,7 @@
   <header class="topbar">
     <div class="topbar-inner">
       <a class="brand" href="#top" aria-label="Agnes Setup Lab home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 512 512" focusable="false">
-            <rect x="24" y="24" width="464" height="464" rx="112" fill="#0c182b" stroke="#315374" stroke-width="12"/>
-            <circle cx="256" cy="250" r="171" fill="#09162a" stroke="#50e9df" stroke-width="8"/>
-            <path d="m165 163 22-88 65 70m95 18-22-88-65 70" fill="#773025" stroke="#d77a45" stroke-width="12" stroke-linejoin="round"/>
-            <path d="M145 254c0-88 46-146 111-146s111 58 111 146c0 80-41 135-111 135s-111-55-111-135z" fill="#8c3f2a"/>
-            <ellipse cx="256" cy="251" rx="83" ry="92" fill="#f3c7a9"/>
-            <path d="M171 224c7-68 40-104 90-104 46 0 77 31 85 91-25-9-46-29-59-55-24 35-62 57-116 68z" fill="#9b482d"/>
-            <ellipse cx="220" cy="267" rx="13" ry="18" fill="#9b432e"/>
-            <ellipse cx="292" cy="267" rx="13" ry="18" fill="#9b432e"/>
-            <circle cx="224" cy="261" r="4" fill="#fff4e7"/>
-            <circle cx="296" cy="261" r="4" fill="#fff4e7"/>
-            <path d="M225 311c19 16 43 16 62 0" fill="none" stroke="#7d3343" stroke-width="8" stroke-linecap="round"/>
-            <path d="M158 458c9-78 44-118 98-118s89 40 98 118z" fill="#edf7f2" stroke="#70d9df" stroke-width="7"/>
-            <path d="m213 348 43 39 43-39-18 110h-50z" fill="#d4ab62"/>
-            <path d="m386 88 12 27 27 12-27 12-12 27-12-27-27-12 27-12z" fill="#fff" stroke="#55eee4" stroke-width="7"/>
-          </svg>
-        </span>
+        <span class="brand-mark" aria-hidden="true"><img src="guide_media/agnes/agnes-icon.webp" alt=""></span>
         <span>AGNES // SETUP LAB</span>
       </a>
       <nav class="nav" aria-label="Guide sections">
@@ -3182,7 +3158,7 @@
       <button class="effects-toggle" id="effectsToggle" type="button" aria-label="Change visual effects level">
         VFX: FULL
       </button>
-      <span class="version-pill">SYSTEM v6.3.3</span>
+      <span class="version-pill">SYSTEM v6.3.4</span>
     </div>
   </header>
 
@@ -3210,11 +3186,13 @@
         <div class="orbit"></div>
         <div class="orbit second"></div>
         <div class="core-glow"></div>
-        <span class="agnes-mode" id="agnesMode">SPRITE // READY</span>
+          <span class="agnes-mode" id="agnesMode">AGNES // READY</span>
         <div class="agnes-guide-mascot" aria-hidden="true">
           <div class="agnes-video-stack" id="agnesVideoStack">
             <video class="agnes-sprite" id="agnesPlayerA" muted playsinline preload="auto"></video>
             <video class="agnes-sprite" id="agnesPlayerB" muted playsinline preload="metadata"></video>
+            <audio id="agnesDanceEmote1" preload="metadata" src="guide_media/agnes/emote1.ogg" hidden></audio>
+            <audio id="agnesDanceEmote3" preload="metadata" src="guide_media/agnes/emote3.ogg" hidden></audio>
           </div>
         </div>
         <span class="voice-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
@@ -3398,7 +3376,7 @@
         <article class="glass-card feature-card tall" data-reveal>
           <span class="feature-icon" aria-hidden="true">PET</span>
           <h3>Play with desktop Agnes</h3>
-          <p>The installed app draws an animated Agnes lab companion in warm copper, pale coat, and cyan science accents. Click, double-click, scroll, or drag her. Right-click her or the tray icon to offer a snack, ask for a reaction, or start a randomized music dance. The Agnes above is the guide's in-place sprite preview.</p>
+          <p>The installed app includes the real Agnes desktop model from this setup, with her complete movement, action, emote and sound bundle. Click, double-click, scroll, or drag her. Right-click her or the tray icon to offer a snack, ask for a reaction, or start a randomized music dance. The Agnes above is the guide's in-place 60 FPS preview.</p>
         </article>
 
         <article class="glass-card feature-card" data-reveal>
@@ -3641,7 +3619,7 @@
         data-reveal
       >
         <div class="feedback-copy">
-          <span class="feedback-mark" aria-hidden="true"></span>
+          <span class="feedback-mark" aria-hidden="true"><img src="guide_media/agnes/agnes-icon.webp" alt=""></span>
           <div>
             <span class="feedback-kicker">Feedback channel</span>
             <h3>Found a bug or have an idea?</h3>
@@ -3652,7 +3630,7 @@
           <a
             class="button"
             id="feedbackIdeaLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.3.3"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.3.4"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Share feedback (opens in a new tab)"
@@ -3662,7 +3640,7 @@
           <a
             class="button primary"
             id="feedbackBugLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.3.3"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.3.4"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Report a bug (opens in a new tab)"
@@ -3673,7 +3651,7 @@
       </article>
 
       <div class="rights-note" data-reveal>
-        <strong>Unofficial fan build.</strong> The installer includes the original app, interface, documentation, icon, and code-drawn desktop companion. The animated guide preview uses compressed clips derived from the separately attributed Agnes fan sprite material listed in the installed third-party notices; y4x5lol does not claim ownership of that artwork. Speech uses Groq-hosted Orpheus with automatic Edge neural-voice fallback and is not presented as an official Agnes Tachyon voice. Agnes Tachyon, Umamusume: Pretty Derby, and official materials remain with Cygames and their respective rightsholders. Full license and third-party notices are installed beside this guide.
+        <strong>Unofficial fan build.</strong> The installer includes the original app and interface plus the separately attributed real Agnes fan model, icon, animations and matching sounds listed in the installed third-party notices; y4x5lol does not claim ownership of that character material. Speech uses Groq-hosted Orpheus with automatic Edge neural-voice fallback and is not presented as an official Agnes Tachyon voice. Agnes Tachyon, Umamusume: Pretty Derby, and official materials remain with Cygames and their respective rightsholders. Full license and third-party notices are installed beside this guide.
       </div>
     </section>
 
@@ -4101,7 +4079,12 @@
         emote3: { file: "emote3.webm", frames: 189 },
         emote4: { file: "emote4.webm", frames: 42 },
       });
-      const agnesDances = ["emote1", "emote2", "emote3", "emote4", "click"];
+      const agnesAmbientActions = ["emote2", "emote4", "click"];
+      const agnesMusicDances = ["emote1", "emote3"];
+      const agnesDanceAudio = Object.freeze({
+        emote1: document.getElementById("agnesDanceEmote1"),
+        emote3: document.getElementById("agnesDanceEmote3"),
+      });
       let agnesAnimationToken = 0;
       let agnesAutoTimer = 0;
       let agnesLoadTimer = 0;
@@ -4109,6 +4092,7 @@
       let agnesBusy = false;
       let agnesInitialized = false;
       let agnesActivePlayer = null;
+      let agnesActiveAudio = null;
 
       const agnesMotionAllowed = () =>
         document.visibilityState === "visible" &&
@@ -4116,7 +4100,32 @@
         body.dataset.effects !== "off";
 
       const setAgnesMode = (label) => {
-        agnesMode.textContent = `SPRITE // ${label}`;
+        agnesMode.textContent = `AGNES // ${label}`;
+      };
+
+      const stopAgnesMusic = () => {
+        Object.values(agnesDanceAudio).forEach((audio) => {
+          audio.pause();
+          audio.currentTime = 0;
+          audio.onended = null;
+          audio.onerror = null;
+        });
+        agnesActiveAudio = null;
+      };
+
+      const primeAgnesMusic = () => {
+        Object.values(agnesDanceAudio).forEach((audio) => {
+          const priorVolume = audio.volume;
+          audio.volume = 0;
+          const promise = audio.play();
+          if (promise && typeof promise.then === "function") {
+            promise.then(() => {
+              audio.pause();
+              audio.currentTime = 0;
+              audio.volume = priorVolume;
+            }).catch(() => { audio.volume = priorVolume; });
+          }
+        });
       };
 
       const showAgnesPoster = () => {
@@ -4207,14 +4216,44 @@
         agnesLoadTimer = window.setTimeout(failLoad, 8000);
       };
 
+      const finishAgnesMusicDance = () => {
+        stopAgnesMusic();
+        if (agnesActivePlayer) agnesActivePlayer.loop = false;
+        agnesBusy = false;
+        playAgnes("idle", { loop: true });
+        scheduleAgnesDance();
+      };
+
+      const playAgnesMusicDance = (name) => {
+        const audio = agnesDanceAudio[name];
+        if (!audio || !agnesMotionAllowed()) return false;
+        stopAgnesMusic();
+        agnesBusy = true;
+        playAgnes(name, { loop: true });
+        audio.volume = 0.58;
+        audio.currentTime = 0;
+        audio.onended = finishAgnesMusicDance;
+        audio.onerror = finishAgnesMusicDance;
+        agnesActiveAudio = audio;
+        const promise = audio.play();
+        if (promise && typeof promise.catch === "function") {
+          promise.catch(() => {
+            if (agnesActiveAudio !== audio) return;
+            stopAgnesMusic();
+            playAgnes(name, { onComplete: finishAgnesMusicDance });
+          });
+        }
+        return true;
+      };
+
       const scheduleAgnesDance = () => {
         window.clearTimeout(agnesAutoTimer);
         if (!labCore.classList.contains("core-online") || !agnesMotionAllowed()) return;
         agnesAutoTimer = window.setTimeout(() => {
           if (!agnesBusy && labCore.classList.contains("core-online") && agnesMotionAllowed()) {
             agnesBusy = true;
-            const dance = agnesDances[Math.floor(Math.random() * agnesDances.length)];
-            playAgnes(dance, { onComplete: () => {
+            const action = agnesAmbientActions[Math.floor(Math.random() * agnesAmbientActions.length)];
+            playAgnes(action, { onComplete: () => {
               playAgnes("idle", { loop: true });
               scheduleAgnesDance();
             } });
@@ -4229,17 +4268,15 @@
         window.clearTimeout(agnesAutoTimer);
         agnesBusy = true;
         playAgnes("intro", { onComplete: () => {
-          const dance = agnesDances[Math.floor(Math.random() * agnesDances.length)];
-          playAgnes(dance, { onComplete: () => {
-            playAgnes("idle", { loop: true });
-            scheduleAgnesDance();
-          } });
+          const dance = agnesMusicDances[Math.floor(Math.random() * agnesMusicDances.length)];
+          playAgnesMusicDance(dance);
         } });
       };
 
       const restAgnes = () => {
         agnesInitialized = true;
         window.clearTimeout(agnesAutoTimer);
+        stopAgnesMusic();
         agnesBusy = true;
         playAgnes("sleep", { hold: true });
       };
@@ -4282,6 +4319,7 @@
           labCore.querySelectorAll(".energy-spark").forEach((spark) => spark.remove());
         }
         if (!agnesMotionAllowed()) {
+          stopAgnesMusic();
           agnesAnimationToken += 1;
           showAgnesPoster();
           window.clearTimeout(agnesAutoTimer);
@@ -4335,6 +4373,7 @@
       labCore.addEventListener("click", () => {
         if (!coreReady) return;
         const nextOnline = !labCore.classList.contains("core-online");
+        if (nextOnline) primeAgnesMusic();
         coreReady = false;
         window.clearTimeout(coreResetTimer);
         labCore.querySelectorAll(".energy-spark").forEach((spark) => spark.remove());
@@ -4525,11 +4564,17 @@
         agnesInitialized = true;
         window.clearTimeout(agnesAutoTimer);
         agnesBusy = true;
-        const reaction = agnesDances[Math.floor(Math.random() * agnesDances.length)];
-        playAgnes(reaction, { onComplete: () => {
-          playAgnes("idle", { loop: true });
-          scheduleAgnesDance();
-        } });
+        if (key === "dance") {
+          const dance = agnesMusicDances[Math.floor(Math.random() * agnesMusicDances.length)];
+          playAgnesMusicDance(dance);
+        } else {
+          stopAgnesMusic();
+          const reaction = agnesAmbientActions[Math.floor(Math.random() * agnesAmbientActions.length)];
+          playAgnes(reaction, { onComplete: () => {
+            playAgnes("idle", { loop: true });
+            scheduleAgnesDance();
+          } });
+        }
 
         if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
           agnesAnswer.textContent = `${answer} Your browser cannot play the local voice, but the built-in answer is still shown here.`;
@@ -4567,6 +4612,7 @@
 
       window.addEventListener("pagehide", () => {
         localVoiceGeneration += 1;
+        stopAgnesMusic();
         if ("speechSynthesis" in window) window.speechSynthesis.cancel();
       });
 

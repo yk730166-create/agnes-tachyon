@@ -1,4 +1,19 @@
-# Agnes Tachyon AI Companion 6.3.3
+# Agnes Tachyon AI Companion 6.3.4
+
+## 6.3.4 — The real Agnes model, native 60 FPS, and full companion bundle
+
+- Replaced every generated character mark with the real bundled Agnes icon and
+  made the exact Agnes desktop model the installed default.
+- Added the complete Agnes-only movement, action, emote, dance and matching
+  sound bundle while explicitly excluding every other Desktop Gremlin model.
+- Upgraded the Setup Lab preview to native 60 FPS VP9 clips and connected its
+  two genuine music dances so animation returns to idle when the track ends.
+- Replaced the completion and feedback placeholders with the real Agnes mark,
+  removed the procedural-model startup flash, and tightened startup migration
+  so existing installs automatically adopt the bundled model.
+- Refined model/provider selection, reaction repetition control, screen-event
+  confidence handling, audio-device discovery, feedback safety and release
+  build checks.
 
 ## 6.3.3 — Buttery guide motion, consistent local voice, and public cleanup
 
@@ -203,6 +218,7 @@
   redacted. The tray diagnostics panel reveals the current computer's log
   location only when requested.
 - API keys remain in Windows Credential Manager.
-- The public installer still excludes Desktop Gremlin, extracted game assets,
-  and the unlicensed Tachyon voice model.
+- The current public installer includes only the curated Desktop Gremlin Agnes
+  bundle and still excludes every other character and the unlicensed Tachyon
+  voice model.
 - Publisher and original-project ownership metadata use only `y4x5lol`.

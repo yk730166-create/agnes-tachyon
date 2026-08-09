@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.3.3**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.3.4**. It supports 64-bit Windows 10 version 1809 or
 newer and 64-bit Windows 11.
 
 ## What she does
@@ -12,7 +12,8 @@ newer and 64-bit Windows 11.
 - push-to-talk chat with a key you choose by pressing it;
 - spoken answers, microphone and speaker selection;
 - optional live screen awareness for useful game and desktop reactions;
-- a code-drawn desktop Agnes with clicks, snacks, reactions and music dances;
+- the real bundled Agnes desktop model with movement, clicks, snacks, emotes,
+  random actions and music dances;
 - live lookup for newer hardware, news and other facts that can change;
 - signed in-app updates with a proper download and install progress screen;
 - feedback and bug reports without a GitHub account.
@@ -50,7 +51,7 @@ or the official performer’s voice.
 The Setup Lab has 36 fixed questions that work without an AI request. The
 first answer now waits for Windows to finish loading its natural voices, so it
 does not suddenly use a different generic voice. The setup-guide preview also
-uses 30 FPS transparent video instead of making the browser crop huge images
+uses native 60 FPS transparent video instead of making the browser crop huge images
 frame by frame.
 
 ## Privacy without weird promises
@@ -66,7 +67,9 @@ animation clips or a browser cannot display them. Browser files cannot be
 honestly “encrypted” while still running for everyone. This repo therefore
 contains only the public page, the minimum runtime clips, release notes and
 rights documents. It does **not** contain the app source, raw sprite sheets,
-voice models, build folders, owner tools, API keys or signing keys.
+voice models, raw sprite sheets, build folders, owner tools, API keys or signing
+keys. The signed installer contains the compiled Agnes runtime needed for the
+desktop model.
 
 ## If something breaks
 
@@ -83,8 +86,9 @@ This is a non-commercial, unofficial fan project by **y4x5lol**. Agnes Tachyon,
 Umamusume: Pretty Derby, official character material and official performances
 belong to Cygames and their respective rightsholders. The animated guide clips
 come from separately attributed third-party fan sprite material and are not
-claimed as my artwork. The app interface, updater, documentation, original
-icon and code-drawn companion are original project work.
+claimed as my artwork. The real character icon, model, animation sheets and
+matching sounds are attributed third-party fan material too. The app interface,
+updater, integration logic and documentation are original project work.
 
 See [PROJECT_LICENSE.txt](PROJECT_LICENSE.txt),
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), and

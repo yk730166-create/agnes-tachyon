@@ -35,14 +35,14 @@ permission to copy or redistribute its code, binary, sprites, sounds, or
 documentation. Those materials remain under their respective authors' and
 rightsholders' rights.
 
-At the project owner's direction, this release includes only transparent WebM
-preview clips derived from the Agnes action and emote sprite sheets, under
-`guide_media/agnes/`. The raw PNG sheets remain private and are not installed
-or published. The release does not include the Desktop Gremlin executable,
-source, sounds, or other character packs. The source artwork and derived clips
-are third-party fan-project material and are not claimed as y4x5lol's original
-artwork. Obtain written permission before redistributing them beyond uses
-allowed by the applicable rightsholders.
+At the project owner's direction, the personal, non-commercial installer now
+includes the compiled Desktop Gremlin runtime plus only its Agnes character
+pack, matching sounds, and real Agnes icon. It deliberately excludes every
+other character pack. The public Setup Lab contains compressed WebM and Ogg
+previews derived from the same Agnes assets; raw PNG sheets remain outside the
+public repository. These files are third-party fan-project material and are
+not claimed as y4x5lol's original artwork. Obtain written permission before
+redistributing them beyond uses allowed by the applicable rightsholders.
 
 ## Tachyon voice-conversion files and voice identity
 
