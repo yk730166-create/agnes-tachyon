@@ -1,4 +1,30 @@
-# Agnes Tachyon AI Companion 6.3.5
+# Agnes Tachyon AI Companion 6.3.6
+
+## 6.3.6 — The bug-focused compatibility pass
+
+- Required updates now hide the exact real Agnes window whether the prompt was
+  opened by the tray companion or standalone Options, so she cannot cover the
+  title, notes, progress, or controls.
+- Hides every visible window owned by the exact configured companion process,
+  rather than assuming the model can expose only one surface.
+- If the external .NET renderer is blocked or exits on a stripped-down Windows
+  installation, Agnes now appears through the built-in fallback after a short
+  startup grace period and switches back if the real window later becomes ready.
+- Slow-drive installer verification uses an active indeterminate progress state
+  with honest status details instead of appearing frozen at 100%.
+- Completes the final success glow before application shutdown instead of
+  cutting the last animation frame short.
+- Removes the confusing disabled action buttons once a verified handoff starts,
+  gives ordinary release notes enough room to avoid a scrollbar, and tightens
+  title wrapping for Windows display scaling.
+- Refines the native installer progress window to identify every managed surface
+  being refreshed, while keeping settings, protected keys, and voice choices.
+- Adds an explicit runtime compatibility check for Windows 10 build 17763, the
+  oldest build supported by the frozen Qt 6 runtime. This includes Enterprise
+  LTSC 2019, LTSC 2021, LTSC 2024, and every Windows 11 release.
+- Corrects the real Agnes outro metadata from two conflicting, truncated frame
+  counts to the sprite sheet's actual 69 populated frames, and removes two
+  advertised actions whose image files do not exist.
 
 ## 6.3.5 — A handoff that cannot sit frozen at 100%
 
