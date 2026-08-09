@@ -1,4 +1,19 @@
-# Agnes Tachyon AI Companion 6.3.4
+# Agnes Tachyon AI Companion 6.3.5
+
+## 6.3.5 — A handoff that cannot sit frozen at 100%
+
+- Starts the already verified Windows updater before Agnes begins her bounded
+  AI, audio, tray and model shutdown, removing the frozen-looking gap between
+  download completion and installation.
+- Keeps the update window above the desktop model, hides Agnes during required
+  maintenance, and replaces the generic status orb with her real portrait.
+- Shows the branded Windows installation progress surface immediately and
+  shortens the final handoff animation without losing verification.
+- Replaces the entire managed guide-media and Agnes model directories on every
+  update, removes known legacy source/build leaks, recreates all managed
+  shortcuts with the current icon, and refreshes the Windows shell icon cache.
+- Preserves user configuration, protected API keys, optional licensed voice
+  files and local preferences while replacing every release-owned file.
 
 ## 6.3.4 — The real Agnes model, native 60 FPS, and full companion bundle
 

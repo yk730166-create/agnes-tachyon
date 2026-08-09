@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.3.4**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.3.5**. It supports 64-bit Windows 10 version 1809 or
 newer and 64-bit Windows 11.
 
 ## What she does
