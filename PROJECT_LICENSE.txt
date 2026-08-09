@@ -34,7 +34,8 @@ This license does not cover, transfer, or claim ownership of:
 - Agnes Tachyon, Umamusume: Pretty Derby, their names, character designs,
   official artwork, recordings, or other Cygames/rightsholder material;
 - Desktop Gremlin code, binaries, sprites, sounds, or documentation;
-- the Agnes sprite sheets under installer/guide_assets/agnes/;
+- the private raw Agnes sprite sheets under installer/guide_assets/agnes/ and
+  the derived Setup Lab preview clips under installer/guide_media/agnes/;
 - Tachyon.pth, any Tachyon voice index, training recordings, converted voice
   output, or any performer's voice, likeness, or publicity/personality rights;
 - Applio, Qt/PySide, Python packages, codecs, fonts, APIs, web services, or

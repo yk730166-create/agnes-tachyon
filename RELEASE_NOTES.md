@@ -1,4 +1,29 @@
-# Agnes Tachyon AI Companion 6.3.2
+# Agnes Tachyon AI Companion 6.3.3
+
+## 6.3.3 — Buttery guide motion, consistent local voice, and public cleanup
+
+- Moved the Setup Lab model from JavaScript canvas cropping to double-buffered,
+  transparent 30 FPS VP9 video. The browser now decodes one active clip on its
+  media path, crossfades actions, and no longer expands a 30.6-megapixel idle
+  sheet in memory.
+- Replaced the six-question demo with 36 fixed local answers across About,
+  Talking, Vision, AI brain, Updates, and Fun groups. The category tabs are
+  keyboard-friendly and keep the card compact on small screens.
+- Fixed the first-answer voice race by waiting for Windows/browser voices to
+  finish loading, consistently preferring a compatible natural voice, and
+  using a brisk, slightly lower delivery based on the character's official
+  researcher presentation. No official recording or voice clone is bundled.
+- Replaced the abstract flask/AI-looking mark with an original hand-drawn
+  copper-haired portrait used by the app, taskbar, installer, and Setup Lab.
+- Removed raw sprite PNGs from both the installer payload and public website.
+  Only the derived transparent runtime clips required by the live preview are
+  published; app source, raw sheets, voice models, owner tools, secrets, and
+  build folders remain private.
+- Rewrote the public README in y4x5lol's direct voice, without development
+  commands or private release-console instructions.
+- Fixed the brand-icon builder for current PySide releases, hardened video load
+  and transition failure cleanup, and expanded media/public-payload regression
+  checks.
 
 ## 6.3.2 — Smoother guide model and local spoken answers
 

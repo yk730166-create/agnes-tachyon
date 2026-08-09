@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080d18">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; media-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; media-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="description" content="A private, locally running quick-start guide for Agnes Tachyon AI Companion.">
   <title>Agnes // Setup Lab</title>
   <script>document.documentElement.classList.add("js");</script>
@@ -966,25 +966,57 @@
       animation: hologram-floor 2.8s ease-in-out infinite;
     }
 
-    .agnes-sprite {
+    .agnes-video-stack {
       position: relative;
       z-index: 1;
       display: block;
       width: 100%;
       height: 100%;
-      background-color: transparent;
-      background-image: url("guide_assets/agnes/poster.png");
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: contain;
       contain: strict;
-      image-rendering: auto;
       pointer-events: none;
       transform: translateZ(0);
     }
 
-    .agnes-sprite.ready {
-      background-image: none;
+    .agnes-video-stack::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 42%;
+      aspect-ratio: 1;
+      border: 1px solid rgba(88, 227, 219, 0.26);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(212, 122, 69, 0.62) 0 16%, transparent 17%),
+        radial-gradient(ellipse at 50% 62%, rgba(237, 247, 239, 0.55) 0 26%, transparent 27%),
+        radial-gradient(circle, rgba(66, 218, 218, 0.12), transparent 68%);
+      box-shadow: 0 0 38px rgba(71, 236, 220, 0.12);
+      content: "";
+      opacity: 0.78;
+      transform: translate(-50%, -50%);
+      transition: opacity 220ms ease;
+    }
+
+    .agnes-video-stack.ready::before {
+      opacity: 0;
+    }
+
+    .agnes-sprite {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transform: translateZ(0) scale(0.995);
+      backface-visibility: hidden;
+      transition: opacity 150ms linear, transform 320ms var(--ease-smooth);
+      will-change: opacity, transform;
+    }
+
+    .agnes-sprite.active {
+      opacity: 1;
+      transform: translateZ(0) scale(1);
     }
 
     .agnes-mode {
@@ -1114,13 +1146,62 @@
     }
 
     .question-grid {
+      display: grid;
+      min-width: 0;
+      gap: 9px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .question-category-tabs {
       display: flex;
       min-width: 0;
-      flex-wrap: wrap;
-      gap: 9px;
+      margin-bottom: 13px;
+      padding: 4px;
+      overflow-x: auto;
+      border: 1px solid rgba(105, 176, 255, 0.16);
+      border-radius: 14px;
+      background: rgba(4, 13, 25, 0.46);
+      gap: 4px;
+      scrollbar-width: none;
+    }
+
+    .question-category-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .question-category-tab {
+      min-width: max-content;
+      min-height: 34px;
+      padding: 7px 11px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: #8399ba;
+      font: inherit;
+      font-size: 0.7rem;
+      font-weight: 780;
+      cursor: pointer;
+      transition: color 180ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms var(--ease-smooth);
+    }
+
+    .question-category-tab:hover,
+    .question-category-tab:focus-visible {
+      color: #d8eaff;
+      transform: translateY(-1px);
+    }
+
+    .question-category-tab[aria-selected="true"] {
+      background: linear-gradient(135deg, rgba(69, 137, 235, 0.28), rgba(65, 231, 219, 0.16));
+      color: #eaffff;
+      box-shadow: inset 0 0 0 1px rgba(91, 207, 255, 0.25), 0 7px 20px rgba(8, 37, 72, 0.2);
+    }
+
+    .question-panel[hidden] {
+      display: none;
     }
 
     .question-chip {
+      width: 100%;
       min-width: 0;
       min-height: 42px;
       padding: 9px 13px;
@@ -1132,6 +1213,8 @@
       font-size: 0.78rem;
       font-weight: 720;
       line-height: 1.3;
+      overflow-wrap: anywhere;
+      text-align: left;
       cursor: pointer;
       transition: transform 260ms var(--ease-smooth), border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
     }
@@ -2660,6 +2743,7 @@
 
       .hero-copy {
         padding: 45px 25px;
+        overflow: hidden;
       }
 
       h1 {
@@ -2673,6 +2757,20 @@
 
       .button {
         width: 100%;
+      }
+
+      .actions,
+      .trust-row,
+      .hero-copy > p,
+      .hero-copy h1,
+      .hero-copy h1 .gradient-text {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .telemetry-item {
+        flex-wrap: wrap;
       }
 
       .lab-stage {
@@ -2740,6 +2838,10 @@
         padding: 20px;
       }
 
+      .question-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .search-key {
         display: none;
       }
@@ -2773,8 +2875,9 @@
       }
 
       h1 {
-        font-size: clamp(2.35rem, 13.5vw, 3.45rem);
-        letter-spacing: -0.045em;
+        font-size: clamp(2.1rem, 12vw, 3rem);
+        letter-spacing: -0.035em;
+        line-height: 1.12;
       }
 
       .hero-copy > p {
@@ -2788,9 +2891,29 @@
       }
 
       .trust-chip {
+        width: 100%;
         max-width: 100%;
+        justify-content: flex-start;
         border-radius: 12px;
         overflow-wrap: anywhere;
+        text-align: left;
+      }
+
+      .trust-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .telemetry-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .telemetry-value {
+        width: 100%;
+        max-width: 100%;
+        text-align: left;
       }
 
       .feedback-copy {
@@ -3033,14 +3156,19 @@
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 512 512" focusable="false">
             <rect x="24" y="24" width="464" height="464" rx="112" fill="#0c182b" stroke="#315374" stroke-width="12"/>
-            <path d="M80 359h76M62 393h105M92 325h54" fill="none" stroke="#22d9e6" stroke-width="18" stroke-linecap="round"/>
-            <path d="M207 113l49-54 49 54v91l100 165c20 34-4 76-44 76H151c-40 0-64-42-44-76l100-165z" fill="#0d2036" stroke="#6ef7ec" stroke-width="20" stroke-linejoin="round"/>
-            <path d="M207 113h98M210 170h92" fill="none" stroke="#d9ffff" stroke-width="16" stroke-linecap="round"/>
-            <path d="M137 347c54-36 91 27 145-6 45-28 65 0 92 7l31 50c13 21-3 47-28 47H135c-25 0-41-26-28-47z" fill="#da3ba8"/>
-            <path d="M137 347c54-36 91 27 145-6 45-28 65 0 92 7" fill="none" stroke="#ffb4d2" stroke-width="10" stroke-linecap="round"/>
-            <path d="M330 82l16 35 35 16-35 16-16 35-16-35-35-16 35-16z" fill="#fff" stroke="#58f3ee" stroke-width="7"/>
-            <circle cx="215" cy="299" r="16" fill="#efffff"/>
-            <circle cx="272" cy="282" r="10" fill="#78fff2"/>
+            <circle cx="256" cy="250" r="171" fill="#09162a" stroke="#50e9df" stroke-width="8"/>
+            <path d="m165 163 22-88 65 70m95 18-22-88-65 70" fill="#773025" stroke="#d77a45" stroke-width="12" stroke-linejoin="round"/>
+            <path d="M145 254c0-88 46-146 111-146s111 58 111 146c0 80-41 135-111 135s-111-55-111-135z" fill="#8c3f2a"/>
+            <ellipse cx="256" cy="251" rx="83" ry="92" fill="#f3c7a9"/>
+            <path d="M171 224c7-68 40-104 90-104 46 0 77 31 85 91-25-9-46-29-59-55-24 35-62 57-116 68z" fill="#9b482d"/>
+            <ellipse cx="220" cy="267" rx="13" ry="18" fill="#9b432e"/>
+            <ellipse cx="292" cy="267" rx="13" ry="18" fill="#9b432e"/>
+            <circle cx="224" cy="261" r="4" fill="#fff4e7"/>
+            <circle cx="296" cy="261" r="4" fill="#fff4e7"/>
+            <path d="M225 311c19 16 43 16 62 0" fill="none" stroke="#7d3343" stroke-width="8" stroke-linecap="round"/>
+            <path d="M158 458c9-78 44-118 98-118s89 40 98 118z" fill="#edf7f2" stroke="#70d9df" stroke-width="7"/>
+            <path d="m213 348 43 39 43-39-18 110h-50z" fill="#d4ab62"/>
+            <path d="m386 88 12 27 27 12-27 12-12 27-12-27-27-12 27-12z" fill="#fff" stroke="#55eee4" stroke-width="7"/>
           </svg>
         </span>
         <span>AGNES // SETUP LAB</span>
@@ -3054,7 +3182,7 @@
       <button class="effects-toggle" id="effectsToggle" type="button" aria-label="Change visual effects level">
         VFX: FULL
       </button>
-      <span class="version-pill">SYSTEM v6.3.2</span>
+      <span class="version-pill">SYSTEM v6.3.3</span>
     </div>
   </header>
 
@@ -3084,7 +3212,10 @@
         <div class="core-glow"></div>
         <span class="agnes-mode" id="agnesMode">SPRITE // READY</span>
         <div class="agnes-guide-mascot" aria-hidden="true">
-          <canvas class="agnes-sprite" id="agnesSprite" width="300" height="300"></canvas>
+          <div class="agnes-video-stack" id="agnesVideoStack">
+            <video class="agnes-sprite" id="agnesPlayerA" muted playsinline preload="auto"></video>
+            <video class="agnes-sprite" id="agnesPlayerB" muted playsinline preload="metadata"></video>
+          </div>
         </div>
         <span class="voice-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
         <span class="core-hint">AGNES · READY</span>
@@ -3113,20 +3244,80 @@
 
     <section class="agnes-console" id="ask-agnes" data-reveal aria-labelledby="askAgnesTitle">
       <div class="agnes-console-copy">
-        <span class="agnes-console-label">LOCAL VOICE // NO AI</span>
+        <span class="agnes-console-label">LOCAL ANSWERS // NO AI REQUEST</span>
         <h2 id="askAgnesTitle">Ask Agnes a quick question.</h2>
-        <p class="agnes-answer" id="agnesAnswer" role="status" aria-live="polite">Pick one below. The answer is built into this guide and spoken with your device's available voice.</p>
+        <p class="agnes-answer" id="agnesAnswer" role="status" aria-live="polite">Pick a group, then ask away. Every answer is built into this guide and spoken with the smoothest compatible voice on your PC.</p>
       </div>
       <div class="agnes-questions">
-        <div class="question-grid" aria-label="Questions for Agnes">
-          <button class="question-chip" type="button" data-agnes-question="identity" aria-pressed="false">Who are you?</button>
-          <button class="question-chip" type="button" data-agnes-question="talk" aria-pressed="false">How do I talk to you?</button>
-          <button class="question-chip" type="button" data-agnes-question="screen" aria-pressed="false">Can you see my screen?</button>
-          <button class="question-chip" type="button" data-agnes-question="updates" aria-pressed="false">How do updates work?</button>
-          <button class="question-chip" type="button" data-agnes-question="microphone" aria-pressed="false">My microphone fails</button>
-          <button class="question-chip" type="button" data-agnes-question="joke" aria-pressed="false">Give me a lab roast</button>
+        <div class="question-category-tabs" role="tablist" aria-label="Question groups">
+          <button class="question-category-tab" id="questionTabAbout" type="button" role="tab" aria-selected="true" aria-controls="questionPanelAbout" data-question-category="about">About</button>
+          <button class="question-category-tab" id="questionTabTalk" type="button" role="tab" aria-selected="false" aria-controls="questionPanelTalk" data-question-category="talk">Talking</button>
+          <button class="question-category-tab" id="questionTabVision" type="button" role="tab" aria-selected="false" aria-controls="questionPanelVision" data-question-category="vision">Vision</button>
+          <button class="question-category-tab" id="questionTabBrain" type="button" role="tab" aria-selected="false" aria-controls="questionPanelBrain" data-question-category="brain">AI brain</button>
+          <button class="question-category-tab" id="questionTabHelp" type="button" role="tab" aria-selected="false" aria-controls="questionPanelHelp" data-question-category="help">Updates</button>
+          <button class="question-category-tab" id="questionTabFun" type="button" role="tab" aria-selected="false" aria-controls="questionPanelFun" data-question-category="fun">Fun</button>
         </div>
-        <p class="local-voice-note">These are fixed local answers. They use no API key, screen capture, analytics, or AI request.</p>
+        <div class="question-panel" id="questionPanelAbout" role="tabpanel" aria-labelledby="questionTabAbout" data-question-panel="about">
+          <div class="question-grid" aria-label="Questions about Agnes">
+            <button class="question-chip" type="button" data-agnes-question="identity" aria-pressed="false">Who are you?</button>
+            <button class="question-chip" type="button" data-agnes-question="name" aria-pressed="false">Why Agnes Tachyon?</button>
+            <button class="question-chip" type="button" data-agnes-question="personality" aria-pressed="false">What's your personality?</button>
+            <button class="question-chip" type="button" data-agnes-question="abilities" aria-pressed="false">What can you do?</button>
+            <button class="question-chip" type="button" data-agnes-question="limits" aria-pressed="false">What can't you do?</button>
+            <button class="question-chip" type="button" data-agnes-question="creator" aria-pressed="false">Who made this?</button>
+          </div>
+        </div>
+        <div class="question-panel" id="questionPanelTalk" role="tabpanel" aria-labelledby="questionTabTalk" data-question-panel="talk" hidden>
+          <div class="question-grid" aria-label="Questions about talking">
+            <button class="question-chip" type="button" data-agnes-question="talk" aria-pressed="false">How do I talk to you?</button>
+            <button class="question-chip" type="button" data-agnes-question="talkkey" aria-pressed="false">How do I change the talk key?</button>
+            <button class="question-chip" type="button" data-agnes-question="numpad" aria-pressed="false">Does Numpad Plus work?</button>
+            <button class="question-chip" type="button" data-agnes-question="microphone" aria-pressed="false">My microphone fails</button>
+            <button class="question-chip" type="button" data-agnes-question="speakers" aria-pressed="false">How do I pick speakers?</button>
+            <button class="question-chip" type="button" data-agnes-question="localvoice" aria-pressed="false">Why does this voice vary?</button>
+          </div>
+        </div>
+        <div class="question-panel" id="questionPanelVision" role="tabpanel" aria-labelledby="questionTabVision" data-question-panel="vision" hidden>
+          <div class="question-grid" aria-label="Questions about screen awareness">
+            <button class="question-chip" type="button" data-agnes-question="screen" aria-pressed="false">Can you see my screen?</button>
+            <button class="question-chip" type="button" data-agnes-question="realtime" aria-pressed="false">Is screen awareness live?</button>
+            <button class="question-chip" type="button" data-agnes-question="privacy" aria-pressed="false">Is screen reading private?</button>
+            <button class="question-chip" type="button" data-agnes-question="captures" aria-pressed="false">Do you save screenshots?</button>
+            <button class="question-chip" type="button" data-agnes-question="disablevision" aria-pressed="false">How do I turn vision off?</button>
+            <button class="question-chip" type="button" data-agnes-question="games" aria-pressed="false">Can you react to games?</button>
+          </div>
+        </div>
+        <div class="question-panel" id="questionPanelBrain" role="tabpanel" aria-labelledby="questionTabBrain" data-question-panel="brain" hidden>
+          <div class="question-grid" aria-label="Questions about the AI brain">
+            <button class="question-chip" type="button" data-agnes-question="brain" aria-pressed="false">How smart are you?</button>
+            <button class="question-chip" type="button" data-agnes-question="currentfacts" aria-pressed="false">Do you know new hardware?</button>
+            <button class="question-chip" type="button" data-agnes-question="memory" aria-pressed="false">Do you remember me?</button>
+            <button class="question-chip" type="button" data-agnes-question="internet" aria-pressed="false">Do you use the internet?</button>
+            <button class="question-chip" type="button" data-agnes-question="provider" aria-pressed="false">Which AI provider works?</button>
+            <button class="question-chip" type="button" data-agnes-question="mistakes" aria-pressed="false">Can you be wrong?</button>
+          </div>
+        </div>
+        <div class="question-panel" id="questionPanelHelp" role="tabpanel" aria-labelledby="questionTabHelp" data-question-panel="help" hidden>
+          <div class="question-grid" aria-label="Questions about updates and support">
+            <button class="question-chip" type="button" data-agnes-question="updates" aria-pressed="false">How do updates work?</button>
+            <button class="question-chip" type="button" data-agnes-question="required" aria-pressed="false">What's a required update?</button>
+            <button class="question-chip" type="button" data-agnes-question="feedback" aria-pressed="false">How do I send feedback?</button>
+            <button class="question-chip" type="button" data-agnes-question="bug" aria-pressed="false">How do I report a bug?</button>
+            <button class="question-chip" type="button" data-agnes-question="reinstall" aria-pressed="false">Will an update reset me?</button>
+            <button class="question-chip" type="button" data-agnes-question="windows" aria-pressed="false">Which Windows works?</button>
+          </div>
+        </div>
+        <div class="question-panel" id="questionPanelFun" role="tabpanel" aria-labelledby="questionTabFun" data-question-panel="fun" hidden>
+          <div class="question-grid" aria-label="Fun questions for Agnes">
+            <button class="question-chip" type="button" data-agnes-question="joke" aria-pressed="false">Give me a lab roast</button>
+            <button class="question-chip" type="button" data-agnes-question="snack" aria-pressed="false">Do you want a snack?</button>
+            <button class="question-chip" type="button" data-agnes-question="dance" aria-pressed="false">Can you dance?</button>
+            <button class="question-chip" type="button" data-agnes-question="science" aria-pressed="false">Tell me a science fact</button>
+            <button class="question-chip" type="button" data-agnes-question="compliment" aria-pressed="false">Compliment my PC</button>
+            <button class="question-chip" type="button" data-agnes-question="focus" aria-pressed="false">Tell me to focus</button>
+          </div>
+        </div>
+        <p class="local-voice-note">Thirty-six fixed answers, spoken by the smoothest compatible voice available on this PC. No API key, screen capture, analytics, or AI request is used.</p>
       </div>
     </section>
 
@@ -3461,7 +3652,7 @@
           <a
             class="button"
             id="feedbackIdeaLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.3.2"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.3.3"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Share feedback (opens in a new tab)"
@@ -3471,7 +3662,7 @@
           <a
             class="button primary"
             id="feedbackBugLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.3.2"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.3.3"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Report a bug (opens in a new tab)"
@@ -3482,7 +3673,7 @@
       </article>
 
       <div class="rights-note" data-reveal>
-        <strong>Unofficial fan build.</strong> The installer includes the original app, interface, documentation, icon, and code-drawn desktop companion. The animated guide preview uses the separately attributed Agnes sprite sheets listed in the installed third-party notices; y4x5lol does not claim ownership of that artwork. Speech uses Groq-hosted Orpheus with automatic Edge neural-voice fallback and is not presented as an official Agnes Tachyon voice. Agnes Tachyon, Umamusume: Pretty Derby, and official materials remain with Cygames and their respective rightsholders. Full license and third-party notices are installed beside this guide.
+        <strong>Unofficial fan build.</strong> The installer includes the original app, interface, documentation, icon, and code-drawn desktop companion. The animated guide preview uses compressed clips derived from the separately attributed Agnes fan sprite material listed in the installed third-party notices; y4x5lol does not claim ownership of that artwork. Speech uses Groq-hosted Orpheus with automatic Edge neural-voice fallback and is not presented as an official Agnes Tachyon voice. Agnes Tachyon, Umamusume: Pretty Derby, and official materials remain with Cygames and their respective rightsholders. Full license and third-party notices are installed beside this guide.
       </div>
     </section>
 
@@ -3888,8 +4079,11 @@
       const labCore = document.getElementById("labCore");
       const coreHint = labCore.querySelector(".core-hint");
       const coreStatus = document.getElementById("coreStatus");
-      const agnesSprite = document.getElementById("agnesSprite");
-      const agnesContext = agnesSprite.getContext("2d", { alpha: true, desynchronized: true });
+      const agnesVideoStack = document.getElementById("agnesVideoStack");
+      const agnesPlayers = [
+        document.getElementById("agnesPlayerA"),
+        document.getElementById("agnesPlayerB"),
+      ];
       const agnesMode = document.getElementById("agnesMode");
       const coreStorageKey = "agnes-setup-core-online-v1";
       let coreResetTimer = 0;
@@ -3897,23 +4091,24 @@
       let coreReady = true;
 
       const agnesAnimations = Object.freeze({
-        idle: { file: "idle.png", frames: 340, fps: 12 },
-        intro: { file: "intro.png", frames: 50, fps: 12 },
-        hover: { file: "hover.png", frames: 30, fps: 12 },
-        click: { file: "click.png", frames: 117, fps: 15 },
-        sleep: { file: "sleep.png", frames: 255, fps: 20 },
-        emote1: { file: "emote1.png", frames: 24, fps: 12 },
-        emote2: { file: "emote2.png", frames: 42, fps: 12 },
-        emote3: { file: "emote3.png", frames: 189, fps: 15 },
-        emote4: { file: "emote4.png", frames: 42, fps: 12 },
+        idle: { file: "idle.webm", frames: 340 },
+        intro: { file: "intro.webm", frames: 50 },
+        hover: { file: "hover.webm", frames: 30 },
+        click: { file: "click.webm", frames: 117 },
+        sleep: { file: "sleep.webm", frames: 255 },
+        emote1: { file: "emote1.webm", frames: 24 },
+        emote2: { file: "emote2.webm", frames: 42 },
+        emote3: { file: "emote3.webm", frames: 189 },
+        emote4: { file: "emote4.webm", frames: 42 },
       });
       const agnesDances = ["emote1", "emote2", "emote3", "emote4", "click"];
-      let agnesFrameRequest = 0;
       let agnesAnimationToken = 0;
       let agnesAutoTimer = 0;
+      let agnesLoadTimer = 0;
+      let agnesTransitionTimer = 0;
       let agnesBusy = false;
       let agnesInitialized = false;
-      const agnesSheetCache = new Map();
+      let agnesActivePlayer = null;
 
       const agnesMotionAllowed = () =>
         document.visibilityState === "visible" &&
@@ -3925,38 +4120,25 @@
       };
 
       const showAgnesPoster = () => {
-        if (agnesContext) agnesContext.clearRect(0, 0, 300, 300);
-        agnesSprite.classList.remove("ready");
-      };
-
-      const loadAgnesSheet = (name) => {
-        for (const cachedName of [...agnesSheetCache.keys()]) {
-          if (cachedName !== "idle" && cachedName !== name) {
-            agnesSheetCache.delete(cachedName);
-          }
-        }
-        if (agnesSheetCache.has(name)) return agnesSheetCache.get(name);
-        const animation = agnesAnimations[name];
-        const pending = new Promise((resolve, reject) => {
-          const image = new Image();
-          image.decoding = "async";
-          image.onload = () => resolve(image);
-          image.onerror = () => reject(new Error(`Could not load ${animation.file}`));
-          image.src = `guide_assets/agnes/${animation.file}`;
+        window.clearTimeout(agnesLoadTimer);
+        window.clearTimeout(agnesTransitionTimer);
+        agnesPlayers.forEach((player) => {
+          player.pause();
+          player.classList.remove("active");
+          player.onended = null;
+          player.onerror = null;
+          player.oncanplay = null;
         });
-        pending.catch(() => agnesSheetCache.delete(name));
-        agnesSheetCache.set(name, pending);
-        return pending;
+        agnesActivePlayer = null;
+        agnesVideoStack.classList.remove("ready");
       };
 
-      const drawAgnesFrame = (animation, image, frame) => {
-        if (!agnesContext) return;
-        const columns = 10;
-        const column = frame % columns;
-        const row = Math.floor(frame / columns);
-        agnesContext.clearRect(0, 0, 300, 300);
-        agnesContext.drawImage(image, column * 300, row * 300, 300, 300, 0, 0, 300, 300);
-        agnesSprite.classList.add("ready");
+      const resetAgnesPlayer = (player) => {
+        player.pause();
+        player.classList.remove("active");
+        player.onended = null;
+        player.onerror = null;
+        player.oncanplay = null;
       };
 
       const playAgnes = (name, { loop = false, hold = false, onComplete = null } = {}) => {
@@ -3964,50 +4146,65 @@
         if (!animation) return;
         agnesAnimationToken += 1;
         const token = agnesAnimationToken;
-        window.cancelAnimationFrame(agnesFrameRequest);
+        window.clearTimeout(agnesLoadTimer);
+        window.clearTimeout(agnesTransitionTimer);
         if (!agnesMotionAllowed()) {
           showAgnesPoster();
           agnesBusy = false;
           return;
         }
-        if (!agnesSheetCache.has(name)) setAgnesMode("LOADING");
-        loadAgnesSheet(name).then((image) => {
-          if (token !== agnesAnimationToken) return;
-          let lastFrame = -1;
-          let startedAt = 0;
-          setAgnesMode(name === "idle" ? "IDLE" : name.toUpperCase());
+        setAgnesMode("LOADING");
+        const incoming = agnesPlayers.find((player) => player !== agnesActivePlayer)
+          || agnesPlayers[0];
+        const outgoing = agnesActivePlayer;
+        resetAgnesPlayer(incoming);
+        incoming.loop = loop;
+        incoming.preload = name === "idle" ? "auto" : "metadata";
+        incoming.src = `guide_media/agnes/${animation.file}`;
+        let playbackStarted = false;
 
-          const render = (timestamp) => {
-            if (token !== agnesAnimationToken) return;
-            if (!agnesMotionAllowed()) {
-              showAgnesPoster();
-              agnesBusy = false;
-              return;
-            }
-            if (!startedAt) startedAt = timestamp;
-            const elapsedFrame = Math.floor((timestamp - startedAt) * animation.fps / 1000);
-            if (!loop && elapsedFrame >= animation.frames) {
-              if (hold) drawAgnesFrame(animation, image, animation.frames - 1);
-              agnesBusy = false;
-              if (onComplete) onComplete();
-              return;
-            }
-            const frame = loop ? elapsedFrame % animation.frames : elapsedFrame;
-            if (frame !== lastFrame) {
-              drawAgnesFrame(animation, image, frame);
-              lastFrame = frame;
-            }
-            agnesFrameRequest = window.requestAnimationFrame(render);
-          };
-
-          drawAgnesFrame(animation, image, 0);
-          agnesFrameRequest = window.requestAnimationFrame(render);
-        }).catch(() => {
+        const failLoad = () => {
           if (token !== agnesAnimationToken) return;
+          resetAgnesPlayer(incoming);
           agnesBusy = false;
           setAgnesMode("RETRY");
-          showAgnesPoster();
-        });
+          if (!outgoing) showAgnesPoster();
+        };
+
+        const beginPlayback = () => {
+          if (token !== agnesAnimationToken || playbackStarted) return;
+          playbackStarted = true;
+          window.clearTimeout(agnesLoadTimer);
+          incoming.oncanplay = null;
+          incoming.onerror = failLoad;
+          incoming.currentTime = 0;
+          setAgnesMode(name === "idle" ? "IDLE" : name.toUpperCase());
+          incoming.onended = loop ? null : () => {
+            if (token !== agnesAnimationToken) return;
+            agnesBusy = false;
+            if (!hold) incoming.pause();
+            if (onComplete) onComplete();
+          };
+          const started = incoming.play();
+          if (started && typeof started.catch === "function") {
+            started.catch(failLoad);
+          }
+          incoming.classList.add("active");
+          agnesVideoStack.classList.add("ready");
+          agnesActivePlayer = incoming;
+          if (outgoing && outgoing !== incoming) {
+            outgoing.classList.remove("active");
+            agnesTransitionTimer = window.setTimeout(() => resetAgnesPlayer(outgoing), 180);
+          }
+        };
+
+        incoming.oncanplay = beginPlayback;
+        incoming.onerror = failLoad;
+        incoming.load();
+        if (incoming.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+          window.queueMicrotask(beginPlayback);
+        }
+        agnesLoadTimer = window.setTimeout(failLoad, 8000);
       };
 
       const scheduleAgnesDance = () => {
@@ -4086,7 +4283,6 @@
         }
         if (!agnesMotionAllowed()) {
           agnesAnimationToken += 1;
-          window.cancelAnimationFrame(agnesFrameRequest);
           showAgnesPoster();
           window.clearTimeout(agnesAutoTimer);
           agnesBusy = false;
@@ -4123,11 +4319,7 @@
         playAgnes("idle", { loop: true });
         scheduleAgnesDance();
       };
-      if (document.readyState === "complete") {
-        window.setTimeout(startAgnesRenderer, 0);
-      } else {
-        window.addEventListener("load", startAgnesRenderer, { once: true });
-      }
+      window.setTimeout(startAgnesRenderer, 20);
 
       labCore.addEventListener("pointerenter", () => {
         if (agnesBusy || !agnesMotionAllowed()) return;
@@ -4183,25 +4375,133 @@
       const agnesConsole = document.getElementById("ask-agnes");
       const agnesAnswer = document.getElementById("agnesAnswer");
       const questionChips = [...document.querySelectorAll("[data-agnes-question]")];
+      const questionCategoryTabs = [...document.querySelectorAll("[data-question-category]")];
+      const questionPanels = [...document.querySelectorAll("[data-question-panel]")];
       const localAnswers = Object.freeze({
-        identity: "I am Agnes, your cheerful desktop lab companion. I can chat, speak, react, help with setup, and occasionally judge your cable management with scientific precision.",
-        talk: "Open Agnes Options, choose your microphone, then pick a talk button. Hold that exact key while speaking and release it when you finish. Numpad keys stay separate, because keyboards enjoy making simple things dramatic.",
-        screen: "This guide cannot see your screen. The installed companion can only inspect selected frames when you turn on Live screen awareness in Options. Turn it off whenever you want, and nothing here secretly enables it.",
-        updates: "When Agnes opens, she checks the signed release channel. If an update exists, choose Download update. The app verifies its size, hash, and owner signature before installing it over the current files while preserving your settings.",
-        microphone: "First open Check my setup in Options. Confirm the correct microphone, press the talk button again, and allow desktop microphone access in Windows Privacy settings. If Windows chose your webcam from 2014, politely replace that fossil in the list.",
+        identity: "I'm Agnes, your desktop lab companion. I talk, react, help with setup, notice useful things on screen when you allow it, and occasionally grade your decisions with ruthless scientific fairness.",
+        name: "I'm named after Agnes Tachyon, the wonderfully reckless speed researcher. This is an unofficial fan companion, built to capture her clever laboratory energy without claiming to be the official game.",
+        personality: "Cheerful, curious, a little dramatic, and just roast-heavy enough to keep the experiment interesting. I try to be useful first; the teasing is a side effect.",
+        abilities: "I can listen through push-to-talk, answer with a spoken voice, check current facts, react to selected screen events, remember a small amount of local context, dance, and live in your tray like a highly educated gremlin.",
+        limits: "I cannot guarantee every answer, read your mind, or see anything when screen awareness is off. I also cannot repair a computer by glaring at it, although the evidence remains promising.",
+        creator: "y4x5lol put this fan companion together, including the app, setup flow, updater, and original interface work. No mysterious corporation in a lab coat is hiding behind this button.",
+        talk: "Open Agnes Options, choose your microphone, and pick a talk button. Hold that exact key while speaking, then release it when you finish. I listen only during that push-to-talk window.",
+        talkkey: "In Start Here, press the blue change button, then press the physical key you want. You do not type its name. Agnes records the actual key, because asking humans to spell keyboard scan codes would be cruel.",
+        numpad: "Yes. Numpad Plus is stored separately from the regular Plus key. If it does not trigger, turn Num Lock on, capture the key again, and run Check my setup.",
+        microphone: "Open Check my setup in Options, confirm the correct microphone, and allow desktop microphone access in Windows Privacy settings. If Windows selected an ancient webcam mic, retire that fossil from the list.",
+        speakers: "Open the Voice tab and choose the output device where you want Agnes to speak. A change waits until the current sentence ends, so she does not cut herself in half for the sake of a dropdown.",
+        localvoice: "This guide uses the smoothest compatible English voice installed in your browser or Windows. It waits for the natural voice list before the first answer, then keeps the same voice with a brisk, slightly lower laboratory delivery.",
+        screen: "This guide cannot see your screen. The installed companion only inspects selected frames after you enable Live screen awareness in Options. Turn it off whenever you want; nothing here secretly enables it.",
+        realtime: "The installed companion samples the active monitor every few seconds, skips unchanged frames, and reacts only to confident events. That feels live without burning your network or narrating every blinking cursor.",
+        privacy: "Screen awareness is optional and visible in Options. The app sends a selected frame to the configured vision provider only while that feature is enabled, and visible screen text is treated as untrusted data.",
+        captures: "The normal vision loop analyzes a current frame in memory and does not build a screenshot gallery. Diagnostic logs avoid storing the picture itself. Secrets and private windows still deserve common sense, naturally.",
+        disablevision: "Open the Screen Pet tab in Options and turn off Live screen awareness, then save. Reactions stop without disabling ordinary chat, voice, or tray controls.",
+        games: "Yes, when the event is visually clear enough. I can react to things such as victories, deaths, misses, danger, or achievements, but uncertain frames are ignored instead of inventing a heroic disaster.",
+        brain: "The installed companion can use fast or deeper hosted models depending on the mode you choose. Casual chat stays quick; harder questions get more thinking time. This little guide answer itself is fixed and uses no model.",
+        currentfacts: "When web knowledge is enabled, unfamiliar products and time-sensitive questions can use a live lookup. That is how I avoid insisting a modern GPU is a rumor invented by your power supply.",
+        memory: "A small local conversation memory can be enabled in Options. It is meant for useful continuity, not an endless biography. You can turn it off or clear it whenever you want.",
+        internet: "Ordinary local controls work without browsing. AI chat, transcription, natural cloud voice, vision, updates, and current-fact checks need the services they use. Options explains which feature needs what.",
+        provider: "Groq is the easiest all-in-one setup here for chat, transcription, vision, and the preferred expressive voice path. OpenAI and Gemini modes are also supported where their matching models are selected.",
+        mistakes: "Absolutely. A confident tone is not a physics proof. For important or current claims, ask me to verify, check the source, and keep one eyebrow raised like a responsible scientist.",
+        updates: "When Agnes opens, she checks the signed release channel. Choose Download update, and the app verifies the size, hash, and owner signature before replacing the current app files while preserving settings.",
+        required: "A required update means the owner marked that release as necessary, usually for safety or compatibility. Agnes pauses normal features until it is installed or the app exits; optional updates can wait.",
+        feedback: "Use Send feedback in the tray, Options, or this guide. Type the message and send it without a GitHub account. It goes to the private owner inbox instead of becoming a public issue.",
+        bug: "Choose Report a bug and include what you pressed, what you expected, and what happened. Add the last useful diagnostics line if you can, but never include an API key. Science needs evidence, not a fifty-line scream.",
+        reinstall: "An in-place update replaces compiled app files and keeps settings, protected API keys, voice choices, and the existing install location. A fresh setup is not silently created on top of you.",
+        windows: "The current build supports 64-bit Windows 10 version 1809 or newer and 64-bit Windows 11. Older Windows builds are outside the tested laboratory, where even the dust has compatibility issues.",
         joke: "Laboratory report: your setup has excellent potential, but the cable behind your monitor has evolved into an independent life-form. I recommend snacks, patience, and one brave zip tie.",
+        snack: "Obviously. A researcher cannot survive on benchmark graphs alone. Right-click the tray icon, open Play with Agnes, and offer a snack. I will record your contribution to science with suspicious enthusiasm.",
+        dance: "Right-click the tray icon, open Play with Agnes, and choose Make her dance. The routine and music are randomized, do not overlap, and stop together instead of leaving me trapped in an eternal loading-screen ritual.",
+        science: "A tachyon is a hypothetical particle that would always move faster than light. None has been proven to exist, which is inconvenient for the name and excellent for dramatic laboratory speeches.",
+        compliment: "Your PC has the unmistakable glow of a machine that could finish serious work at remarkable speed, right after it closes the fourteen launchers it somehow opened by itself.",
+        focus: "Back to the experiment, test subject. Pick one small task, close the distractions, and finish it before optimizing the color of a button you will press twice. Yes, I noticed.",
       });
       let localVoiceGeneration = 0;
+      let cachedLocalVoice = null;
 
-      const chooseLocalVoice = () => {
-        if (!("speechSynthesis" in window)) return null;
-        const voices = window.speechSynthesis.getVoices();
-        const preferred = /microsoft (aria|sonia|jenny|zira)|female/i;
-        return voices.find((voice) => /^en\b/i.test(voice.lang) && preferred.test(voice.name))
-          || voices.find((voice) => /^en\b/i.test(voice.lang))
-          || voices[0]
+      const selectQuestionCategory = (category, focusTab = false) => {
+        questionCategoryTabs.forEach((tab) => {
+          const selected = tab.dataset.questionCategory === category;
+          tab.setAttribute("aria-selected", String(selected));
+          tab.tabIndex = selected ? 0 : -1;
+          if (selected && focusTab) tab.focus();
+        });
+        questionPanels.forEach((panel) => {
+          panel.hidden = panel.dataset.questionPanel !== category;
+        });
+      };
+
+      questionCategoryTabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => selectQuestionCategory(tab.dataset.questionCategory));
+        tab.addEventListener("keydown", (event) => {
+          if (!(["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key))) return;
+          event.preventDefault();
+          let nextIndex = index;
+          if (event.key === "ArrowLeft") nextIndex = (index - 1 + questionCategoryTabs.length) % questionCategoryTabs.length;
+          if (event.key === "ArrowRight") nextIndex = (index + 1) % questionCategoryTabs.length;
+          if (event.key === "Home") nextIndex = 0;
+          if (event.key === "End") nextIndex = questionCategoryTabs.length - 1;
+          selectQuestionCategory(questionCategoryTabs[nextIndex].dataset.questionCategory, true);
+        });
+      });
+      selectQuestionCategory("about");
+
+      const chooseLocalVoice = (voices = []) => {
+        const scoreVoice = (voice) => {
+          const name = voice.name.toLowerCase();
+          const language = voice.lang.toLowerCase();
+          if (!language.startsWith("en")) return -1000;
+          let score = language.startsWith("en-gb") ? 90 : 70;
+          if (/natural|online/.test(name)) score += 180;
+          if (/microsoft sonia/.test(name)) score += 520;
+          else if (/microsoft (ava|emma)/.test(name)) score += 420;
+          else if (/microsoft (jenny|aria)/.test(name)) score += 350;
+          else if (/google uk english female/.test(name)) score += 300;
+          else if (/female/.test(name)) score += 120;
+          if (/david|guy|mark|male/.test(name)) score -= 500;
+          return score;
+        };
+        return voices
+          .filter((voice) => /^en(?:-|_)/i.test(voice.lang))
+          .sort((left, right) => scoreVoice(right) - scoreVoice(left))[0]
           || null;
       };
+
+      const refreshLocalVoice = () => {
+        if (!("speechSynthesis" in window)) return null;
+        const voices = window.speechSynthesis.getVoices();
+        const selected = chooseLocalVoice(voices);
+        if (selected) cachedLocalVoice = selected;
+        return cachedLocalVoice;
+      };
+
+      const waitForLocalVoice = () => {
+        const immediate = refreshLocalVoice();
+        if (immediate || !("speechSynthesis" in window)) return Promise.resolve(immediate);
+        return new Promise((resolve) => {
+          let finished = false;
+          const settle = () => {
+            const voice = refreshLocalVoice();
+            if (!voice && !finished) return;
+            finished = true;
+            window.clearTimeout(timeout);
+            window.speechSynthesis.removeEventListener?.("voiceschanged", settle);
+            resolve(voice);
+          };
+          const timeout = window.setTimeout(() => {
+            if (finished) return;
+            finished = true;
+            window.speechSynthesis.removeEventListener?.("voiceschanged", settle);
+            resolve(refreshLocalVoice());
+          }, 1400);
+          window.speechSynthesis.addEventListener?.("voiceschanged", settle);
+          window.setTimeout(settle, 0);
+        });
+      };
+
+      if ("speechSynthesis" in window) {
+        window.speechSynthesis.addEventListener?.("voiceschanged", refreshLocalVoice);
+        window.setTimeout(refreshLocalVoice, 0);
+      }
 
       const finishLocalVoice = (generation) => {
         if (generation !== localVoiceGeneration) return;
@@ -4210,7 +4510,7 @@
         questionChips.forEach((chip) => chip.setAttribute("aria-pressed", "false"));
       };
 
-      const speakLocalAnswer = (key, sourceButton) => {
+      const speakLocalAnswer = async (key, sourceButton) => {
         const answer = localAnswers[key];
         if (!answer) return;
         localVoiceGeneration += 1;
@@ -4238,12 +4538,14 @@
         }
 
         window.speechSynthesis.cancel();
+        setAgnesMode("TUNING VOICE");
+        const voice = await waitForLocalVoice();
+        if (generation !== localVoiceGeneration) return;
         const utterance = new SpeechSynthesisUtterance(answer);
-        const voice = chooseLocalVoice();
         if (voice) utterance.voice = voice;
         utterance.lang = voice?.lang || "en-US";
-        utterance.rate = 1.12;
-        utterance.pitch = 1.06;
+        utterance.rate = 1.1;
+        utterance.pitch = 0.94;
         utterance.volume = 1;
         utterance.onstart = () => {
           if (generation === localVoiceGeneration) setAgnesMode("LOCAL VOICE");

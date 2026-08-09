@@ -5,11 +5,11 @@ for advice from a qualified intellectual-property lawyer.
 
 | Material | Current status | Public distribution |
 | --- | --- | --- |
-| Original `src/` application code and UI | Claimed for y4x5lol under `PROJECT_LICENSE.txt` | Yes, under y4x5lol's chosen terms |
-| Original installer/configuration/docs/tests | Claimed for y4x5lol | Yes |
+| Original `src/` application code and UI | Claimed for y4x5lol under `PROJECT_LICENSE.txt` | Compiled release only; source stays private |
+| Original installer/configuration/docs/tests | Claimed for y4x5lol | User docs are public; installer source, owner tools, and tests stay private |
 | Original current companion icon | Claimed for y4x5lol | Yes |
 | Setup Lab animation code/effects | Original code claimed for y4x5lol; sprite artwork is excluded | Yes for the code |
-| Setup Lab Agnes sprite sheets | Third-party fan-project artwork; not claimed for y4x5lol | Included at the project owner's direction; permission not independently verified |
+| Setup Lab Agnes source sheets and derived transparent clips | Third-party fan-project artwork; not claimed for y4x5lol | Only compressed runtime clips are included at the project owner's direction; permission not independently verified |
 | Original code and procedural drawing used for the desktop Agnes companion | Claimed for y4x5lol; this does not claim the Agnes Tachyon name, identity, or official design | Yes, as original project material in this unofficial fan project |
 | Original procedural companion dance music | Claimed for y4x5lol; synthesized at runtime with no samples | Yes |
 | Python and Qt dependencies | Third-party open-source licenses | Yes, only while complying with each license |
@@ -28,8 +28,9 @@ for advice from a qualified intellectual-property lawyer.
 2. Added specific creator attribution and rightsholder notices.
 3. The public installer does not bundle the Desktop Gremlin executable, code,
    sounds, other character packs, or the unlicensed Tachyon voice model. The
-   Setup Lab now includes only the separately attributed Agnes action/emote
-   sprite sheets at the project owner's direction.
+   Setup Lab now includes only compressed transparent clips derived from the
+   separately attributed Agnes action/emote sheets at the project owner's
+   direction. Raw sheets remain private and are not installed or published.
 4. Changed release defaults to use Groq-hosted Orpheus speech with automatic
    Edge neural-voice fallback and an original code-drawn desktop companion,
    with no external pet executable. Neither voice path is described as an
@@ -40,7 +41,7 @@ for advice from a qualified intellectual-property lawyer.
    extracted audio and added release checks that reject packaged media leaks.
 7. Replaced the older flask desktop fallback with original procedural drawing
    and animation code. The desktop app mascot remains code-drawn. The guide
-   control now animates the separately attributed Agnes sprite sheets in place.
+   control now plays separately attributed derived Agnes clips in place.
 
 ## What cannot be “made yours”
 

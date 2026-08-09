@@ -1,127 +1,91 @@
-# Agnes Tachyon AI Companion
+# Agnes Tachyon desktop companion
 
-A non-commercial, unofficial Windows fan companion with push-to-talk, fast
-cloud Whisper transcription, streaming chat, an original code-drawn Agnes
-desktop companion, multimodal screen awareness, and live web verification.
+Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
+Agnes who actually hangs out on the desktop, talks back, reacts to games, and
+does not need ten confusing windows just to change a microphone.
 
-Version 6.3.2 uses `openai/gpt-oss-120b` for conversation,
-`groq/compound-mini` for current facts, `qwen/qwen3.6-27b` for vision, and
-`whisper-large-v3-turbo` for fast speech recognition.
+The current version is **6.3.3**. It supports 64-bit Windows 10 version 1809 or
+newer and 64-bit Windows 11.
 
-## Release highlights
+## What she does
 
-- The interactive setup-guide preview now uses the separately attributed Agnes
-  action/emote sprite sheets, animates in place, and returns to idle after its
-  intro, hover, click, sleep, and randomized dance sequences.
-- A finished fresh install now starts Agnes automatically. If Edge is missing,
-  that same one-process launch opens native Options instead of racing a second
-  standalone setup window.
-- Groq Orpheus provides lively, direction-aware speech with automatic Edge
-  neural-voice fallback and no bundled character voice clone.
-- Verified downloads update an existing copy in place, preserve its settings
-  and protected credentials, skip first-install pages, and restart Agnes when
-  finished.
-- Update checks now use Windows' native trusted certificate store, including
-  checks started by standalone Options. HTTPS verification remains enabled;
-  GitHub host restrictions and signed-manifest/hash checks are unchanged.
-- The private owner console can reuse an existing GitHub CLI sign-in, making a
-  signed release possible without copying the same token into another tool.
+- push-to-talk chat with a key you choose by pressing it;
+- spoken answers, microphone and speaker selection;
+- optional live screen awareness for useful game and desktop reactions;
+- a code-drawn desktop Agnes with clicks, snacks, reactions and music dances;
+- live lookup for newer hardware, news and other facts that can change;
+- signed in-app updates with a proper download and install progress screen;
+- feedback and bug reports without a GitHub account.
 
-## Easy Options
+I tried to keep Options understandable even if you are not a computer expert.
+The easy defaults are safe to start with, and **Check my setup** explains what
+is missing instead of throwing a wall of error text at you.
 
-Open `Options.exe` in an installed build, or run `src/options_main.py` while
-developing, to:
+## Install
 
-- choose Fastest, Balanced, or Smartest mode;
-- click once and press the exact physical push-to-talk key; Numpad and
-  left/right modifier keys stay distinct;
-- select real microphone and speaker devices;
-- configure the built-in animated Agnes companion or an optional licensed pet;
-- control live screen reading, spoken pet reactions, and local memory;
-- enable smooth fades, animated tabs, and responsive button effects;
-- allow live web lookup for recent hardware, prices, news, and current facts.
+1. Open the [latest release](https://github.com/yk730166-create/agnes-tachyon/releases/latest).
+2. Download `AgnesTachyonSetup.exe`.
+3. Run it, open Agnes Options, and follow the three setup steps.
+4. Create a Groq key when the guide asks for one. The key is stored in Windows
+   Credential Manager, not in a readable settings file.
 
-The default desktop pet is an original, code-drawn Agnes companion rather than
-the flask fallback used by older builds. The AI can animate her or talk to an
-optional configured external pet. Deaths, misses, victories, danger warnings,
-achievements, clicks, snacks, and tray interactions produce fresh AI-written
-spoken reactions rather than rotating canned lines. Music dances intentionally
-do not start a competing voice response. No speech or thinking textbox is
-displayed. The interactive Agnes in the locally running setup guide is a
-self-contained preview; the desktop pet is rendered independently by the app.
+After that, start Agnes normally. When I publish an update, Agnes shows it in
+the app. Press **Download update** and the app checks the signed file, installs
+it in place, preserves settings and protected keys, then restarts.
 
-The rights-safe public build uses Groq-hosted Orpheus for expressive English
-speech and automatically falls back to the standard Microsoft Edge neural
-voice when Orpheus is unavailable. Neither path is an official Agnes Tachyon
-voice or a bundled voice clone. Locally supplied voice-conversion files can be
-configured only when the user has the required model, recording, performer,
-and redistribution permissions.
+## The AI and voice
 
-Groq may require the account owner to accept the Orpheus model terms once.
-Options provides an **Enable natural voice access** button that opens Groq's
-official approval page. Until that is accepted, speech continues through the
-Edge neural fallback instead of failing or going silent.
+The default setup uses:
 
-At runtime Agnes receives the current date and detected PC/GPU details.
-Time-sensitive questions and unfamiliar product names use Groq Compound Mini
-live search when web knowledge is enabled. The vision loop observes the active
-monitor, skips repeated static frames, rejects low-confidence events, and
-treats visible screen text as untrusted data.
+- `openai/gpt-oss-120b` for the main conversation;
+- `groq/compound-mini` for current web facts;
+- `qwen/qwen3.6-27b` for screen understanding;
+- `whisper-large-v3-turbo` for fast speech recognition.
 
-## Run
+Groq-hosted Orpheus is the preferred expressive English voice path, with an
+automatic Microsoft Edge neural-voice fallback. It is meant to feel lively,
+quick and a little mischievous. It is not an official Agnes Tachyon recording
+or the official performer’s voice.
 
-1. Open Options and enter the provider key. Agnes
-   stores it in Windows Credential Manager; it is never written to `config.toml`.
+The Setup Lab has 36 fixed questions that work without an AI request. The
+first answer now waits for Windows to finish loading its natural voices, so it
+does not suddenly use a different generic voice. The setup-guide preview also
+uses 30 FPS transparent video instead of making the browser crop huge images
+frame by frame.
 
-   An environment variable can be used instead:
+## Privacy without weird promises
 
-   ```powershell
-   $env:GROQ_API_KEY = "your-key"
-   ```
+- Screen awareness is off until you enable it.
+- The normal vision loop does not save a screenshot collection.
+- API keys are protected by Windows Credential Manager.
+- The guide has no analytics and makes no AI request for its fixed answers.
+- Feedback goes to the private owner inbox instead of a public GitHub Issue.
 
-2. Start the app:
+The GitHub Pages site has to publish its `index.html` and the compressed Agnes
+animation clips or a browser cannot display them. Browser files cannot be
+honestly “encrypted” while still running for everyone. This repo therefore
+contains only the public page, the minimum runtime clips, release notes and
+rights documents. It does **not** contain the app source, raw sprite sheets,
+voice models, build folders, owner tools, API keys or signing keys.
 
-   ```powershell
-   .\venv\Scripts\python.exe .\src\main.py
-   ```
+## If something breaks
 
-Supported variables are
-`GROQ_API_KEY`, `OPENAI_API_KEY`, and `GEMINI_API_KEY`.
+Right-click the tray icon and open **About and diagnostics**. Copy only the last
+useful error line, then use **Report a bug**. Never send an API key.
 
-Only one AI companion instance is allowed at a time. Starting it again asks
-the existing tray process to open Options instead of launching a duplicate.
+Common fixes are also built into the Setup Lab: microphone permissions, wrong
+speaker, Numpad keys, voice access, old environment keys, update problems,
+screen awareness and startup issues.
 
-Saving Options updates the running talk-button and microphone hooks
-automatically. The tray’s polished **Play with Agnes** menu works independently
-of the automatic AI-reaction toggle. **Make her dance** randomly chooses the
-first of two music-backed routines, then avoids immediately repeating one,
-prevents overlaps, and returns the pet to idle when the track ends. The public
-code-drawn companion uses two original procedural soundtracks; optional
-external pets use only locally supplied, licensed media.
+## Rights
 
-Agnes and standalone Options check a pinned, owner-signed update channel after
-startup. Update notices cannot be created by changing a public JSON file: the
-manifest must verify against the Ed25519 public key embedded in the apps.
-When a user selects **Download update**, the installer streams inside the app
-with animated progress, transfer speed, and clear verification stages. Files
-come only from the pinned GitHub release host; their signed byte size and
-SHA-256 are checked before the verified installer launches automatically. If
-Agnes is already installed, the installer switches to a focused in-place
-update, replaces the compiled app files in the same folder, skips fresh-setup
-pages, preserves settings, protected keys, and voice choices, then restarts
-Agnes automatically. A first installation still uses the normal guided setup.
-Signed required notices remain enforced after a restart even when the network
-is unavailable, and live listening, screen reactions, speech, and pet actions
-pause until the required update is installed or Agnes exits.
+This is a non-commercial, unofficial fan project by **y4x5lol**. Agnes Tachyon,
+Umamusume: Pretty Derby, official character material and official performances
+belong to Cygames and their respective rightsholders. The animated guide clips
+come from separately attributed third-party fan sprite material and are not
+claimed as my artwork. The app interface, updater, documentation, original
+icon and code-drawn companion are original project work.
 
-## Performance profiles
-
-- `whisper-large-v3-turbo` is the fast default speech-recognition model.
-- `whisper-large-v3` is the highest-accuracy listening option.
-- The active monitor is sampled every few seconds when live awareness is
-  enabled. Unchanged frames are skipped to reduce latency, network use, and
-  cost.
-- Expressive Orpheus speech starts sentence-by-sentence while generation
-  continues, with automatic Edge neural-voice fallback.
-- New speech cancels stale responses, reactions are bounded and deduplicated,
-  and recordings stop safely at 90 seconds.
+See [PROJECT_LICENSE.txt](PROJECT_LICENSE.txt),
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), and
+[RIGHTS_AUDIT.md](RIGHTS_AUDIT.md) for the boring but important details.
