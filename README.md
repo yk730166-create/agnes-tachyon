@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.4.0**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.4.1**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -70,8 +70,10 @@ frame by frame.
 
 - Screen awareness is off until you enable it.
 - The normal vision loop does not save a screenshot collection.
-- The Screen & Pet credit guard counts Agnes's local requests and limits daily
-  automatic vision reviews; the provider dashboard remains the exact quota source.
+- The Screen & Pet usage monitor counts conversations, picture reviews,
+  provider-reported tokens, voice characters and listening time, and limits
+  daily automatic vision reviews; the provider dashboard remains the exact
+  quota source.
 - API keys are protected by Windows Credential Manager.
 - The guide has no analytics and makes no AI request for its fixed answers.
 - Feedback goes to the private owner inbox instead of a public GitHub Issue.

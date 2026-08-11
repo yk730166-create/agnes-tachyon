@@ -1,4 +1,24 @@
-# Agnes Tachyon AI Companion 6.4.0
+# Agnes Tachyon AI Companion 6.4.1
+
+## 6.4.1 — One Agnes, a real dance stop, and the full meter
+
+This is the last cleanup pass for today. It removes the second-character flash,
+makes dance completion use the control path DesktopGremlin actually accepts,
+and turns the small vision counter into a useful whole-AI activity monitor.
+
+- The retired code-drawn Agnes can no longer appear. If the packaged model is
+  closing, restarting or unavailable, the tray stays running without revealing
+  a substitute character.
+- Music completion now briefly sends DesktopGremlin its documented Escape
+  command through the active-window path, then restores the user's foreground
+  window. The model returns to idle without waiting for a mouse hover and
+  without playing another emote sound.
+- **AI credit & usage monitor** now shows today's total AI requests,
+  conversations, picture reviews, provider-reported tokens, generated voice
+  characters and listening time. The automatic-vision guard and daily limit
+  remain directly beneath the overall totals.
+- The meter stores counters only. Provider dashboards remain the exact source
+  for account credits and service limits.
 
 ## 6.4.0 — The stream-aware dance repair
 
