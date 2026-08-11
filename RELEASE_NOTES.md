@@ -1,4 +1,35 @@
-# Agnes Tachyon AI Companion 6.3.6
+# Agnes Tachyon AI Companion 6.3.7
+
+## 6.3.7 — She finally stops making you wait
+
+This one is mostly about making Agnes feel awake instead of making you wonder
+whether Windows ate her.
+
+- Agnes and Options now use one installed shared runtime instead of unpacking
+  the same huge bundle on every launch. Her model also starts before the heavy
+  AI/audio interface loads. On the test PC, real Agnes appeared in about 1.83
+  seconds instead of 6.65 seconds.
+- Normal chat automatically uses the quick brain, while hard comparisons,
+  plans, debugging, and other serious questions keep the larger smart brain.
+- If a reply really is taking time, Agnes says “Wait, let me think” once. Fast
+  answers stay fast and do not get an unnecessary filler line.
+- Talking immediately pauses any screen-analysis request already in flight, so
+  live vision can no longer stand in front of your answer in the queue.
+- Live screen awareness now watches the foreground app, keeps two recent frames
+  for visible transitions, and only reacts when the newest frame proves an
+  event with usable confidence.
+- The missing food dish is finally included. Giving Agnes a snack no longer
+  asks DesktopGremlin to load an asset that setup forgot to install.
+- Dance now has four Agnes routines instead of two. The two added short tracks
+  come from the existing Tachyon music in this project, use different Agnes
+  emotes, and stop exactly with their music.
+- The update screen now waits for Windows Setup itself to confirm that it
+  accepted the existing Agnes folder. If Setup cannot really begin, Agnes
+  stays open and shows a useful retry message instead of sitting at 100%.
+- The Setup Lab gives each action its own clean symbol, keeps text inside its
+  cards at small window sizes, and plays Agnes at her natural animation speed.
+- The installer replaces the old one-file runtime during this required update,
+  keeps settings and voice choices, and removes files from the retired layout.
 
 ## 6.3.6 — The bug-focused compatibility pass
 

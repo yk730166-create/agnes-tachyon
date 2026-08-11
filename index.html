@@ -215,6 +215,19 @@
       font: inherit;
     }
 
+    .ui-icon {
+      display: block;
+      width: 1.25em;
+      height: 1.25em;
+      flex: 0 0 auto;
+      overflow: visible;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.8;
+    }
+
     ::selection {
       background: rgba(100, 166, 255, 0.2);
       color: white;
@@ -570,6 +583,18 @@
         border-color 320ms ease,
         background 320ms ease,
         box-shadow 320ms ease;
+    }
+
+    .button > .ui-icon,
+    .button > span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .button > .ui-icon {
+      width: 19px;
+      height: 19px;
+      margin-right: 9px;
     }
 
     .button::after {
@@ -1587,9 +1612,49 @@
       border-radius: 14px;
       background: linear-gradient(145deg, rgba(80, 151, 247, 0.19), rgba(71, 236, 220, 0.07));
       color: #93ccff;
-      font-size: 0.68rem;
-      font-weight: 900;
-      letter-spacing: 0.08em;
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.07), 0 12px 28px rgba(0, 0, 0, 0.16);
+      transition: transform 360ms var(--ease-smooth), border-color 300ms ease, box-shadow 300ms ease;
+    }
+
+    .feature-icon .ui-icon {
+      width: 25px;
+      height: 25px;
+    }
+
+    .feature-card:hover .feature-icon {
+      border-color: currentColor;
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 14px 34px rgba(0, 0, 0, 0.22), 0 0 22px currentColor;
+      transform: translateY(-3px) rotate(-2deg);
+    }
+
+    .feature-icon.voice {
+      color: #86c8ff;
+      background: linear-gradient(145deg, rgba(80, 151, 247, 0.24), rgba(36, 89, 170, 0.08));
+    }
+
+    .feature-icon.companion {
+      color: #6ff0dc;
+      background: linear-gradient(145deg, rgba(71, 236, 220, 0.2), rgba(35, 125, 139, 0.08));
+    }
+
+    .feature-icon.vision {
+      color: #bd9cff;
+      background: linear-gradient(145deg, rgba(150, 108, 255, 0.2), rgba(75, 47, 141, 0.08));
+    }
+
+    .feature-icon.web {
+      color: #70e8ab;
+      background: linear-gradient(145deg, rgba(76, 225, 149, 0.2), rgba(31, 115, 91, 0.08));
+    }
+
+    .feature-icon.single {
+      color: #ffc46b;
+      background: linear-gradient(145deg, rgba(255, 176, 74, 0.2), rgba(130, 82, 32, 0.08));
+    }
+
+    .feature-icon.update {
+      color: #6de9ff;
+      background: linear-gradient(145deg, rgba(71, 206, 255, 0.2), rgba(38, 88, 153, 0.08));
     }
 
     .feature-card h3 {
@@ -2044,9 +2109,11 @@
 
     .feedback-mark {
       position: relative;
+      display: grid;
       width: 48px;
       height: 48px;
       flex: 0 0 48px;
+      place-items: center;
       border: 1px solid rgba(105, 196, 255, 0.4);
       border-radius: 15px;
       background:
@@ -2055,13 +2122,11 @@
       box-shadow: inset 0 1px rgba(255, 255, 255, 0.08), 0 11px 28px rgba(0, 0, 0, 0.2);
     }
 
-    .feedback-mark img {
-      position: absolute;
-      inset: 3px;
-      width: calc(100% - 6px);
-      height: calc(100% - 6px);
-      object-fit: contain;
-      filter: drop-shadow(0 5px 9px rgba(0, 0, 0, 0.34));
+    .feedback-mark .ui-icon {
+      width: 27px;
+      height: 27px;
+      color: #77e8e1;
+      filter: drop-shadow(0 5px 9px rgba(0, 0, 0, 0.28));
     }
 
     .feedback-kicker {
@@ -2258,12 +2323,12 @@
       filter: drop-shadow(0 0 20px rgba(71, 236, 220, 0.42));
     }
 
-    .completion-emblem img {
+    .completion-emblem .ui-icon {
       z-index: 1;
-      width: 72px;
-      height: 72px;
-      object-fit: contain;
-      transform: translateY(2px);
+      width: 45px;
+      height: 45px;
+      color: #87ffe2;
+      filter: drop-shadow(0 0 13px rgba(102, 255, 220, 0.4));
     }
 
     .completion-emblem::before,
@@ -2681,6 +2746,12 @@
         align-items: flex-start;
         flex-direction: column;
         gap: 18px;
+      }
+
+      .section-head > :first-child,
+      .section-head > p {
+        width: 100%;
+        flex-basis: auto;
       }
 
       .progress-panel {
@@ -3134,7 +3205,13 @@
   <div class="completion-celebration" id="completionCelebration" aria-hidden="true">
     <div class="completion-burst">
       <div>
-        <span class="completion-emblem" aria-hidden="true"><img src="guide_media/agnes/agnes-icon.webp" alt=""></span>
+        <span class="completion-emblem" aria-hidden="true">
+          <svg class="ui-icon" data-icon="completion" viewBox="0 0 24 24" focusable="false">
+            <circle cx="12" cy="12" r="8.5"></circle>
+            <path d="m8.2 12.1 2.45 2.45 5.25-5.4"></path>
+            <path d="M18.9 4.2v2.2M17.8 5.3H20"></path>
+          </svg>
+        </span>
         <strong>Yay! Agnes is ready.</strong>
         <p>Your local setup checklist is complete. Time for an experiment.</p>
       </div>
@@ -3158,7 +3235,7 @@
       <button class="effects-toggle" id="effectsToggle" type="button" aria-label="Change visual effects level">
         VFX: FULL
       </button>
-      <span class="version-pill">SYSTEM v6.3.6</span>
+      <span class="version-pill">SYSTEM v6.3.7</span>
     </div>
   </header>
 
@@ -3172,8 +3249,21 @@
           desktop companion in three focused steps.
         </p>
         <div class="actions">
-          <a class="button primary" href="#setup">Start the setup</a>
-          <a class="button" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" aria-label="Create a Groq key (opens in a new tab)">Create a Groq key</a>
+          <a class="button primary" href="#setup">
+            <svg class="ui-icon" data-icon="start" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 4v11"></path>
+              <path d="m7.8 11.3 4.2 4.2 4.2-4.2"></path>
+              <path d="M5 19h14"></path>
+            </svg>
+            <span>Start the setup</span>
+          </a>
+          <a class="button" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" aria-label="Create a Groq key (opens in a new tab)">
+            <svg class="ui-icon" data-icon="key" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <circle cx="8" cy="12" r="3.25"></circle>
+              <path d="M11.25 12H20M17 12v3M14.2 12v2"></path>
+            </svg>
+            <span>Create a Groq key</span>
+          </a>
         </div>
         <div class="trust-row" aria-label="Guide privacy summary">
           <span class="trust-chip">Guide runs locally</span>
@@ -3362,7 +3452,12 @@
 
       <div class="feature-grid">
         <article class="glass-card feature-card wide tall" data-reveal>
-          <span class="feature-icon" aria-hidden="true">LIVE</span>
+          <span class="feature-icon voice" aria-hidden="true">
+            <svg class="ui-icon" data-icon="voice" viewBox="0 0 24 24" focusable="false">
+              <rect x="8.4" y="3" width="7.2" height="12" rx="3.6"></rect>
+              <path d="M5.5 11.2a6.5 6.5 0 0 0 13 0M12 17.7V21M8.7 21h6.6"></path>
+            </svg>
+          </span>
           <h3>Fast voice conversations</h3>
           <p>Hold your chosen talk button, speak naturally, then release. Agnes transcribes the audio, answers with her AI personality, and speaks through expressive Groq Orpheus. If that voice is unavailable, she automatically uses the standard Edge neural voice instead. You can tune voice speed and microphone behavior in Options.</p>
           <ul class="status-list">
@@ -3374,31 +3469,57 @@
         </article>
 
         <article class="glass-card feature-card tall" data-reveal>
-          <span class="feature-icon" aria-hidden="true">PET</span>
+          <span class="feature-icon companion" aria-hidden="true">
+            <svg class="ui-icon" data-icon="companion" viewBox="0 0 24 24" focusable="false">
+              <path d="m6 3.5 10 8.2-5.2 1.1-2.2 5.1z"></path>
+              <path d="m14.9 15.3 2.8 3.4"></path>
+              <path d="M18.7 4.1v3M17.2 5.6h3"></path>
+            </svg>
+          </span>
           <h3>Play with desktop Agnes</h3>
-          <p>The installed app includes the real Agnes desktop model from this setup, with her complete movement, action, emote and sound bundle. Click, double-click, scroll, or drag her. Right-click her or the tray icon to offer a snack, ask for a reaction, or start a randomized music dance. The Agnes above is the guide's in-place 60 FPS preview.</p>
+          <p>The installed app includes the real Agnes desktop model from this setup, with her complete movement, action, emote and sound bundle. Click, double-click, scroll, or drag her. Right-click her or the tray icon to offer a snack, ask for a reaction, or start a randomized music dance. The Agnes above is the guide's smooth in-place preview, paced to look natural instead of rushed.</p>
         </article>
 
         <article class="glass-card feature-card" data-reveal>
-          <span class="feature-icon" aria-hidden="true">EYE</span>
+          <span class="feature-icon vision" aria-hidden="true">
+            <svg class="ui-icon" data-icon="vision" viewBox="0 0 24 24" focusable="false">
+              <path d="M2.8 12s3.2-5.3 9.2-5.3 9.2 5.3 9.2 5.3-3.2 5.3-9.2 5.3S2.8 12 2.8 12Z"></path>
+              <circle cx="12" cy="12" r="2.6"></circle>
+            </svg>
+          </span>
           <h3>Live screen awareness</h3>
           <p>When enabled, Agnes checks the active display, skips unchanged frames, and reacts only when something meaningful happens.</p>
         </article>
 
         <article class="glass-card feature-card" data-reveal>
-          <span class="feature-icon" aria-hidden="true">WEB</span>
+          <span class="feature-icon web" aria-hidden="true">
+            <svg class="ui-icon" data-icon="web" viewBox="0 0 24 24" focusable="false">
+              <circle cx="12" cy="12" r="8.7"></circle>
+              <path d="M3.6 12h16.8M12 3.3c2.2 2.4 3.3 5.3 3.3 8.7S14.2 18.3 12 20.7C9.8 18.3 8.7 15.4 8.7 12S9.8 5.7 12 3.3Z"></path>
+            </svg>
+          </span>
           <h3>Current answers</h3>
           <p>New hardware, releases, prices, and other changing facts can use live web research instead of relying on old built-in knowledge.</p>
         </article>
 
         <article class="glass-card feature-card" data-reveal>
-          <span class="feature-icon" aria-hidden="true">ONE</span>
+          <span class="feature-icon single" aria-hidden="true">
+            <svg class="ui-icon" data-icon="single" viewBox="0 0 24 24" focusable="false">
+              <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+              <path d="M10.1 9.5 12 8.1v7.8M9.8 15.9h4.5"></path>
+            </svg>
+          </span>
           <h3>One Agnes only</h3>
           <p>Starting Agnes again does not create a duplicate. It smoothly brings the existing Options window back instead.</p>
         </article>
 
         <article class="glass-card feature-card" data-reveal>
-          <span class="feature-icon" aria-hidden="true">UP</span>
+          <span class="feature-icon update" aria-hidden="true">
+            <svg class="ui-icon" data-icon="update" viewBox="0 0 24 24" focusable="false">
+              <path d="M19.2 9A7.7 7.7 0 1 0 19 15.4"></path>
+              <path d="M19.2 4.8V9h-4.3M12 8.5v7M8.9 12.7 12 15.8l3.1-3.1"></path>
+            </svg>
+          </span>
           <h3>Verified update prompts</h3>
           <p>Agnes checks the owner-signed release channel when the app opens. Select <strong>Download update</strong> once to see live progress and verification. An existing copy then updates in place: fresh-setup pages are skipped, app files are replaced in the same folder, settings and protected keys stay safe, and Agnes restarts automatically when it finishes. A signed required update remains active without a connection and pauses live companion services until you update or exit.</p>
         </article>
@@ -3619,7 +3740,12 @@
         data-reveal
       >
         <div class="feedback-copy">
-          <span class="feedback-mark" aria-hidden="true"><img src="guide_media/agnes/agnes-icon.webp" alt=""></span>
+          <span class="feedback-mark" aria-hidden="true">
+            <svg class="ui-icon" data-icon="inbox" viewBox="0 0 24 24" focusable="false">
+              <path d="M4 5.5h16v12.2a1.8 1.8 0 0 1-1.8 1.8H5.8A1.8 1.8 0 0 1 4 17.7Z"></path>
+              <path d="m4.3 7 6.5 5.1a1.9 1.9 0 0 0 2.4 0L19.7 7"></path>
+            </svg>
+          </span>
           <div>
             <span class="feedback-kicker">Feedback channel</span>
             <h3>Found a bug or have an idea?</h3>
@@ -3630,23 +3756,34 @@
           <a
             class="button"
             id="feedbackIdeaLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.3.6"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.3.7"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Share feedback (opens in a new tab)"
             data-feedback-action="open"
             data-feedback-kind="feedback"
-          >Share feedback</a>
+          >
+            <svg class="ui-icon" data-icon="message" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 5.5h16v10.8H9l-4.5 3 .8-3H4Z"></path>
+              <path d="M8 10.9h.1M12 10.9h.1M16 10.9h.1"></path>
+            </svg>
+            <span>Share feedback</span>
+          </a>
           <a
             class="button primary"
             id="feedbackBugLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.3.6"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.3.7"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Report a bug (opens in a new tab)"
             data-feedback-action="open"
             data-feedback-kind="bug"
-          >Report a bug</a>
+          >
+            <svg class="ui-icon" data-icon="bug" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M8 9.2a4 4 0 0 1 8 0v6.1a4 4 0 0 1-8 0ZM9.2 6.3 7.6 4.7M14.8 6.3l1.6-1.6M8 11H4.7M19.3 11H16M8 15H4.5M19.5 15H16M12 9v9"></path>
+            </svg>
+            <span>Report a bug</span>
+          </a>
         </div>
       </article>
 
@@ -4069,15 +4206,15 @@
       let coreReady = true;
 
       const agnesAnimations = Object.freeze({
-        idle: { file: "idle.webm", frames: 340 },
-        intro: { file: "intro.webm", frames: 50 },
-        hover: { file: "hover.webm", frames: 30 },
-        click: { file: "click.webm", frames: 117 },
-        sleep: { file: "sleep.webm", frames: 255 },
-        emote1: { file: "emote1.webm", frames: 24 },
-        emote2: { file: "emote2.webm", frames: 42 },
-        emote3: { file: "emote3.webm", frames: 189 },
-        emote4: { file: "emote4.webm", frames: 42 },
+        idle: { file: "idle.webm", frames: 340, rate: 0.72 },
+        intro: { file: "intro.webm", frames: 50, rate: 0.70 },
+        hover: { file: "hover.webm", frames: 30, rate: 0.68 },
+        click: { file: "click.webm", frames: 117, rate: 0.72 },
+        sleep: { file: "sleep.webm", frames: 255, rate: 0.72 },
+        emote1: { file: "emote1.webm", frames: 24, rate: 0.58 },
+        emote2: { file: "emote2.webm", frames: 42, rate: 0.62 },
+        emote3: { file: "emote3.webm", frames: 189, rate: 0.68 },
+        emote4: { file: "emote4.webm", frames: 42, rate: 0.62 },
       });
       const agnesAmbientActions = ["emote2", "emote4", "click"];
       const agnesMusicDances = ["emote1", "emote3"];
@@ -4168,6 +4305,8 @@
         const outgoing = agnesActivePlayer;
         resetAgnesPlayer(incoming);
         incoming.loop = loop;
+        incoming.defaultPlaybackRate = animation.rate;
+        incoming.playbackRate = animation.rate;
         incoming.preload = name === "idle" ? "auto" : "metadata";
         incoming.src = `guide_media/agnes/${animation.file}`;
         let playbackStarted = false;
