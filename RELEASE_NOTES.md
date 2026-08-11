@@ -1,4 +1,29 @@
-# Agnes Tachyon AI Companion 6.3.8
+# Agnes Tachyon AI Companion 6.3.9
+
+## 6.3.9 — The optional voice engine is back
+
+This is a small voice-focused update. Normal installs stay the same size, and
+automatic updates do not suddenly pull several gigabytes onto anyone's PC.
+
+- Setup once again has an unchecked option to download official Applio 3.6.4.
+  The 4.6 GB archive is pinned to its release revision and exact SHA-256 before
+  Inno Setup extracts it. It also checks for the 13 GB of temporary free space
+  needed for the download and unpacking step.
+- Added a second optional checkbox for Windows file compression after Applio is
+  installed. If compression is unavailable, the voice engine still works.
+- Agnes automatically finds Setup's per-user Applio folder. The converter now
+  prefers Applio's matching embedded Python and native packages instead of
+  accidentally mixing them with an unrelated system Python.
+- Removed the forced “fast paced” direction from ordinary Orpheus lines. Groq
+  recommends no direction for natural conversation, so regular speech now has
+  a less acted, less robotic cadence while real questions and emotional lines
+  can still use restrained directions.
+- Licensed RVC voice models use a slightly stronger index blend, the full
+  output volume envelope, and Applio's recommended consonant protection. Old
+  untouched defaults migrate automatically; custom tuning stays unchanged.
+- Applio remains optional and does not include or download a character voice
+  model. A matching `.pth` and `.index` that the user may legally use are still
+  selected in Options.
 
 ## 6.3.8 — The updater now lets Agnes stay awake
 
