@@ -1,4 +1,32 @@
-# Agnes Tachyon AI Companion 6.3.9
+# Agnes Tachyon AI Companion 6.4.0
+
+## 6.4.0 — The stream-aware dance repair
+
+This one fixes the interaction mix-up and makes screen awareness feel live
+without quietly feeding every frame to a paid model.
+
+- **Make her dance** now uses only the two original Uma music routines already
+  used by the Setup Lab. The unrelated short-video sounds are gone from the
+  random dance pool.
+- A music dance returns Agnes to idle as soon as its measured track duration
+  ends. Old timers and stale audio completions cannot stop a newer dance.
+- **Poke Agnes** now plays her real surprised animation instead of the ordinary
+  click reaction.
+- Screen awareness now watches the foreground app locally at up to 10 FPS,
+  keeps the strongest recent transitions, and sends only useful keyframes to
+  the picture model. Asking “what's that?” always captures a fresh full-quality
+  frame for the answer.
+- The new **Live vision credit guard** in Screen & Pet shows today's automatic
+  reviews, skipped frames and conversations, and enforces a user-controlled
+  daily cloud-review limit. Local watching continues when the limit is reached.
+- Website answers now prefer the best available Microsoft multilingual natural
+  voice, speak in short thoughts with tiny human pauses, and use gentler prosody
+  instead of one flat robotic paragraph.
+- App speech leaves ordinary questions and exclamations undirected, matching
+  Orpheus's natural-conversation guidance. Emotional cues remain only where
+  they actually help.
+- Usage records contain counters only—never prompts, screenshots, transcripts,
+  API keys or spoken text.
 
 ## 6.3.9 — The optional voice engine is back
 

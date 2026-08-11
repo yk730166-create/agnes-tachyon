@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.3.9**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.4.0**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -12,9 +12,10 @@ Windows 11 releases.
 
 - push-to-talk chat with a key you choose by pressing it;
 - spoken answers, microphone and speaker selection;
-- optional live screen awareness for useful game and desktop reactions;
+- local screen watching at up to 10 FPS, with paid vision requests reserved
+  for useful keyframes and direct visual questions;
 - the real bundled Agnes desktop model with movement, clicks, snacks, emotes,
-  random actions and music dances;
+  random actions and the two original Uma music dances;
 - live lookup for newer hardware, news and other facts that can change;
 - signed in-app updates with a proper download and install progress screen;
 - feedback and bug reports without a GitHub account.
@@ -69,6 +70,8 @@ frame by frame.
 
 - Screen awareness is off until you enable it.
 - The normal vision loop does not save a screenshot collection.
+- The Screen & Pet credit guard counts Agnes's local requests and limits daily
+  automatic vision reviews; the provider dashboard remains the exact quota source.
 - API keys are protected by Windows Credential Manager.
 - The guide has no analytics and makes no AI request for its fixed answers.
 - Feedback goes to the private owner inbox instead of a public GitHub Issue.
