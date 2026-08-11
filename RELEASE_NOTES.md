@@ -1,4 +1,20 @@
-# Agnes Tachyon AI Companion 6.3.7
+# Agnes Tachyon AI Companion 6.3.8
+
+## 6.3.8 — The updater now lets Agnes stay awake
+
+This is a small but important follow-up to 6.3.7. The files were installing
+correctly, but the Agnes process started by Windows Setup could still think it
+belonged to the old frozen app and close shortly afterward.
+
+- The updater now starts the replacement as a completely fresh Agnes process,
+  so she stays running after Setup closes.
+- The fix is also built into Setup itself. That means the already released
+  6.3.7 updater can move to this version safely instead of needing a manual
+  reinstall first.
+- The 100% state still waits for the signed installer acknowledgement, and the
+  app still preserves settings, protected keys, voice choices, and user files.
+- Added a full restart-chain regression check so a future updater cannot quietly
+  bring this same bug back.
 
 ## 6.3.7 — She finally stops making you wait
 
