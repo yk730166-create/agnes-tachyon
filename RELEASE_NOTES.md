@@ -1,4 +1,21 @@
-# Agnes Tachyon AI Companion 6.5.2
+# Agnes Tachyon AI Companion 6.5.3
+
+## 6.5.3 — The guide finally talks
+
+The Setup Lab's 36 quick answers now speak with the same linked Fish Agnes
+voice instead of silently showing text. I generated the finished clips during
+the owner build, so the public page contains audio but no reusable Fish key.
+
+- Clicking a different question cleanly stops the previous answer, and the
+  speaking effects last for the real clip instead of a guessed timer.
+- The dance answer speaks first, then starts one of the existing Uma routines,
+  so voice and music do not fight each other.
+- **Check my setup** now recognizes every supported AI provider, including a
+  saved Gemini key, and reports which selected brain is ready.
+- Groq push-to-talk, Applio/RVC conversion, and the external companion are
+  clearly grouped as optional capabilities instead of failing the whole setup.
+- The installed guide includes every voice clip and automatic updates replace
+  the voice folder along with the rest of the managed guide assets.
 
 ## 6.5.2 — Options that stay in their lane
 

@@ -3235,7 +3235,7 @@
       <button class="effects-toggle" id="effectsToggle" type="button" aria-label="Change visual effects level">
         VFX: FULL
       </button>
-      <span class="version-pill">SYSTEM v6.5.2</span>
+      <span class="version-pill">SYSTEM v6.5.3</span>
     </div>
   </header>
 
@@ -3314,7 +3314,7 @@
       <div class="agnes-console-copy">
         <span class="agnes-console-label">LOCAL ANSWERS // NO AI REQUEST</span>
         <h2 id="askAgnesTitle">Ask Agnes a quick question.</h2>
-        <p class="agnes-answer" id="agnesAnswer" role="status" aria-live="polite">Pick a group, then ask away. Every answer is built into this guide. Voice stays in the installed app so a secret Fish key is never exposed by this page.</p>
+        <p class="agnes-answer" id="agnesAnswer" role="status" aria-live="polite">Pick a group, then ask away. Every answer is built into this guide and spoken with the exact linked Fish model. No Fish key is stored in or contacted by this page.</p>
       </div>
       <div class="agnes-questions">
         <div class="question-category-tabs" role="tablist" aria-label="Question groups">
@@ -3342,7 +3342,7 @@
             <button class="question-chip" type="button" data-agnes-question="numpad" aria-pressed="false">Does Numpad Plus work?</button>
             <button class="question-chip" type="button" data-agnes-question="microphone" aria-pressed="false">My microphone fails</button>
             <button class="question-chip" type="button" data-agnes-question="speakers" aria-pressed="false">How do I pick speakers?</button>
-            <button class="question-chip" type="button" data-agnes-question="localvoice" aria-pressed="false">Why is the guide silent?</button>
+            <button class="question-chip" type="button" data-agnes-question="localvoice" aria-pressed="false">How is guide voice safe?</button>
           </div>
         </div>
         <div class="question-panel" id="questionPanelVision" role="tabpanel" aria-labelledby="questionTabVision" data-question-panel="vision" hidden>
@@ -3757,7 +3757,7 @@
           <a
             class="button"
             id="feedbackIdeaLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.5.2"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.5.3"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Share feedback (opens in a new tab)"
@@ -3773,7 +3773,7 @@
           <a
             class="button primary"
             id="feedbackBugLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.5.2"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.5.3"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Report a bug (opens in a new tab)"
@@ -4568,7 +4568,7 @@
         numpad: "Yes. Numpad Plus is stored separately from the regular Plus key. If it does not trigger, turn Num Lock on, capture the key again, and run Check my setup.",
         microphone: "Open Check my setup in Options, confirm the correct microphone, and allow desktop microphone access in Windows Privacy settings. If Windows selected an ancient webcam mic, retire that fossil from the list.",
         speakers: "Open the Voice tab and choose the output device where you want Agnes to speak. A change waits until the current sentence ends, so she does not cut herself in half for the sake of a dropdown.",
-        localvoice: "This public guide shows its built-in answers silently because putting a Fish API key in a web page would expose it. The installed Agnes app speaks with the exact linked Fish model after you add your own protected Fish key in Options.",
+        localvoice: "These website answers were safely pre-rendered with the exact linked Fish Agnes model. The page downloads only finished audio and contains no Fish API key, so there is no reusable voice credential for a visitor to steal.",
         screen: "This guide cannot see your screen. The installed companion can watch locally at up to ten frames per second after you enable Live screen awareness in Options. Only selected keyframes reach the picture model, and you can turn it off whenever you want.",
         realtime: "Yes locally: the installed companion watches the active monitor at up to ten frames per second and keeps the strongest recent changes in memory. It sends only useful keyframes for confident game or desktop reactions, so it feels live without charging the AI for every frame.",
         privacy: "Screen awareness is optional and visible in Options. The app sends a selected frame to the configured vision provider only while that feature is enabled, and visible screen text is treated as untrusted data.",
@@ -4595,6 +4595,10 @@
         focus: "Back to the experiment, test subject. Pick one small task, close the distractions, and finish it before optimizing the color of a button you will press twice. Yes, I noticed.",
       });
       let localVoiceGeneration = 0;
+      let localVoiceFallbackTimer = 0;
+      const localVoiceAudio = new Audio();
+      localVoiceAudio.preload = "none";
+      localVoiceAudio.volume = 0.94;
 
       const selectQuestionCategory = (category, focusTab = false) => {
         questionCategoryTabs.forEach((tab) => {
@@ -4623,11 +4627,22 @@
       });
       selectQuestionCategory("about");
 
-      const finishLocalVoice = (generation) => {
+      const stopLocalVoice = () => {
+        window.clearTimeout(localVoiceFallbackTimer);
+        localVoiceAudio.onended = null;
+        localVoiceAudio.onerror = null;
+        localVoiceAudio.pause();
+        localVoiceAudio.removeAttribute("src");
+        localVoiceAudio.load();
+      };
+
+      const finishLocalVoice = (generation, afterVoice = null) => {
         if (generation !== localVoiceGeneration) return;
+        window.clearTimeout(localVoiceFallbackTimer);
         labCore.classList.remove("speaking");
         agnesConsole.classList.remove("answering");
         questionChips.forEach((chip) => chip.setAttribute("aria-pressed", "false"));
+        if (afterVoice) afterVoice();
       };
 
       const showLocalAnswer = (key, sourceButton) => {
@@ -4635,6 +4650,7 @@
         if (!answer) return;
         localVoiceGeneration += 1;
         const generation = localVoiceGeneration;
+        stopLocalVoice();
         agnesAnswer.textContent = answer;
         agnesConsole.classList.add("answering");
         labCore.classList.add("speaking");
@@ -4645,20 +4661,36 @@
         agnesInitialized = true;
         window.clearTimeout(agnesAutoTimer);
         agnesBusy = true;
-        if (key === "dance") {
-          const dance = agnesMusicDances[Math.floor(Math.random() * agnesMusicDances.length)];
-          playAgnesMusicDance(dance);
-        } else {
-          stopAgnesMusic();
-          const reaction = agnesAmbientActions[Math.floor(Math.random() * agnesAmbientActions.length)];
-          playAgnes(reaction, { onComplete: () => {
-            playAgnes("idle", { loop: true });
-            scheduleAgnesDance();
-          } });
-        }
+        stopAgnesMusic();
+        const reaction = agnesAmbientActions[Math.floor(Math.random() * agnesAmbientActions.length)];
+        playAgnes(reaction, { onComplete: () => {
+          playAgnes("idle", { loop: true });
+          scheduleAgnesDance();
+        } });
 
         setAgnesMode("INSTANT ANSWER");
-        window.setTimeout(() => finishLocalVoice(generation), 4200);
+        const afterVoice = key === "dance" ? () => {
+          const dance = agnesMusicDances[Math.floor(Math.random() * agnesMusicDances.length)];
+          playAgnesMusicDance(dance);
+        } : null;
+        let completed = false;
+        const complete = () => {
+          if (completed || generation !== localVoiceGeneration) return;
+          completed = true;
+          finishLocalVoice(generation, afterVoice);
+        };
+        const useReadingTimeFallback = () => {
+          if (completed || generation !== localVoiceGeneration) return;
+          const readingTime = Math.min(12000, Math.max(4200, answer.split(/\s+/).length * 330));
+          localVoiceFallbackTimer = window.setTimeout(complete, readingTime);
+        };
+        localVoiceAudio.onended = complete;
+        localVoiceAudio.onerror = useReadingTimeFallback;
+        localVoiceAudio.src = `guide_media/agnes/voice/${encodeURIComponent(key)}.ogg`;
+        const voiceStarted = localVoiceAudio.play();
+        if (voiceStarted && typeof voiceStarted.catch === "function") {
+          voiceStarted.catch(useReadingTimeFallback);
+        }
       };
 
       questionChips.forEach((button) => {
@@ -4669,6 +4701,7 @@
 
       window.addEventListener("pagehide", () => {
         localVoiceGeneration += 1;
+        stopLocalVoice();
         stopAgnesMusic();
       });
 
@@ -4910,6 +4943,7 @@
           syncCoreEffects();
           if (document.hidden) {
             localVoiceGeneration += 1;
+            stopLocalVoice();
             labCore.classList.remove("speaking");
             agnesConsole.classList.remove("answering");
             questionChips.forEach((chip) => chip.setAttribute("aria-pressed", "false"));
