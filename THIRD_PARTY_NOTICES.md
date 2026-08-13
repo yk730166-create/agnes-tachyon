@@ -78,7 +78,6 @@ licenses. Important direct dependencies include:
 | --- | --- |
 | PySide6 and Shiboken6 | LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only |
 | cryptography | Apache-2.0 OR BSD-3-Clause |
-| edge-tts | LGPL-3.0 |
 | httpx | BSD-3-Clause |
 | keyboard, mss, toml | MIT |
 | OpenAI Python library | Apache-2.0 |
@@ -96,26 +95,23 @@ transfer their copyrights to y4x5lol. Source and corresponding license texts
 are available from each package's official project page and installed package
 metadata.
 
-## Hosted speech services
+## Hosted speech service
 
-The default expressive speech path calls the Groq-hosted
-`canopylabs/orpheus-v1-english` model by Canopy Labs. When that request cannot
-be completed, Agnes automatically falls back to the Microsoft speech service
-used by `edge-tts`. These are third-party online services governed by their
-providers' current terms; the installer does not contain their hosted model
-weights or training data.
+The default speech path calls Fish Audio S2 Pro with public community model ID
+`64e74b61065540f4abed3a0f30cf14d9`, titled “Agnes Tachyon” and published on
+Fish Audio by user `raaah`. Fish Audio reported the model as public when checked
+on 13 August 2026. Public availability is not an ownership transfer or a promise
+that every possible use is licensed. The model, generated voice, service, and
+underlying performances remain subject to Fish Audio's terms and applicable
+rightsholder rights. The installer contains no Fish model weights, sample audio,
+API key, or official recording and does not claim this is an official voice.
 
-The included voice choices are general service voice personas. They are not
-advertised as an official or exact Agnes Tachyon voice, and the public build
-does not bundle official recordings or an unlicensed character voice model.
-
-- Groq Orpheus documentation: https://console.groq.com/docs/text-to-speech/orpheus
-- Groq terms: https://groq.com/terms-of-use/
-- Microsoft services agreement: https://www.microsoft.com/servicesagreement/
+- Model page: https://fish.audio/m/64e74b61065540f4abed3a0f30cf14d9
+- Fish Audio API documentation: https://docs.fish.audio/api-reference/introduction
+- Fish Audio terms: https://fish.audio/terms
 
 ## Online services
 
-Groq, the Canopy Labs Orpheus model hosted there, Microsoft speech services
-used by `edge-tts`, and any configured OpenAI or Gemini service are external
+Fish Audio, Groq, and any configured OpenAI or Gemini service are external
 services governed by their own current terms. API access does not transfer
 ownership of service models, brands, voices, or third-party input content.

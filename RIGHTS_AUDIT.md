@@ -16,8 +16,7 @@ for advice from a qualified intellectual-property lawyer.
 | Desktop Gremlin binary/code/assets | Kritzkingvoid/other rightsholders; no license found | Included at the project owner's direction; **permission not independently verified** |
 | Umamusume/Agnes names, design, official assets | Cygames and/or other rightsholders | Limited unofficial, non-commercial fan use only; no ownership transfer |
 | Tachyon RVC model and index | Unknown source/license; voice/rightsholder interests | **No verified permission** |
-| Groq-hosted Canopy Labs Orpheus speech | Third-party online model/service; no model weights or character recordings are bundled | API use only, under the providers' current terms |
-| Microsoft speech used by `edge-tts` | Third-party online service and client library | API/service use and library distribution under their respective terms |
+| Fish Audio model `64e74b61065540f4abed3a0f30cf14d9` | Public third-party community model/service; no model weights, sample audio, API keys, or official recordings are bundled | API use only, under Fish Audio's terms and applicable voice/rightsholder rights |
 | Official or extracted recordings/sprites/sounds | Original publishers, artists, performers, and/or contributors | **No verified permission** unless separately licensed |
 
 ## Changes made from this audit
@@ -30,9 +29,9 @@ for advice from a qualified intellectual-property lawyer.
    including her matching animations, sounds and icon. Other character packs,
    the unlicensed Tachyon voice model, and raw website sprite sheets remain out
    of the public repository.
-4. Release defaults use the bundled real Agnes model, Groq-hosted Orpheus
-   speech, and automatic Edge neural-voice fallback. Neither voice path is
-   described as an official or exact character voice.
+4. Release defaults use the bundled real Agnes model and the linked Fish Audio
+   community voice through its API. No unrelated speech fallback is presented
+   as Agnes, and the voice is not described as an official release.
 5. Added the project license, notices, and this audit to installed copies.
 6. The two tray music dances use the matching Agnes sound files and stop when
    their tracks finish. The Setup Lab uses compressed previews of those tracks.

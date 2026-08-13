@@ -3235,7 +3235,7 @@
       <button class="effects-toggle" id="effectsToggle" type="button" aria-label="Change visual effects level">
         VFX: FULL
       </button>
-      <span class="version-pill">SYSTEM v6.4.1</span>
+      <span class="version-pill">SYSTEM v6.5.0</span>
     </div>
   </header>
 
@@ -3314,7 +3314,7 @@
       <div class="agnes-console-copy">
         <span class="agnes-console-label">LOCAL ANSWERS // NO AI REQUEST</span>
         <h2 id="askAgnesTitle">Ask Agnes a quick question.</h2>
-        <p class="agnes-answer" id="agnesAnswer" role="status" aria-live="polite">Pick a group, then ask away. Every answer is built into this guide and spoken with the smoothest compatible voice on your PC.</p>
+        <p class="agnes-answer" id="agnesAnswer" role="status" aria-live="polite">Pick a group, then ask away. Every answer is built into this guide. Voice stays in the installed app so a secret Fish key is never exposed by this page.</p>
       </div>
       <div class="agnes-questions">
         <div class="question-category-tabs" role="tablist" aria-label="Question groups">
@@ -3342,7 +3342,7 @@
             <button class="question-chip" type="button" data-agnes-question="numpad" aria-pressed="false">Does Numpad Plus work?</button>
             <button class="question-chip" type="button" data-agnes-question="microphone" aria-pressed="false">My microphone fails</button>
             <button class="question-chip" type="button" data-agnes-question="speakers" aria-pressed="false">How do I pick speakers?</button>
-            <button class="question-chip" type="button" data-agnes-question="localvoice" aria-pressed="false">Why does this voice vary?</button>
+            <button class="question-chip" type="button" data-agnes-question="localvoice" aria-pressed="false">Why is the guide silent?</button>
           </div>
         </div>
         <div class="question-panel" id="questionPanelVision" role="tabpanel" aria-labelledby="questionTabVision" data-question-panel="vision" hidden>
@@ -3385,7 +3385,7 @@
             <button class="question-chip" type="button" data-agnes-question="focus" aria-pressed="false">Tell me to focus</button>
           </div>
         </div>
-        <p class="local-voice-note">Thirty-six fixed answers, spoken by the smoothest compatible voice available on this PC. No API key, screen capture, analytics, or AI request is used.</p>
+        <p class="local-voice-note">Thirty-six instant answers are built into this guide. The guide never imitates Agnes with a different browser voice; install Agnes and add your own Fish Audio key to hear every answer in her exact linked voice.</p>
       </div>
     </section>
 
@@ -3411,8 +3411,9 @@
             <button class="complete-step" type="button" title="Mark step 1 complete" aria-label="Mark step 1 complete" aria-pressed="false"><span>Mark done</span></button>
           </div>
           <h3>Configure provider credentials</h3>
-          <p>Open Groq, sign in, create a key, and copy it. The key lets Agnes chat, understand your screen, transcribe speech, and check current information.</p>
+          <p>Create a Groq key for chat, listening, screen understanding, and current facts. Create a separate Fish Audio key for Agnes's exact linked voice. Paste both into their clearly named fields in Options.</p>
           <a class="small-link" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" aria-label="Open Groq securely (opens in a new tab)">Open Groq securely</a>
+          <a class="small-link" href="https://fish.audio/app/api-keys/" target="_blank" rel="noopener noreferrer" aria-label="Open Fish Audio securely (opens in a new tab)">Create the Fish voice key</a>
         </li>
 
         <li class="glass-card step-card" data-step="2" data-reveal>
@@ -3459,10 +3460,10 @@
             </svg>
           </span>
           <h3>Fast voice conversations</h3>
-          <p>Hold your chosen talk button, speak naturally, then release. Agnes transcribes the audio, answers with her AI personality, and speaks through expressive Groq Orpheus. If that voice is unavailable, she automatically uses the standard Edge neural voice instead. Setup can also download the official Applio engine as an unchecked 4.6 GB option for licensed character voice models.</p>
+          <p>Hold your chosen talk button, speak naturally, then release. Agnes transcribes the audio, answers with her AI personality, and speaks through Fish Audio S2 Pro using the exact Agnes model linked by this build. Add your own Fish key in Options → Voice; it is protected by Windows Credential Manager. Setup can also download the official Applio engine as an unchecked 4.6 GB option for licensed local experiments.</p>
           <ul class="status-list">
             <li>Fast Whisper transcription</li>
-            <li>Expressive voice with safe fallback</li>
+            <li>One consistent Fish Agnes voice</li>
             <li>Cancelable speech playback</li>
             <li>Exact physical-key bindings</li>
           </ul>
@@ -3648,9 +3649,9 @@
               <summary><span class="fix-tag">VOICE</span>I see an answer but hear no voice</summary>
               <p><strong>Try this first:</strong> select <strong>default</strong> as the speaker and restart Agnes. Then check mute, the Windows volume mixer, Bluetooth, and the normal Windows output. A device can appear in Options but still be unavailable to the playback system, so <strong>default</strong> is the safest choice.</p>
             </details>
-            <details data-category="voice ai" data-keywords="orpheus edge fallback tts voice service converter failed">
+            <details data-category="voice ai" data-keywords="fish api key credit tts voice service converter failed">
               <summary><span class="fix-tag">VOICE</span>The voice service or optional converter failed</summary>
-              <p>Expressive Orpheus speech uses the Groq key and an internet connection. The Groq account owner may need to accept its model terms once; open Options, choose Voice, and select <strong>Enable natural voice access</strong>. Agnes automatically tries the standard Edge neural voice until access is enabled or whenever Orpheus is unavailable, but that fallback also needs internet access. Check the connection, Groq key, quota, and normal Windows output. For optional conversion, rerun Setup and check <strong>Download the optional high-quality voice engine</strong>, then choose both a licensed <code>.pth</code> model and its matching <code>.index</code> file in Options. The normal install skips the 4.6 GB download.</p>
+              <p>Exact Agnes speech uses Fish Audio and an internet connection. Open Options → Voice, create a Fish API key, paste it, then Save. Agnes deliberately does not swap to a different Windows or Groq voice when Fish is unavailable. Check the Fish key, Fish balance, connection, and Windows speaker. For optional local experiments, rerun Setup and check <strong>Download the optional high-quality voice engine</strong>. The normal install skips the 4.6 GB download.</p>
             </details>
             <details data-category="ai" data-keywords="401 unauthorized authentication rejected invalid secret api key">
               <summary><span class="fix-tag">AI</span>The secret key is missing or rejected</summary>
@@ -3756,7 +3757,7 @@
           <a
             class="button"
             id="feedbackIdeaLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.4.1"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=feedback&amp;surface=setup-guide&amp;version=6.5.0"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Share feedback (opens in a new tab)"
@@ -3772,7 +3773,7 @@
           <a
             class="button primary"
             id="feedbackBugLink"
-            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.4.1"
+            href="https://script.google.com/macros/s/AKfycbx_GQp8ksRpW5EaDfavv-XgbrJEBPSC9C9AsTI9rRcfDlyHkCbdT6vbrlTlq9KZM_6saw/exec?kind=bug&amp;surface=setup-guide&amp;version=6.5.0"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Report a bug (opens in a new tab)"
@@ -3788,7 +3789,7 @@
       </article>
 
       <div class="rights-note" data-reveal>
-        <strong>Unofficial fan build.</strong> The installer includes the original app and interface plus the separately attributed real Agnes fan model, icon, animations and matching sounds listed in the installed third-party notices; y4x5lol does not claim ownership of that character material. Speech uses Groq-hosted Orpheus with automatic Edge neural-voice fallback and is not presented as an official Agnes Tachyon voice. Agnes Tachyon, Umamusume: Pretty Derby, and official materials remain with Cygames and their respective rightsholders. Full license and third-party notices are installed beside this guide.
+        <strong>Unofficial fan build.</strong> The installer includes the original app and interface plus the separately attributed real Agnes fan model, icon, animations and matching sounds listed in the installed third-party notices; y4x5lol does not claim ownership of that character material. Speech uses the public third-party Fish Audio model selected by the owner and is not presented as an official voice release. Agnes Tachyon, Umamusume: Pretty Derby, Fish Audio, and official materials remain with their respective owners. Full license and third-party notices are installed beside this guide.
       </div>
     </section>
 
@@ -4567,7 +4568,7 @@
         numpad: "Yes. Numpad Plus is stored separately from the regular Plus key. If it does not trigger, turn Num Lock on, capture the key again, and run Check my setup.",
         microphone: "Open Check my setup in Options, confirm the correct microphone, and allow desktop microphone access in Windows Privacy settings. If Windows selected an ancient webcam mic, retire that fossil from the list.",
         speakers: "Open the Voice tab and choose the output device where you want Agnes to speak. A change waits until the current sentence ends, so she does not cut herself in half for the sake of a dropdown.",
-        localvoice: "This guide uses the smoothest compatible English voice installed in your browser or Windows. It waits for the natural voice list before the first answer, then keeps the same voice with a brisk, slightly lower laboratory delivery.",
+        localvoice: "This public guide shows its built-in answers silently because putting a Fish API key in a web page would expose it. The installed Agnes app speaks with the exact linked Fish model after you add your own protected Fish key in Options.",
         screen: "This guide cannot see your screen. The installed companion can watch locally at up to ten frames per second after you enable Live screen awareness in Options. Only selected keyframes reach the picture model, and you can turn it off whenever you want.",
         realtime: "Yes locally: the installed companion watches the active monitor at up to ten frames per second and keeps the strongest recent changes in memory. It sends only useful keyframes for confident game or desktop reactions, so it feels live without charging the AI for every frame.",
         privacy: "Screen awareness is optional and visible in Options. The app sends a selected frame to the configured vision provider only while that feature is enabled, and visible screen text is treated as untrusted data.",
@@ -4578,7 +4579,7 @@
         currentfacts: "When web knowledge is enabled, unfamiliar products and time-sensitive questions can use a live lookup. That is how I avoid insisting a modern GPU is a rumor invented by your power supply.",
         memory: "A small local conversation memory can be enabled in Options. It is meant for useful continuity, not an endless biography. You can turn it off or clear it whenever you want.",
         internet: "Ordinary local controls work without browsing. AI chat, transcription, natural cloud voice, vision, updates, and current-fact checks need the services they use. Options explains which feature needs what.",
-        provider: "Groq is the easiest all-in-one setup here for chat, transcription, vision, and the preferred expressive voice path. OpenAI and Gemini modes are also supported where their matching models are selected.",
+        provider: "Groq is the easiest all-in-one setup for chat, transcription, and vision. Fish Audio handles Agnes's voice separately with its own protected key and the exact model selected for this release. OpenAI and Gemini brain modes remain available too.",
         mistakes: "Absolutely. A confident tone is not a physics proof. For important or current claims, ask me to verify, check the source, and keep one eyebrow raised like a responsible scientist.",
         updates: "When Agnes opens, she checks the signed release channel. Choose Download update, and the app verifies the size, hash, and owner signature before replacing the current app files while preserving settings.",
         required: "A required update means the owner marked that release as necessary, usually for safety or compatibility. Agnes pauses normal features until it is installed or the app exits; optional updates can wait.",
@@ -4594,7 +4595,6 @@
         focus: "Back to the experiment, test subject. Pick one small task, close the distractions, and finish it before optimizing the color of a button you will press twice. Yes, I noticed.",
       });
       let localVoiceGeneration = 0;
-      let cachedLocalVoice = null;
 
       const selectQuestionCategory = (category, focusTab = false) => {
         questionCategoryTabs.forEach((tab) => {
@@ -4623,64 +4623,6 @@
       });
       selectQuestionCategory("about");
 
-      const chooseLocalVoice = (voices = []) => {
-        const scoreVoice = (voice) => {
-          const name = voice.name.toLowerCase();
-          const language = voice.lang.toLowerCase();
-          if (!language.startsWith("en")) return -1000;
-          let score = language.startsWith("en-gb") ? 90 : 70;
-          if (/natural|online/.test(name)) score += 220;
-          if (/microsoft ava.*multilingual/.test(name)) score += 680;
-          else if (/microsoft (jenny|aria)/.test(name)) score += 560;
-          else if (/microsoft (sonia|emma)/.test(name)) score += 480;
-          else if (/google uk english female/.test(name)) score += 300;
-          else if (/female/.test(name)) score += 120;
-          if (/david|guy|mark|male/.test(name)) score -= 500;
-          return score;
-        };
-        return voices
-          .filter((voice) => /^en(?:-|_)/i.test(voice.lang))
-          .sort((left, right) => scoreVoice(right) - scoreVoice(left))[0]
-          || null;
-      };
-
-      const refreshLocalVoice = () => {
-        if (!("speechSynthesis" in window)) return null;
-        const voices = window.speechSynthesis.getVoices();
-        const selected = chooseLocalVoice(voices);
-        if (selected) cachedLocalVoice = selected;
-        return cachedLocalVoice;
-      };
-
-      const waitForLocalVoice = () => {
-        const immediate = refreshLocalVoice();
-        if (immediate || !("speechSynthesis" in window)) return Promise.resolve(immediate);
-        return new Promise((resolve) => {
-          let finished = false;
-          const settle = () => {
-            const voice = refreshLocalVoice();
-            if (!voice && !finished) return;
-            finished = true;
-            window.clearTimeout(timeout);
-            window.speechSynthesis.removeEventListener?.("voiceschanged", settle);
-            resolve(voice);
-          };
-          const timeout = window.setTimeout(() => {
-            if (finished) return;
-            finished = true;
-            window.speechSynthesis.removeEventListener?.("voiceschanged", settle);
-            resolve(refreshLocalVoice());
-          }, 1400);
-          window.speechSynthesis.addEventListener?.("voiceschanged", settle);
-          window.setTimeout(settle, 0);
-        });
-      };
-
-      if ("speechSynthesis" in window) {
-        window.speechSynthesis.addEventListener?.("voiceschanged", refreshLocalVoice);
-        window.setTimeout(refreshLocalVoice, 0);
-      }
-
       const finishLocalVoice = (generation) => {
         if (generation !== localVoiceGeneration) return;
         labCore.classList.remove("speaking");
@@ -4688,7 +4630,7 @@
         questionChips.forEach((chip) => chip.setAttribute("aria-pressed", "false"));
       };
 
-      const speakLocalAnswer = async (key, sourceButton) => {
+      const showLocalAnswer = (key, sourceButton) => {
         const answer = localAnswers[key];
         if (!answer) return;
         localVoiceGeneration += 1;
@@ -4715,56 +4657,19 @@
           } });
         }
 
-        if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-          agnesAnswer.textContent = `${answer} Your browser cannot play the local voice, but the built-in answer is still shown here.`;
-          finishLocalVoice(generation);
-          return;
-        }
-
-        window.speechSynthesis.cancel();
-        setAgnesMode("TUNING VOICE");
-        const voice = await waitForLocalVoice();
-        if (generation !== localVoiceGeneration) return;
-        const phrases = answer.match(/[^.!?]+[.!?]+|[^.!?]+$/g)
-          ?.map((part) => part.trim()).filter(Boolean) || [answer];
-        const speakPhrase = (index) => {
-          if (generation !== localVoiceGeneration) return;
-          if (index >= phrases.length) {
-            finishLocalVoice(generation);
-            return;
-          }
-          const utterance = new SpeechSynthesisUtterance(phrases[index]);
-          if (voice) utterance.voice = voice;
-          utterance.lang = voice?.lang || "en-US";
-          // Short separate thoughts let Windows' natural voices breathe instead
-          // of flattening a whole paragraph into one robotic waveform.
-          utterance.rate = index % 3 === 1 ? 1.02 : 1.05;
-          utterance.pitch = index % 2 === 0 ? 1.07 : 1.04;
-          utterance.volume = 1;
-          utterance.onstart = () => {
-            if (generation === localVoiceGeneration) setAgnesMode("LOCAL VOICE");
-          };
-          utterance.onend = () => window.setTimeout(() => speakPhrase(index + 1), 75);
-          utterance.onerror = () => finishLocalVoice(generation);
-          try {
-            window.speechSynthesis.speak(utterance);
-          } catch {
-            finishLocalVoice(generation);
-          }
-        };
-        speakPhrase(0);
+        setAgnesMode("INSTANT ANSWER");
+        window.setTimeout(() => finishLocalVoice(generation), 4200);
       };
 
       questionChips.forEach((button) => {
         button.addEventListener("click", () => {
-          speakLocalAnswer(button.dataset.agnesQuestion, button);
+          showLocalAnswer(button.dataset.agnesQuestion, button);
         });
       });
 
       window.addEventListener("pagehide", () => {
         localVoiceGeneration += 1;
         stopAgnesMusic();
-        if ("speechSynthesis" in window) window.speechSynthesis.cancel();
       });
 
       const fixSearch = document.getElementById("fixSearch");
@@ -5008,7 +4913,6 @@
             labCore.classList.remove("speaking");
             agnesConsole.classList.remove("answering");
             questionChips.forEach((chip) => chip.setAttribute("aria-pressed", "false"));
-            if ("speechSynthesis" in window) window.speechSynthesis.cancel();
             resetAmbientEffects();
             stopCanvas();
           } else if (canvasEnabled()) {

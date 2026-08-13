@@ -1,4 +1,24 @@
-# Agnes Tachyon AI Companion 6.4.1
+# Agnes Tachyon AI Companion 6.5.0
+
+## 6.5.0 — One voice, properly wired
+
+I replaced every built-in desktop speech path with the Fish Audio S2 Pro voice
+the project now uses: `64e74b61065540f4abed3a0f30cf14d9`.
+
+- Old Groq Orpheus and Windows neural voice settings migrate to Fish, so an old
+  config cannot randomly bring the wrong Agnes voice back.
+- Fish keys are stored in Windows Credential Manager. No shared secret is
+  embedded in the EXE, installer, config, guide, or GitHub page.
+- Options now has a clear Fish key field and shows Fish's exact returned credit
+  balance alongside conversations, tokens, vision reviews, voice characters,
+  and listening time.
+- Fish S2 Pro receives the clean spoken answer directly with natural pacing;
+  failures stay honest instead of swapping to a robotic substitute.
+- The public Setup Lab no longer pretends a random browser voice is Agnes. Its
+  built-in questions remain instant and text-only; the installed app owns the
+  exact voice path.
+- Existing settings migrate in place, the optional Applio installer choice
+  remains available, and private API keys never enter the release package.
 
 ## 6.4.1 — One Agnes, a real dance stop, and the full meter
 
