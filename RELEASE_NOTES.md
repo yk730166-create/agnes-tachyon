@@ -1,4 +1,23 @@
-# Agnes Tachyon AI Companion 6.5.3
+# Agnes Tachyon AI Companion 6.5.4
+
+## 6.5.4 — One voice path, no extra engine
+
+I removed the optional local conversion engine completely. Agnes now has one
+clear desktop speech path through Fish, without a second multi-gigabyte tool or
+extra model fields to configure.
+
+- Setup no longer offers, downloads, extracts, or compresses an extra voice
+  engine.
+- Options no longer shows local converter paths, and **Check my setup** no
+  longer reports those retired extras as missing or incomplete.
+- The updater removes Agnes's old app-managed `VoiceEngine` folder so an
+  existing installation does not keep several gigabytes of unused files.
+- Old converter settings are safely removed during configuration migration;
+  unrelated settings and files outside Agnes's managed folder stay untouched.
+- Fish audio now goes straight to playback, which removes a slow subprocess
+  and several failure points from every spoken response.
+- The release was rebuilt and checked as a required in-place update for all
+  supported Windows 10 and Windows 11 editions.
 
 ## 6.5.3 — The guide finally talks
 
@@ -12,8 +31,8 @@ the owner build, so the public page contains audio but no reusable Fish key.
   so voice and music do not fight each other.
 - **Check my setup** now recognizes every supported AI provider, including a
   saved Gemini key, and reports which selected brain is ready.
-- Groq push-to-talk, Applio/RVC conversion, and the external companion are
-  clearly grouped as optional capabilities instead of failing the whole setup.
+- Groq push-to-talk and the external companion are clearly grouped as optional
+  capabilities instead of failing the whole setup.
 - The installed guide includes every voice clip and automatic updates replace
   the voice folder along with the rest of the managed guide assets.
 
@@ -64,8 +83,8 @@ the project now uses: `64e74b61065540f4abed3a0f30cf14d9`.
 - The public Setup Lab no longer pretends a random browser voice is Agnes. Its
   built-in questions remain instant and text-only; the installed app owns the
   exact voice path.
-- Existing settings migrate in place, the optional Applio installer choice
-  remains available, and private API keys never enter the release package.
+- Existing settings migrate in place, and private API keys never enter the
+  release package.
 
 ## 6.4.1 — One Agnes, a real dance stop, and the full meter
 
@@ -114,31 +133,6 @@ without quietly feeding every frame to a paid model.
   they actually help.
 - Usage records contain counters only—never prompts, screenshots, transcripts,
   API keys or spoken text.
-
-## 6.3.9 — The optional voice engine is back
-
-This is a small voice-focused update. Normal installs stay the same size, and
-automatic updates do not suddenly pull several gigabytes onto anyone's PC.
-
-- Setup once again has an unchecked option to download official Applio 3.6.4.
-  The 4.6 GB archive is pinned to its release revision and exact SHA-256 before
-  Inno Setup extracts it. It also checks for the 13 GB of temporary free space
-  needed for the download and unpacking step.
-- Added a second optional checkbox for Windows file compression after Applio is
-  installed. If compression is unavailable, the voice engine still works.
-- Agnes automatically finds Setup's per-user Applio folder. The converter now
-  prefers Applio's matching embedded Python and native packages instead of
-  accidentally mixing them with an unrelated system Python.
-- Removed the forced “fast paced” direction from ordinary Orpheus lines. Groq
-  recommends no direction for natural conversation, so regular speech now has
-  a less acted, less robotic cadence while real questions and emotional lines
-  can still use restrained directions.
-- Licensed RVC voice models use a slightly stronger index blend, the full
-  output volume envelope, and Applio's recommended consonant protection. Old
-  untouched defaults migrate automatically; custom tuning stays unchanged.
-- Applio remains optional and does not include or download a character voice
-  model. A matching `.pth` and `.index` that the user may legally use are still
-  selected in Options.
 
 ## 6.3.8 — The updater now lets Agnes stay awake
 
@@ -435,8 +429,8 @@ whether Windows ate her.
   transcription separate from other selectable chat providers.
 - New speech cancels stale generation and playback. AI reactions are bounded,
   deduplicated, and processed latest-first to prevent emote or voice spam.
-- TTS, microphone capture, screen capture, network streams, background tasks,
-  and optional converter processes now have bounded cleanup and timeouts.
+- TTS, microphone capture, screen capture, network streams, and background
+  tasks now have bounded cleanup and timeouts.
 
 ## Reliability and privacy
 

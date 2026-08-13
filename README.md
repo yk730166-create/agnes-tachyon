@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.5.3**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.5.4**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -32,11 +32,6 @@ is missing instead of throwing a wall of error text at you.
 4. Create a Groq key for chat/listening and a Fish Audio key for Agnes's voice.
    Both keys are stored in Windows Credential Manager, not in a readable file.
 
-Setup also offers an unchecked **optional high-quality voice engine** task. It
-downloads the official Applio 3.6.4 package only when selected, verifies its
-exact SHA-256 before extraction, and needs about 13 GB free temporarily. The
-normal Agnes install and every automatic update skip that 4.6 GB download.
-
 After that, start Agnes normally. When I publish an update, Agnes shows it in
 the app. Press **Download update** and the app checks the signed file, installs
 it in place, preserves settings and protected keys, then restarts.
@@ -61,16 +56,10 @@ The free Fish model string is `s2.1-pro-free`; Agnes has no automatic paid-model
 fallback. Fish still requires an API key for authentication. Never put that key
 in a public web page or shared installer.
 
-For a voice model that the user has permission to use, the optional Applio path
-now prefers Applio's matching embedded Python runtime and stronger, cleaner RVC
-defaults. Setup does not include or silently fetch a character voice model;
-choose both its `.pth` model and matching `.index` file in Options.
-
 The Setup Lab has 36 fixed questions that work without an AI request. Its public
-web page shows those answers silently instead of exposing a Fish key or imitating
-Agnes with a generic browser voice. The installed app speaks them with Fish. The setup-guide preview also
-uses native 60 FPS transparent video instead of making the browser crop huge images
-frame by frame.
+web page plays pre-rendered clips from the same linked Fish model without
+exposing a reusable Fish key. The setup-guide preview also uses native 60 FPS
+transparent video instead of making the browser crop huge images frame by frame.
 
 ## Privacy without weird promises
 
