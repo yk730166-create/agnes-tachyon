@@ -1,4 +1,20 @@
-# Agnes Tachyon AI Companion 6.5.1
+# Agnes Tachyon AI Companion 6.5.2
+
+## 6.5.2 — Options that stay in their lane
+
+I cleaned up the AI section in Options so choice boxes behave like choice
+boxes instead of letting accidental typing create broken settings.
+
+- Every dropdown is selection-only, including the AI brain and picture model.
+- Changing the AI company now refreshes both model lists and the server address
+  together, so mismatched provider/model combinations are much harder to make.
+- Direct choices now include Groq, OpenAI, Google Gemini, DeepSeek, xAI,
+  Mistral AI, Together AI, Ollama, and LM Studio.
+- OpenRouter is included for people who want one compatible key for its wider
+  provider catalog.
+- Cloud keys stay in Windows Credential Manager; local providers need no key.
+- Old unknown provider values fall back safely instead of leaving Options in a
+  half-valid state.
 
 ## 6.5.1 — Fish voice without normal credit charges
 
