@@ -97,7 +97,7 @@ metadata.
 
 ## Hosted speech service
 
-The default speech path calls Fish Audio S2 Pro with public community model ID
+The default speech path calls Fish Audio S2.1 Pro Free with public community model ID
 `64e74b61065540f4abed3a0f30cf14d9`, titled “Agnes Tachyon” and published on
 Fish Audio by user `raaah`. Fish Audio reported the model as public when checked
 on 13 August 2026. Public availability is not an ownership transfer or a promise
@@ -105,6 +105,9 @@ that every possible use is licensed. The model, generated voice, service, and
 underlying performances remain subject to Fish Audio's terms and applicable
 rightsholder rights. The installer contains no Fish model weights, sample audio,
 API key, or official recording and does not claim this is an official voice.
+Fish announced `s2.1-pro-free` as a fair-use developer tier and, when checked
+on 13 August 2026, said the free window was extended through 31 August 2026.
+Availability and terms can change; Agnes has no automatic paid TTS fallback.
 
 - Model page: https://fish.audio/m/64e74b61065540f4abed3a0f30cf14d9
 - Fish Audio API documentation: https://docs.fish.audio/api-reference/introduction

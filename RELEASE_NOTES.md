@@ -1,4 +1,18 @@
-# Agnes Tachyon AI Companion 6.5.0
+# Agnes Tachyon AI Companion 6.5.1
+
+## 6.5.1 — Fish voice without normal credit charges
+
+This small required follow-up switches the exact Agnes voice to Fish Audio's
+official `s2.1-pro-free` API model string.
+
+- The same public Agnes voice reference remains pinned.
+- Speech uses Fish's free developer model under its current fair-use terms,
+  instead of the normal pay-as-you-go S2 Pro model.
+- There is no automatic paid-model fallback, so Agnes cannot quietly spend
+  normal TTS credits if the free endpoint is unavailable.
+- Existing 6.5.0 settings migrate automatically.
+- API keys remain per-user secrets in Windows Credential Manager. No Fish key
+  is embedded in the EXE, installer, website, update notice, or GitHub files.
 
 ## 6.5.0 — One voice, properly wired
 
