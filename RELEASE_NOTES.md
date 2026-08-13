@@ -1,4 +1,27 @@
-# Agnes Tachyon AI Companion 6.5.5
+# Agnes Tachyon AI Companion 6.5.6
+
+## 6.5.6 — Faster answers with a more human voice
+
+This one makes talking to Agnes feel less like waiting on a voice assistant and
+more like having someone there with you.
+
+- Short, complete answers start generating speech immediately, the normal chat
+  context is smaller, and the “Wait, let me think” line begins sooner only when
+  an answer is genuinely taking time.
+- Fish voice generation now uses its balanced conversational mode and smaller
+  chunks, improving time-to-audio without using the lower-quality fast mode.
+- Fish's streaming WAV header is repaired before playback. A short line can no
+  longer be misread as a many-hour audio clip and leave speech timing stuck.
+- Agnes uses restrained Fish S2 delivery cues chosen from the meaning of her
+  line. Wins sound excited, danger sounds concerned, comfort sounds warm, and
+  genuine jokes may get a soft chuckle. Plain answers stay plain, so emotions
+  do not fire randomly.
+- Agnes now receives an honest live summary of her enabled abilities. She knows
+  whether screen awareness and local memory are on, knows the talk key, and can
+  explain that she inspects fresh frames and reacts to confirmed game events.
+- Autonomous screen reactions remain independent from push-to-talk: confirmed
+  deaths, misses, wins, danger, achievements, and notable moments can trigger a
+  matching animation and spoken reaction while you play.
 
 ## 6.5.5 — Agnes can hear you again
 
