@@ -1,4 +1,34 @@
-# Agnes Tachyon AI Companion 6.5.4
+# Agnes Tachyon AI Companion 6.5.5
+
+## 6.5.5 — Agnes can hear you again
+
+I traced the silent push-to-talk problem on a real installed copy. The mic was
+recording correctly, but an old Groq key was being rejected while a valid
+Gemini key sat unused. This update fixes that split and makes failures obvious.
+
+- Groq, OpenAI, and Gemini now use the selected AI company's key for both chat
+  and speech recognition. Other AI companies can still use a separate Groq
+  listening key.
+- **Check my setup** verifies the selected AI and Fish keys online without
+  generating an answer or spending normal text/voice credits. Rejected keys
+  are identified clearly instead of being called ready just because text was
+  saved.
+- A failed or rate-limited transcription now gives a short useful message. A
+  slow valid answer says “Wait, let me think” sooner, while normal answers keep
+  streaming immediately.
+- **Show Agnes over full-screen games** now means exactly that. Off hides Agnes
+  during a full-screen app and restores her without stealing focus; on keeps
+  her visible. Changing it in Options applies live.
+- Game reactions no longer depend on a title list. Agnes can react to proven
+  events in familiar or unknown action, racing, sports, sandbox, shooter,
+  platform, strategy, RPG, horror, and fighting games—including deaths,
+  misses, wins, danger, achievements, bosses, QTEs, checkpoints, objectives,
+  discoveries, puzzles, and exceptional moves.
+- The local screen stream still watches at up to 10 FPS. Gemini cloud reviews
+  are paced to avoid its common free-tier minute limit, and vanished foreground
+  windows no longer produce capture errors when switching apps.
+- Options wording and health checks now match the packaged Agnes model and the
+  settings the runtime actually uses.
 
 ## 6.5.4 — One voice path, no extra engine
 
