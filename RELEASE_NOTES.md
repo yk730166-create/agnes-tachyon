@@ -1,4 +1,67 @@
-# Agnes Tachyon AI Companion 6.5.6
+# Agnes Tachyon AI Companion 6.6.0
+
+## 6.6.0 — Agnes actually watches for the moment now
+
+The old screen system waited on a timer. This one watches locally, reacts as
+soon as something meaningful happens, and asks the vision model only when it
+needs help understanding the moment.
+
+- A new local event engine samples tiny brightness, color, and motion numbers
+  while a game is focused. It stores no recording and spends no AI credits.
+- Death-screen, impact, result-screen, and other large transitions can trigger
+  an immediate animation and a focused two- or three-frame AI confirmation.
+  Normal camera movement does not trigger a review.
+- Minecraft gets a safe log adapter for official, Prism, Modrinth, ATLauncher,
+  MultiMC, and common CurseForge layouts. Your deaths and advancements can be
+  noticed instantly with mods or without them, without a picture request.
+- COD, GTA, Steam, Xbox, Epic, EA, GOG, Riot, Ubisoft, Unity, Unreal, SDL,
+  GLFW, and unfamiliar borderless games are recognized more reliably. Game
+  launchers, Discord, browsers, and ordinary maximized apps stay excluded.
+- One cloud event request now both identifies the moment and writes the short
+  spoken reaction. The old second AI request is gone, and cooldowns prevent
+  repeated reactions from piling up.
+- Local capture slows down when no game is focused. Screen frames stay only in
+  a short memory buffer, and the system never reads game memory, injects code,
+  hooks rendering, or sends controls, keeping it friendly to anti-cheat tools.
+- Options replaces the confusing check timer with three clear choices: Smart,
+  Local only, and Most aware. The usage card now separates local events, safe
+  log events, and AI-confirmed events.
+
+This is designed to cover strong visual events in nearly any game, while exact
+game adapters provide the fastest results when a game exposes a safe log.
+
+## 6.5.7 — Agnes stays visible and answers sooner
+
+This one fixes the annoying cases where Agnes vanished, protects chat from the
+screen watcher, and makes the settings much easier to understand.
+
+- The full-screen watcher now remembers Agnes's exact hidden window and can
+  find it while it is hidden, so leaving a game restores her immediately. Even
+  an unexpected Windows window-manager error fails visible instead of leaving
+  her gone for the rest of the session.
+- A maximized Discord, browser, editor, or normal desktop app is no longer
+  treated as a full-screen game. Borderless games and games from Steam, Xbox,
+  Epic, EA, GOG, Riot, and Ubisoft are recognized more reliably.
+- Automatic screen reactions now run only while a likely game is in front.
+  Old game context is cleared when you switch away, and Gemini background
+  reviews are spaced and capped so they cannot consume the requests Agnes
+  needs to hear and answer you.
+- The slow-answer cue is prepared once and played locally. It no longer starts
+  another Fish generation in front of the real reply, and it triggers based on
+  how long you have waited to hear speech—not whether invisible text started.
+- Normal answers keep less stale history, use shorter reply budgets, and log
+  listening and first-token timing separately so future slowdowns have an exact
+  cause instead of one misleading total.
+- Game reactions understand more proven moments, including falls, embarrassing
+  mistakes, close calls, and failed objectives, while keeping confidence checks
+  and cooldowns to avoid random or repeated reactions.
+- Options is cleaner and more modern: Start, Talk, Games & Agnes, and More use
+  plain wording; one-choice voice/character boxes are gone; answer modes no
+  longer secretly change game-watching speed; and the full-screen switch
+  explains exactly what it does.
+- Gemini choices now include the current stable 3.6/3.5 Flash family, with the
+  request compatibility those models need. Windows file metadata was repaired
+  so the updater, installer, and both EXEs all report the same version.
 
 ## 6.5.6 — Faster answers with a more human voice
 

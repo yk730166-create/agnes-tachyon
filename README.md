@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.5.6**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.6.0**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -12,8 +12,8 @@ Windows 11 releases.
 
 - push-to-talk chat with a key you choose by pressing it;
 - spoken answers, microphone and speaker selection;
-- local screen watching at up to 10 FPS, with paid vision requests reserved
-  for useful keyframes and direct visual questions;
+- local game-event watching at up to 10 FPS, with instant Minecraft log events
+  and paid vision requests reserved for uncertain, meaningful moments;
 - the real bundled Agnes desktop model with movement, clicks, snacks, emotes,
   random actions and the two original Uma music dances;
 - live lookup for newer hardware, news and other facts that can change;
@@ -29,8 +29,9 @@ is missing instead of throwing a wall of error text at you.
 1. Open the [latest release](https://github.com/yk730166-create/agnes-tachyon/releases/latest).
 2. Download `AgnesTachyonSetup.exe`.
 3. Run it, open Agnes Options, and follow the three setup steps.
-4. Create a Groq key for chat/listening and a Fish Audio key for Agnes's voice.
-   Both keys are stored in Windows Credential Manager, not in a readable file.
+4. Add a key for the AI company you choose (Groq is the easy default), plus a
+   Fish Audio key for Agnes's voice. Both are stored in Windows Credential
+   Manager, not in a readable file.
 
 After that, start Agnes normally. When I publish an update, Agnes shows it in
 the app. Press **Download update** and the app checks the signed file, installs
