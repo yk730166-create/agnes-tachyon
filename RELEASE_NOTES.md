@@ -1,4 +1,31 @@
-# Agnes Tachyon AI Companion 6.6.2
+# Agnes Tachyon AI Companion 6.6.3
+
+## 6.6.3 — Options finally feels finished
+
+If you skipped 6.6.2, Agnes still performs that one-time settings reset after
+this update and clearly opens Options once. Your protected AI-provider and Fish
+Audio keys stay. People who already completed the reset are not reset again.
+
+- Options now uses real Windows 11 outer corners without transparent holes.
+  Windows 10 keeps a solid square window, and maximized mode is always square.
+- The ugly full-row selection rectangles are gone. Keyboard users still get a
+  small, clean focus ring on the control they are actually using.
+- Footer actions have truthful minimum sizes, so **Save & close** and the other
+  icon buttons no longer lose half their text at ordinary window sizes or DPI.
+- The Voice page now offers **Agnes — Classic** and the optional, brighter
+  **Agnes — Bright** performance. Both use the same protected Fish Audio key,
+  and changing voices also changes the cached thinking cue correctly.
+- **Check my setup** tests only the AI company currently selected. Gemini uses
+  Google's own no-generation model-list check, Fish is checked separately, and
+  a rejected key can no longer appear in the “Already working” list.
+- The tray menu is roomier, smoother, and easier to scan, with a distinct color
+  and symbol for each action instead of a row of near-identical blue icons.
+- Minecraft log watching no longer treats every random Java application as
+  Minecraft. Local visual-event cooldowns also reset correctly when games
+  change, avoiding missed reactions after switching titles.
+- A live Windows/DPI pass caught and fixed a tab-focus paint exception before
+  release, and the voice, settings, game-awareness, icon, reaction, updater,
+  installer, and packaging paths were run through the full regression gate.
 
 ## 6.6.2 — Fullscreen stays yours
 
