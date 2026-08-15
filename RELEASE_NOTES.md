@@ -1,4 +1,35 @@
-# Agnes Tachyon AI Companion 6.6.1
+# Agnes Tachyon AI Companion 6.6.2
+
+## 6.6.2 — Fullscreen stays yours
+
+**Important settings reset:** this required stability update resets every Agnes
+option to the new safe defaults. Saved AI-provider API keys and the Fish Audio
+key stay protected in Windows Credential Manager. Agnes shows a warning and
+opens Options after the update—once no full-screen game is active—so the talk
+key, microphone, speaker, AI provider, and game choices can be reviewed.
+
+- Agnes no longer hides, shows, repaints, activates, or reorders her WPF model
+  while a game owns full screen. Those window operations could knock some
+  exclusive games out of full screen or make a fragile game close.
+- Pet actions and the automatic end of a music dance no longer focus Agnes or
+  emit a global keyboard event. Every action key is sent only to the verified
+  Agnes process, so an Escape, number, or snack key cannot leak into the game.
+- The invisible-hitbox safety remains: if exclusive scan-out hides Agnes's
+  pixels, mouse input passes through to the game and her exact original window
+  style returns after full screen ends.
+- Ordinary conversation starts Fish speech from a shorter natural phrase.
+  Complex or live-search answers say “Wait, let me think” only after a real
+  delay, and a ready answer now interrupts that cue instead of waiting for the
+  entire clip to finish.
+- Short autonomous game reactions use the fast sibling model from the same AI
+  provider, with a smaller answer budget. Full questions still automatically
+  use the larger brain when they need deeper reasoning.
+- The runtime, installer, and reset profile now share the same current game
+  awareness and personality defaults. Local screen-event measurement remains
+  at 10 FPS, while bounded cloud reviews and daily limits prevent credit burn.
+- Redundant SDK retries were removed from the clean defaults. Agnes still makes
+  one deliberate retry for a connection hiccup, but no longer stacks hidden
+  retries that make an outage look like a frozen response.
 
 ## 6.6.1 — Agnes stays visible, not just clickable
 
