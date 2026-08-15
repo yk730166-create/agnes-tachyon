@@ -1,4 +1,28 @@
-# Agnes Tachyon AI Companion 6.6.0
+# Agnes Tachyon AI Companion 6.6.1
+
+## 6.6.1 — Agnes stays visible, not just clickable
+
+This fixes the strange full-screen case where a game could swallow Agnes's
+picture but leave her invisible click area above your controls.
+
+- Borderless and Windows-composed full-screen games now rebuild Agnes's
+  transparent WPF drawing surface, raise every Agnes-owned surface together,
+  and repaint without stealing keyboard focus.
+- The companion's supported one-alpha transparency safeguard is enabled before
+  launch. It is visually transparent, but prevents Windows composition from
+  keeping an invisible hitbox after dropping the sprite layer.
+- Hiding and restoring Agnes now includes spawned items and any other visible
+  companion surfaces, so invisible interactive leftovers cannot remain over a
+  game.
+- While a game is focused, Agnes automatically lets mouse clicks pass through.
+  Old exclusive full-screen modes can bypass all safe Windows overlays; those
+  games should use Borderless Windowed for visible Agnes, and can no longer
+  leave an invisible hitbox blocking the game.
+- The watcher checks more quickly during a full-screen game, but slows down on
+  the desktop and reuses its process lookup cache to reduce background work.
+- Live game awareness still measures events locally at 10 FPS, while JPEG
+  creation is now limited to useful transition, settled, and heartbeat frames.
+  Detection stays quick with less CPU and memory churn during normal movement.
 
 ## 6.6.0 — Agnes actually watches for the moment now
 
