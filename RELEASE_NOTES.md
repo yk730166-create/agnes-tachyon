@@ -1,4 +1,69 @@
-# Agnes Tachyon AI Companion 6.6.3
+# Agnes Tachyon AI Companion 6.6.5
+
+## 6.6.5 — Agnes stays with the game and the conversation
+
+This one fixes the things you can actually feel while using Agnes. She stays
+above full-screen games without touching the game window, keeps talking when
+you move or hover over her, remembers the conversation, and her tray toys work
+without stealing focus.
+
+- Full-screen mode now refreshes only Agnes's verified model window in the
+  topmost band. It never activates, resizes, minimizes, closes, or sends keys to
+  the game, and mouse input still passes safely through during full screen.
+- Hovering over Agnes or ordinary model movement can no longer interrupt her
+  voice. Holding the talk key while she speaks remains the deliberate way to
+  interrupt her and start a new thought.
+- Conversations now survive restarts in a small local history file. It stores
+  text only, stays bounded, rejects credential-looking text, and is removed by
+  Clear memory alongside saved facts.
+- “Wait, let me think” can no longer cancel or swallow the real answer. The cue
+  starts only when ready, retires as soon as the answer arrives, and never
+  advances the response's speech generation.
+- Agnes is masked out of her own screen captures, so “what's that?” describes
+  the game or app underneath instead of confidently introducing herself.
+- Local and cloud game awareness now cover boss moments, objectives, revives,
+  streaks, rare loot, jumpscares, crashes, defeat/damage transitions, result
+  screens, and major scene changes with per-event cooldowns to avoid spam.
+- Play with Agnes now clicks the real model's native dance, snack, poke, and
+  emote hotspots directly. These actions work without keyboard focus and cannot
+  leak a key into a full-screen game.
+- Options and the tray share a rebuilt command-deck look with clearer page
+  names, simpler actions, larger targets, distinct icons, and compact layouts
+  that keep every control inside the window.
+- The complete 246-test suite, lint gate, voice, vision, lifecycle, game-event,
+  fullscreen, memory, tray, installer, and packaged-runtime paths were checked
+  again for this required release.
+
+## 6.6.4 — One clean control center
+
+Okay, this one is the proper cleanup pass. Agnes now has one home in Windows,
+Options has its own visual identity instead of feeling like an old settings
+dialog, and several quiet runtime bugs were fixed while I was in there.
+
+- There is now one Agnes tray/controller icon. The bundled model's old taskbar
+  button and legacy tray icon are removed by exact process and file path, so no
+  other program can be touched by mistake. Explorer restarts are handled too.
+- An Agnes model left behind by an older crash is adopted into the new session
+  and closes normally with Agnes instead of surviving every relaunch as a
+  duplicate icon or invisible process.
+- Options was rebuilt around a cleaner tachyon-lab theme: solid modern surfaces,
+  copper Agnes details, cyan status signals, clearer cards, consistent controls,
+  and responsive layouts that keep every action visible down to 640×500.
+- The tray is now a real Agnes control center with its own status card, larger
+  targets, clearer groups, distinct action icons, smoother motion, and the same
+  colors as Options instead of a generic right-click menu.
+- Screen watching now starts correctly even in Local-only mode, so credit-free
+  game detection does not depend on a cloud vision client being available.
+- Trusted game events and visual events can no longer announce the same moment
+  twice. Java tools and store/launcher windows also stay out of game detection.
+- Cancelling a speech-to-text request no longer leaves a background provider
+  call blocking the next thing you say. First-run voice prewarming and the
+  thinking cue now share one job instead of racing each other.
+- A newly saved Credential Manager key wins over an old environment-variable
+  key, so replacing a rejected provider key actually takes effect immediately.
+- The complete source regression suite, static checks, Windows rendering, tray
+  ownership, icon lifecycle, game awareness, voice, vision, updater, installer,
+  and packaged-runtime paths were checked again for this required release.
 
 ## 6.6.3 — Options finally feels finished
 
