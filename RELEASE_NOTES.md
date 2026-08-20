@@ -1,4 +1,25 @@
-# Agnes Tachyon AI Companion 6.6.5
+# Agnes Tachyon AI Companion 6.6.6
+
+## 6.6.6 — The buttons work and Agnes answers
+
+This fixes the annoying one: Agnes no longer says “wait, let me think” and then
+leaves you talking to the wallpaper. The old Fish community voice disappeared,
+so every existing install now moves to the working Agnes voice automatically.
+
+- Dance, snack, poke, and surprise now use an acknowledged command channel in
+  the bundled Agnes model. The tray only reports success after the model really
+  receives the action; nothing steals focus or sends a key into your game.
+- The retired Fish reference is gone from Options. **Agnes — Natural** is now
+  the single working voice, and stale settings recover automatically.
+- Small stable questions such as greetings, “who are you?”, features, screen
+  awareness, thanks, time, and date answer locally with zero AI credits.
+- Ordinary AI chat gets one short, bounded attempt instead of waiting through a
+  full timeout and repeating the same slow request. Hard questions still keep
+  the larger reasoning path and a retry where it can actually help.
+- All 36 Setup Lab voice answers were rebuilt with the same working Agnes voice.
+- The companion command path, voice migration, Fish failure recovery, thinking
+  cue handoff, conversation history, and the complete test suite were checked
+  again for this required fix.
 
 ## 6.6.5 — Agnes stays with the game and the conversation
 

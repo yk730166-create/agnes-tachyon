@@ -12,11 +12,9 @@ for advice from a qualified intellectual-property lawyer.
 | Setup Lab Agnes source sheets and derived transparent clips | Third-party fan-project artwork; not claimed for y4x5lol | Only compressed runtime clips are included at the project owner's direction; permission not independently verified |
 | Bundled Desktop Gremlin Agnes model, animation sheets and matching sounds | Kritzkingvoid/other rightsholders; no ownership claimed by y4x5lol | Included at the project owner's direction for personal, non-commercial use |
 | Python and Qt dependencies | Third-party open-source licenses | Yes, only while complying with each license |
-| Applio runtime | Third-party MIT software plus its Terms of Use | Yes, license notices and terms must be preserved |
 | Desktop Gremlin binary/code/assets | Kritzkingvoid/other rightsholders; no license found | Included at the project owner's direction; **permission not independently verified** |
 | Umamusume/Agnes names, design, official assets | Cygames and/or other rightsholders | Limited unofficial, non-commercial fan use only; no ownership transfer |
-| Tachyon RVC model and index | Unknown source/license; voice/rightsholder interests | **No verified permission** |
-| Fish Audio model `64e74b61065540f4abed3a0f30cf14d9` | Public third-party community model/service; no model weights, sample audio, API keys, or official recordings are bundled | API use only, under Fish Audio's terms and applicable voice/rightsholder rights |
+| Fish Audio model `e34bac0a56564919ae6be88f5c80bfe5` | Public third-party community model/service; no model weights, sample audio, API keys, or official recordings are bundled | API use only, under Fish Audio's terms and applicable voice/rightsholder rights |
 | Official or extracted recordings/sprites/sounds | Original publishers, artists, performers, and/or contributors | **No verified permission** unless separately licensed |
 
 ## Changes made from this audit

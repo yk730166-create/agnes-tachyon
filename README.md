@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.6.5**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.6.6**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -46,9 +46,8 @@ The default setup uses:
 - `qwen/qwen3.6-27b` for screen understanding;
 - `whisper-large-v3-turbo` for fast speech recognition.
 
-Every desktop answer now uses Fish Audio S2.1 Pro Free. Options includes two
-reviewed public Agnes performances: **Agnes — Classic**
-(`64e74b61065540f4abed3a0f30cf14d9`) and **Agnes — Bright**
+Every desktop answer now uses Fish Audio S2.1 Pro Free. Options includes the
+currently available reviewed public performance, **Agnes — Natural**
 (`e34bac0a56564919ae6be88f5c80bfe5`). The app does not silently
 switch to an unrelated Windows or Groq voice. Each user supplies their own Fish
 API key, which remains protected in Windows Credential Manager. This is a

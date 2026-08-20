@@ -44,31 +44,6 @@ public repository. These files are third-party fan-project material and are
 not claimed as y4x5lol's original artwork. Obtain written permission before
 redistributing them beyond uses allowed by the applicable rightsholders.
 
-## Tachyon voice-conversion files and voice identity
-
-The local files named `Tachyon.pth` and
-`added_IVF1267_Flat_nprobe_1_Tachyon_v2.index` arrived without a license or
-verifiable provenance statement. No permission was found to redistribute
-them. They are not owned by y4x5lol merely because they are stored in this
-folder.
-
-The voice, performances, recordings, likeness, and other personal rights of a
-voice performer remain with that performer and/or the applicable
-rightsholders. The rights-safe public setup does not contain these model files.
-Do not advertise converted speech as an official or exact performer's voice,
-and do not distribute the model or generated impersonations without the
-necessary permissions.
-
-## Applio
-
-Applio is Copyright (c) 2026 AI Hispano and is distributed under the MIT
-License. Its Terms of Use require users to own or have explicit permission for
-audio/material processed with it. Applio's license covers Applio software, not
-an independently obtained character voice model or its training data.
-
-- Source and license: https://github.com/IAHispano/Applio
-- Terms: https://github.com/IAHispano/Applio/blob/main/TERMS_OF_USE.md
-
 ## Compiled Python dependencies
 
 The compiled applications include third-party packages under their own
@@ -98,7 +73,7 @@ metadata.
 ## Hosted speech service
 
 The default speech path calls Fish Audio S2.1 Pro Free with public community model ID
-`64e74b61065540f4abed3a0f30cf14d9`, titled “Agnes Tachyon” and published on
+`e34bac0a56564919ae6be88f5c80bfe5`, titled “Agnes Tachyon” and published on
 Fish Audio by user `raaah`. Fish Audio reported the model as public when checked
 on 13 August 2026. Public availability is not an ownership transfer or a promise
 that every possible use is licensed. The model, generated voice, service, and
@@ -109,7 +84,7 @@ Fish announced `s2.1-pro-free` as a fair-use developer tier and, when checked
 on 13 August 2026, said the free window was extended through 31 August 2026.
 Availability and terms can change; Agnes has no automatic paid TTS fallback.
 
-- Model page: https://fish.audio/m/64e74b61065540f4abed3a0f30cf14d9
+- Model page: https://fish.audio/m/e34bac0a56564919ae6be88f5c80bfe5
 - Fish Audio API documentation: https://docs.fish.audio/api-reference/introduction
 - Fish Audio terms: https://fish.audio/terms
 
