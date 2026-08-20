@@ -1,4 +1,81 @@
-# Agnes Tachyon AI Companion 6.6.6
+# Agnes Tachyon AI Companion 6.6.10
+
+## 6.6.10 — Calmer idle, smoother conversations
+
+Agnes now gives the desktop room to breathe. Her optional idle movement happens
+about once every three minutes instead of repeatedly every few seconds, while
+music-driven head bobbing and dance timing stay exactly as they were.
+
+- Options now reads and saves the controller's real idle interval. Existing
+  30- or 90-second defaults move to 180 seconds; custom waits stay untouched.
+- Spoken replies are grouped into natural thoughts instead of starting a new
+  Fish request for every sentence. This removes the stop, pause, suddenly-fast
+  pattern that could make a single answer sound stitched together.
+- A thinking line that has already begun is allowed to finish cleanly before
+  the answer starts, with a strict safety timeout for damaged audio.
+- Fish now keeps each short thought in one conditioned generation using its
+  documented quality chunk size, and one brief network seam gets a fast retry.
+- Agnes - Adult receives a small voice-specific speed correction, while Normal
+  and the user's Natural or Quick preference keep their intended pacing.
+
+## 6.6.9 — Agnes listens to her own switches
+
+The desktop behavior controls now do exactly what they say, immediately. Movement,
+AI/game reactions and music bobbing are separate from optional self-started emotes
+and dances, and both stay off when their switches are off.
+
+- Dance music now starts at a calmer 30% and has its own 0–100% volume slider.
+  The real renderer uses volume-aware playback, and a saved change reaches the
+  running Agnes without requiring a restart.
+- Automatic movement and automatic performances use separate schedules. They
+  pause during speech, updates and active music, while every manual tray action
+  remains available.
+- Both reviewed Fish choices are clearly exposed as Agnes - Normal and Agnes -
+  Adult, with a two-row picker that cannot hide the second voice.
+- Manual tray update checks immediately report that they started, and their
+  success or connection result returns through the tray instead of appearing
+  behind a game or another window.
+- Renderer audio cleanup, live controller commands, option persistence and the
+  beat-synced dance system were regression-tested together.
+
+## 6.6.8 — Agnes found the beat
+
+Dance motion now follows the music instead of running as a completely separate
+loop. Agnes analyzes the two packaged songs locally, nods on their strongest
+beats, and adds a couple of small flourishes at standout moments.
+
+- Beat timing comes directly from each WAV file and is cached after the first
+  analysis. It uses no AI request, network call, or credits.
+- The nod and flourish commands animate the real Agnes sprite without changing
+  her current dance, stealing game focus, or blocking the tray interface.
+- Each new song gets at most two flourishes. Repeating the same song does not
+  reset that budget, so a loop cannot make Agnes spam reactions.
+- Stale dance timers cannot affect the next song, motion resets cleanly when a
+  dance ends, and silent or damaged audio safely falls back to normal dancing.
+- Both real songs, the renderer command bridge, timing bounds, and the full app
+  regression suite were checked again.
+
+## 6.6.7 — Agnes actually looks before she answers
+
+This fixes screen questions that could reach the AI without a usable picture.
+When you ask about a profile, page, popup, game, or anything else visible,
+Agnes now captures the focused app at readable quality and adds the wider
+monitor view when it contains extra context.
+
+- Screen questions no longer use a canned “yes, I can see” answer. They go
+  through the real vision path and carry fresh image data.
+- The capture path retries transient Windows failures, falls back to the live
+  buffer, masks Agnes herself, and clearly logs a capture failure instead of
+  silently pretending that a text-only request had vision.
+- Gemini 3 quick chat and vision use its documented low reasoning effort, which
+  prevents short output budgets from being consumed by hidden thinking and
+  makes simple answers arrive sooner.
+- Fish voice choices are now named **Agnes - Normal** and **Agnes - Adult**.
+  Both use the same Fish key protected by Windows Credential Manager.
+- Check my setup now distinguishes a valid Fish key from an empty Fish API
+  balance, so it cannot show a false green result when speech would be blocked.
+- Windows capture, synthetic Gemini image reading, voice migration, settings,
+  privacy, and the full regression suite were checked again.
 
 ## 6.6.6 — The buttons work and Agnes answers
 
