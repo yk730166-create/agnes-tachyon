@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.6.11**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.6.12**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -19,6 +19,9 @@ Windows 11 releases.
 - live lookup for newer hardware, news and other facts that can change;
 - signed in-app updates with a proper download and install progress screen;
 - feedback and bug reports without a GitHub account.
+- permission-based help rewriting visible drafts, drafting replies, explaining
+  errors, summarizing pages, and pointing out the next safe step. Agnes only
+  pastes after you say yes and never types into secret fields.
 
 I tried to keep Options understandable even if you are not a computer expert.
 The easy defaults are safe to start with, and **Check my setup** explains what

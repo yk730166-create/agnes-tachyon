@@ -1,4 +1,28 @@
-# Agnes Tachyon AI Companion 6.6.11
+# Agnes Tachyon AI Companion 6.6.12
+
+## 6.6.12 — A tiny lab partner for real work
+
+Agnes can now help with the thing in front of you instead of only talking about
+it. Ask her to improve a visible draft, write a reply, explain an error,
+summarize a page, or show you the next safe step. She reads a fresh view, sits
+down on her real lab paper while working, and gives you the result in her voice.
+
+- Rewrites and replies are proposals first. Agnes asks before pasting, pins the
+  proposal to the original app, and refuses to type if focus changed. Password,
+  payment, API-key, token, private-key, and recovery-phrase contexts are blocked.
+- “Paste it,” “copy that,” and “never mind” are short, explicit follow-ups. A
+  longer answer cannot accidentally approve a desktop action.
+- Error help, summaries, and next-click guidance remain read-only. Screen text is
+  treated as untrusted evidence, so a page cannot instruct Agnes to bypass the
+  confirmation rules.
+- The bundled model now has a focus-free controller command for the real sitting
+  animation and a reliable return to idle; it does not steal focus from games or
+  the user's text field.
+- Fish clips receive a completeness check and one clean retry when a service
+  response is impossibly short. Normal replies use longer continuous thoughts,
+  reducing stitched pauses without allowing hover or movement to cancel speech.
+- The Windows paste path, focus pinning, sensitive-target guard, intent detector,
+  animation protocol, and speech-cutoff detector received regression coverage.
 
 ## 6.6.11 — Faster answers, eyes that actually look
 
