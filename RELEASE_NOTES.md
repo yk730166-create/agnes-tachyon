@@ -1,4 +1,31 @@
-# Agnes Tachyon AI Companion 6.6.15
+# Agnes Tachyon AI Companion 6.6.16
+
+## 6.6.16 — Music ears and quick chat
+
+This update fixes the frozen-looking idle behavior and replaces the old idea of
+“music detection” with a real, local Windows playback listener.
+
+- Agnes now moves in short, natural quiet windows. The old shipped off state is
+  repaired once for existing installs, and the off switch still stops automatic
+  idle movement when someone chooses it.
+- Music recognition reads only tiny volume peaks from Windows. It does not
+  record, save, transcribe, or upload the song. A rhythm filter rejects isolated
+  effects and voice-chat apps before Agnes starts listening.
+- When new music is confirmed, Agnes uses one of her existing animations,
+  reacts once, and bobs clearly on detected beats. Continuous listening spends
+  no AI credits; only the optional one-line reaction uses the selected AI.
+- The cyan listening aura and badge automatically disappear over a real
+  full-screen game while beat movement keeps working, so Agnes stays expressive
+  without covering the action.
+- Middle-click Agnes's visible body outside a full-screen game to open the new
+  quick chat. Press Enter or Send to talk, and middle-click her again to close it.
+  The box closes automatically if a full-screen game takes focus.
+- Agnes's input area now follows the visible sprite pixel by pixel. Transparent
+  corners pass clicks through instead of behaving like an invisible square.
+- The companion starts with Windows' no-console flag, removing the stray hidden
+  startup window seen on some Windows 10 and 11 systems.
+- New behavior tests cover rhythmic music, false effect rejection, fullscreen
+  visuals, native command routing, shaped hit-testing, idle migration, and chat.
 
 ## 6.6.15 — Safer settings, music you can see
 

@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.6.15**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.6.16**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -16,6 +16,9 @@ Windows 11 releases.
   and paid vision requests reserved for uncertain, meaningful moments;
 - the real bundled Agnes desktop model with movement, clicks, snacks, emotes,
   random actions and the two original Uma music dances;
+- local music listening that recognizes sustained rhythm without recording or
+  uploading audio, then makes Agnes visibly bob and react to the beat;
+- a small typed chat opened by middle-clicking Agnes outside full-screen games;
 - live lookup for newer hardware, news and other facts that can change;
 - signed in-app updates with a proper download and install progress screen;
 - feedback and bug reports without a GitHub account.
