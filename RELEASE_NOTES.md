@@ -1,4 +1,29 @@
-# Agnes Tachyon AI Companion 6.6.12
+# Agnes Tachyon AI Companion 6.6.13
+
+## 6.6.13 — Stays in the game
+
+This release is mostly the unglamorous stuff that makes Agnes feel dependable.
+The full-screen overlay no longer briefly drops behind a game when Windows
+reorders topmost windows, and clicking Agnes cannot steal focus from the game.
+
+- Agnes's real model now uses a native no-activate window. It stays clickable
+  and draggable on the desktop without becoming the foreground app, closing a
+  game, or knocking an exclusive window out of full screen.
+- The visibility watchdog refreshes Agnes directly in the topmost band, checks
+  more often, and can recover her if Windows briefly hides the model. It no
+  longer bounces through NOTOPMOST, which caused visible flashes and gaps.
+- Game vision can selectively notice meaningful dialogue choices, real plot
+  reveals, genuinely funny NPC lines, broken stealth, boss phase changes, and
+  clutch moments. Ordinary subtitles and routine conversations stay quiet.
+- Repeated dialogue scenes are fingerprinted for five minutes, each event type
+  has its own cooldown, and ambiguous visual changes do nothing until vision
+  confirms them. That cuts random emotes and repeated commentary.
+- Repeated deaths or mistakes now give Agnes enough session context to offer one
+  grounded tip when useful; successful runs get varied encouragement instead of
+  the same celebration again.
+- Hidden helper windows are excluded from recovery, screen events remain game-
+  only and credit-limited, and the full test runner no longer executes private
+  network scratch scripts by accident.
 
 ## 6.6.12 — A tiny lab partner for real work
 
