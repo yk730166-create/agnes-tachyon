@@ -1,4 +1,24 @@
-# Agnes Tachyon AI Companion 6.6.16
+# Agnes Tachyon AI Companion 6.6.17
+
+## 6.6.17 — Lively Agnes, no mystery windows
+
+This fixes the big white “Hidden Window” some people saw over a game or browser.
+That was an internal sound helper being mistaken for Agnes by the full-screen
+watcher. The watcher now accepts only the real small, transparent Agnes windows,
+and every show, hide, click-through, and topmost action checks that boundary again.
+
+- Agnes's real idle animation is back in short, natural bursts, so she feels alive
+  without repeating the same motion nonstop.
+- Automatic walks actually start again. A locked native animation state had been
+  quietly accepting the command and then cancelling it on its first frame.
+- Agnes now chooses a full 360-degree destination and uses all eight matching run
+  directions. Cursor following is diagonal and smooth by default too.
+- Agnes and her snack surface are hidden from the taskbar at the native-window
+  level, avoiding a startup flash or a second app button.
+- Voice delivery recognizes playful teasing and the relief of fixing something,
+  while everyday answers stay clean instead of receiving random acting cues.
+- New regression checks cover internal helper windows, live renderer commands,
+  natural idle timing, diagonal sprites, taskbar behavior, and expressive speech.
 
 ## 6.6.16 — Music ears and quick chat
 
