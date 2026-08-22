@@ -1,4 +1,28 @@
-# Agnes Tachyon AI Companion 6.6.14
+# Agnes Tachyon AI Companion 6.6.15
+
+## 6.6.15 — Safer settings, music you can see
+
+This is a small reliability update aimed at two annoying things: scrolling past
+a setting could change it by accident, and Agnes could play a dance track while
+her beat motion was silently disabled.
+
+- The mouse wheel now scrolls the Options page without changing a dropdown,
+  slider, or number underneath the pointer. Clicking and dragging controls still
+  works normally.
+- The old fixed five-minute idle rule and its advanced setting are gone. When
+  self-directed movement is enabled, Agnes chooses broad quiet moments and
+  backs off when speech, a game transition, or another animation is busy.
+- Starting one of Agnes's two music dances now puts her in a real listening state
+  immediately. Beat analysis always runs for an explicit dance—even when idle
+  movement is off—and her nod is much easier to see.
+- A clean cyan listening aura and a small `LISTENING` badge pulse with the music,
+  then disappear when the track finishes and Agnes returns to idle.
+- The companion command channel, upgraded-settings migration, music cleanup,
+  wheel handling, and Windows package path received new regression coverage.
+- Release binaries no longer request UPX packing, and the setup uses a less
+  aggressive standard compression profile. This reduces common heuristic
+  antivirus triggers; a trusted Authenticode certificate is still the only way
+  to guarantee publisher reputation on every Windows PC.
 
 ## 6.6.14 — Faster brain, calmer desk
 
