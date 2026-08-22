@@ -1,4 +1,29 @@
-# Agnes Tachyon AI Companion 6.6.13
+# Agnes Tachyon AI Companion 6.6.14
+
+## 6.6.14 — Faster brain, calmer desk
+
+This one fixes the pauses that made Agnes feel slower than she should. Quick
+questions now stay on each provider's fast path, while real troubleshooting,
+maths, planning, and multi-step work still get proper thinking time.
+
+- Long answers have more room to finish. If an AI provider still hits its limit
+  or drops a stream halfway through, Agnes makes one clean continuation instead
+  of ending in the middle of a sentence.
+- Fish voice clips now prepare one phrase ahead while the current phrase plays.
+  That removes most network-sized gaps between sentences, and a failed clip can
+  no longer be silently skipped as though everything worked.
+- “Wait, let me think” is now reserved for genuinely complex or live-search
+  questions, and only starts if the useful answer is not already ready.
+- Groq, OpenAI, Gemini, DeepSeek, Mistral, and Together use known fast sibling
+  models for easy chat while keeping the selected stronger model for hard work.
+  Custom models and explicit Fastest or Smartest choices are left alone.
+- Ask “what's new?” and Agnes answers instantly with this release's changes,
+  without spending AI credits.
+- Her resting animation no longer loops a big body movement forever. She holds a
+  calm pose, occasionally plays one normal-speed idle cycle, then settles again;
+  music, dances, interactions, and 60 Hz movement are unchanged.
+- The answer limit, provider routing, early-stream repair, speech cleanup, idle
+  timing, migrations, and release path all received another test pass.
 
 ## 6.6.13 — Stays in the game
 
