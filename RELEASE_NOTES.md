@@ -1,4 +1,28 @@
-# Agnes Tachyon AI Companion 6.6.10
+# Agnes Tachyon AI Companion 6.6.11
+
+## 6.6.11 — Faster answers, eyes that actually look
+
+This one is mostly about Agnes feeling awake. Normal Gemini conversations now
+use its quick Flash-Lite path while bigger questions still keep the stronger
+model you selected. Groq and other compatible providers also have a final guard
+that keeps hidden thinking text out of her spoken answer.
+
+- Questions like “do you see the person here?” now attach a fresh focused-app
+  view instead of sometimes becoming an ordinary text-only question. Every AI
+  provider gets the same clear description of Agnes's real vision, memory,
+  voice, game, animation, and music features.
+- Game awareness recognizes more moments, including respawns, upgrades,
+  discoveries, clutch saves, race-position changes, and puzzles. Reactions can
+  include one useful tip when the evidence is clear, but remain cooldown-limited
+  and do not continuously spend vision credits.
+- Agnes's resting sprite is calmer without lowering the 60 Hz movement/render
+  loop. Optional idle movement now waits about five minutes, while dance beats
+  have a more obvious nod and accent.
+- Required updates are checked before the pet, audio, vision, or AI model starts.
+  When one exists, the verified update prompt appears first and Agnes waits until
+  the update finishes.
+- Visual intent, provider routing, hidden-reasoning cleanup, event parsing,
+  configuration migration, and startup behavior received new regression tests.
 
 ## 6.6.10 — Calmer idle, smoother conversations
 
