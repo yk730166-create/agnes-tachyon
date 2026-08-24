@@ -1,4 +1,29 @@
-# Agnes Tachyon AI Companion 6.6.18
+# Agnes Tachyon AI Companion 6.7.0
+
+## 6.7.0 — Whole again, at the right speed
+
+This release fixes the model itself instead of covering up the symptoms. Agnes
+now renders as one complete surface, runs at a natural animation pace, and stays
+stable when Windows opens its screenshot selector.
+
+- Agnes's full coat, legs, and feet remain inside her window at every supported
+  scale. A layout bug had been cutting away the bottom 20% of the model.
+- Her authored animations now advance at a steady 30 frames per second. That is
+  smooth enough for the original art without playing every gesture twice as fast.
+- Her head and body are composed into one capture-safe surface. Music can still
+  tilt and lift only her head, but Win+Shift+S cannot catch two mismatched layers.
+- Snipping Tool, Snip & Sketch, and Windows 10's hosted screenshot selector are
+  no longer mistaken for full-screen games. The live model briefly steps aside
+  while the selector shows its frozen desktop, preventing duplicate Agnes copies.
+- The visible-pixel hitbox uses the same transformed frame that is drawn, so the
+  capture repair does not bring back a square invisible click area.
+- Native build warnings, stale renderer comments, and screen-capture regression
+  gaps were cleaned up. New tests cover direct and Windows 10-hosted selectors,
+  capture-safe restore behavior, one-surface rendering, full-body scaling, and
+  normal animation timing.
+
+This is a required update because the renderer and screenshot lifecycle are core
+parts of the desktop companion.
 
 ## 6.6.18 — Smoother beats, complete conversations
 
