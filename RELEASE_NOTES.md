@@ -1,4 +1,38 @@
-# Agnes Tachyon AI Companion 6.6.17
+# Agnes Tachyon AI Companion 6.6.18
+
+## 6.6.18 — Smoother beats, complete conversations
+
+This update is about the little problems that made Agnes feel less finished than
+she should. Her native animation clock is back at its intended speed, her music
+motion is focused on her head instead of lifting the whole character, and her
+automatic walking returns to the calmer timing from 6.6.10.
+
+- Middle-click chat can be hidden and reopened without cutting off or losing the
+  answer. A new typed or spoken message is the only thing that interrupts the old
+  one, and a failed voice clip can no longer leave the chat stuck forever.
+- Music detection starts faster at quiet volumes, follows real beat timing, and
+  stops synthetic movement promptly when playback goes silent. The listening
+  aura is cleaner and remains hidden over full-screen games.
+- Agnes's clickable area follows the visible pixels of her current frame instead
+  of acting like a large invisible square around her.
+- Screen questions look behind Agnes's own chat and Options windows. Her moving
+  model is erased from captured context using only surrounding scene colours, so
+  she no longer identifies herself as the thing the user is asking about.
+- Game reactions now discard browser frames captured before a game took focus,
+  follow the newest active Minecraft launcher log, and stand down immediately
+  when the user starts a real conversation.
+- AI providers that return only hidden thinking text now receive a safe visible
+  fallback that is saved into conversation history. On-demand sight is explained
+  correctly even when autonomous watching is switched off.
+- Options and the tray have a cleaner Windows-native layout, clearer labels,
+  safer rounded corners, sharper vector icons, and footer buttons that fit at
+  supported DPI and window sizes.
+- The required update window has a draggable title area, useful controls, calmer
+  progress feedback during quiet handoff moments, and no forced always-on-top
+  behavior. Startup also avoids checking the same update twice.
+- Single-instance startup, hidden helper filtering, launcher-log switching,
+  provider fallback continuity, and full conversation lifecycle all gained new
+  regression tests.
 
 ## 6.6.17 — Lively Agnes, no mystery windows
 
