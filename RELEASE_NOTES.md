@@ -1,4 +1,27 @@
-# Agnes Tachyon AI Companion 6.7.1
+# Agnes Tachyon AI Companion 6.7.2
+
+## 6.7.2 — Back on the desktop
+
+That QtCore startup crash was a bad DLL in the installer, not your API key or
+anything you did. I fixed the packaging and added actual launch checks for
+both Agnes and Options before a setup can be released.
+
+- If Agnes won't open, download this setup and run it over your current install.
+  It replaces the broken runtime and keeps your settings and protected keys.
+- Helper Studio has four instant starter sketches: a cat, a mountain postcard,
+  a flower study, and a paper rocket. These load locally with no AI request.
+- Drawing has smoother pen strokes, four ink colors, three pen sizes, and proper
+  undo/redo. Small labels stay inside their boxes, and the tools fit better.
+- Eight more helpers: presentations, interview practice, language practice,
+  comparing choices, checking claims, test cases, drawing exercises, and tone
+  feedback. That brings the total to 28.
+- Helper answers are more direct and specific. Text helpers skip unnecessary
+  drawing instructions, and custom vision endpoints no longer inherit the main
+  provider's JSON-mode setting. Helpers still don't run code or send messages.
+- Agnes can tell you about these changes when you ask what's new.
+
+Required update. No settings reset. AI suggestions still need a quick check;
+these tools don't pretend to be professional artwork or verified research.
 
 ## 6.7.1 — Let's make something
 

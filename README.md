@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.7.1**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.7.2**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -36,11 +36,15 @@ Middle-click Agnes, then choose **Helper Studio**. You can ask for a little
 sketch, a diagram, a color palette, drawing feedback, flashcards, a quiz, a study
 plan, math help, a code review, spreadsheet help, troubleshooting, game hints,
 ideas, a writing outline, meeting action items, a day plan, a recipe, a packing
-list, or a plain-language explanation of a form.
+list, or a plain-language explanation of a form. There are 28 helpers now,
+including presentations, interview and language practice, comparing choices,
+checking claims, planning test cases, drawing exercises, and tone feedback.
 
 Try “Draw a little cat” or “Review this code:” followed by your code. Drawings
 are simple editable sketches, not image-generator artwork. You can draw over
-them, undo, save a PNG, or ask Agnes to review your canvas. Notes stay readable
+them, undo and redo, save a PNG, or ask Agnes to review your canvas. Four local
+starter sketches—a cat, mountains, a flower, and a rocket—load instantly without
+using your AI key. Pick your ink color and pen size to make them your own. Notes stay readable
 in their own tab, with copy and save buttons. Agnes gives a short voice summary
 instead of reading every line of a long result.
 
@@ -50,6 +54,10 @@ submit forms, send messages, or change another app without your say-so. Always
 check important suggestions—AI can still get things wrong.
 
 ## Install
+
+If Agnes stopped opening with a **QtCore DLL** error, download the latest setup
+below and run it again. Version 6.7.2 fixes the bundled runtime; you do not need
+to remove your settings or API keys, or download individual DLL files.
 
 1. Open the [latest release](https://github.com/yk730166-create/agnes-tachyon/releases/latest).
 2. Download `AgnesTachyonSetup.exe`.
