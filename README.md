@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.7.0**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.7.1**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -29,6 +29,25 @@ Windows 11 releases.
 I tried to keep Options understandable even if you are not a computer expert.
 The easy defaults are safe to start with, and **Check my setup** explains what
 is missing instead of throwing a wall of error text at you.
+
+## Helper Studio
+
+Middle-click Agnes, then choose **Helper Studio**. You can ask for a little
+sketch, a diagram, a color palette, drawing feedback, flashcards, a quiz, a study
+plan, math help, a code review, spreadsheet help, troubleshooting, game hints,
+ideas, a writing outline, meeting action items, a day plan, a recipe, a packing
+list, or a plain-language explanation of a form.
+
+Try “Draw a little cat” or “Review this code:” followed by your code. Drawings
+are simple editable sketches, not image-generator artwork. You can draw over
+them, undo, save a PNG, or ask Agnes to review your canvas. Notes stay readable
+in their own tab, with copy and save buttons. Agnes gives a short voice summary
+instead of reading every line of a long result.
+
+If you refer to something on screen, she takes a fresh picture when screen
+reading is configured. Pasted text does not need one. She does not run code,
+submit forms, send messages, or change another app without your say-so. Always
+check important suggestions—AI can still get things wrong.
 
 ## Install
 

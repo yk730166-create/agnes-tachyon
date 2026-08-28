@@ -1,4 +1,34 @@
-# Agnes Tachyon AI Companion 6.7.0
+# Agnes Tachyon AI Companion 6.7.1
+
+## 6.7.1 — Let's make something
+
+Agnes can help with more than chatting now. Open Helper Studio from her
+middle-click chat and try a sketch, diagram, palette, drawing review, study
+tool, code review, spreadsheet formula, game hint, or a practical plan. There
+are 20 helper types with examples, and they use her existing working gestures.
+
+- Draw on the canvas, undo, ask for feedback, and save your drawing as a PNG.
+  Notes have their own tab so long explanations don't disappear into speech.
+- Pasted code keeps its indentation. Shift+Enter starts a new line, and Stop
+  reply is there when you actually want to interrupt her.
+- Follow-up edits keep the previous result as context. Screen-based tasks use
+  fresh images, refuse private-key/password windows, and stop if the target
+  window or tab changes. Canvas reviews use the canvas, not your other apps.
+- Short voice summaries keep long helpers useful without reading every line.
+  Agnes knows what her new helpers can do and what they cannot do.
+- Her model uses a steady 34 FPS clock. Music uses the original full-body sway,
+  not a separated or distorted head. The whole model stays inside its surface.
+- Finishing an old helper no longer cancels a newer helper or a manual dance.
+  Failed requests release their pose; hiding chat does not stop speech.
+- Typed chat history is bounded. Fresh screen questions don't reuse old pictures,
+  and the model itself is skipped when choosing the app to look at.
+- Gemini 2.5 no longer spends a short reply's entire allowance on thinking.
+  Complex work keeps a separate reasoning allowance, and helper results use
+  structured output where supported. Small dialogs stay valid screen targets.
+
+This is a required update. Your settings and protected API keys stay in place.
+The helpers still need a configured AI provider, and pictures need a vision
+model. They suggest and draw; they don't execute code or secretly control apps.
 
 ## 6.7.0 — Whole again, at the right speed
 
