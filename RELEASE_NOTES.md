@@ -1,4 +1,27 @@
-# Agnes Tachyon AI Companion 6.7.3
+# Agnes Tachyon AI Companion 6.7.4
+
+## 6.7.4 — More present in games
+
+Agnes now checks meaningful game moments more promptly and doesn't stop local
+watching while a previous screen review is waiting on the AI provider. In supported
+setbacks, boss moments, dangers, and puzzles, she can add one practical tip when
+the game and visible evidence actually support it. She won't invent controls or
+give generic beginner advice just to fill the silence.
+
+- Confirmed visual events can be reviewed as soon as every 3 seconds with
+  non-Gemini providers, or 4.5 seconds with Gemini. Local detection continues
+  between reviews, and its event cooldowns are shorter.
+- Repeated failures—including different setbacks close together—give Agnes the
+  context to offer a grounded suggestion while keeping her playful when a tip
+  would not genuinely help.
+- A repeated one-line reaction is dropped after one request instead of spending
+  a second round trip trying to rephrase it.
+- Her optional quiet-time movement can happen sooner; the independent dance and
+  music behavior is unchanged.
+
+Required update. Settings, provider choice, Fish voice, and protected keys stay
+in place. Voice and screen-review speed still depend on the selected provider,
+network, and available credits.
 
 ## 6.7.3 — Quicker replies, better interruptions
 

@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.7.3**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.7.4**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -56,7 +56,7 @@ check important suggestions—AI can still get things wrong.
 ## Install
 
 If Agnes stopped opening with a **QtCore DLL** error, download the latest setup
-below and run it again. Version 6.7.3 fixes the bundled runtime; you do not need
+below and run it again. Version 6.7.3 fixed the bundled runtime; you do not need
 to remove your settings or API keys, or download individual DLL files.
 
 1. Open the [latest release](https://github.com/yk730166-create/agnes-tachyon/releases/latest).
