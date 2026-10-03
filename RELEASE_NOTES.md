@@ -1,4 +1,27 @@
-# Agnes Tachyon AI Companion 6.7.2
+# Agnes Tachyon AI Companion 6.7.3
+
+## 6.7.3 — Quicker replies, better interruptions
+
+Agnes starts making the voice for her first complete sentence sooner, while
+the rest of the answer is coming in. Later sentences still group together to
+keep longer replies flowing.
+
+- Cutting her off now keeps track of what finished playing and which sentence
+  was interrupted. She responds to your new question without assuming you heard
+  everything she had planned to say.
+- Cleanup from an old reply can no longer stop the new reply. Interrupted turns
+  release their queued speech and temporary clips properly.
+- Failed replies cancel their pending thinking line before reporting the error.
+- Private reasoning stays hidden even when its tags arrive in tiny pieces.
+  Retried connections start with a clean response buffer.
+- Gemini screen replies use the correct thinking settings even when a different
+  provider handles chat. Repairs to truncated Gemini 2.5 replies leave room for
+  the actual answer.
+- Conversation history keeps code indentation and line breaks after restarting.
+
+This update refines the existing voice system and fixes bugs. Your talk button,
+Fish voice, settings and protected keys stay in place. Internet and provider
+speed still affect response time.
 
 ## 6.7.2 — Back on the desktop
 
