@@ -1,4 +1,27 @@
-# Agnes Tachyon AI Companion 6.7.4
+# Agnes Tachyon AI Companion 6.7.5
+
+## 6.7.5 — Less staring, better listening
+
+Agnes now keeps her original idle animation moving at its normal pace. She
+blinks and shifts naturally instead of holding one frame between cycles. This
+doesn't make her run around more or change the speed of her dances.
+
+Music listening now checks what the audio sounds like before following its
+beat. A small local model tells music apart from speech, so a talking YouTube
+video should no longer make her dance. Music on YouTube can still work.
+
+- A short speaker-audio buffer stays in memory and is discarded. No sound is
+  saved, transcribed, uploaded, or charged against an AI key for music detection.
+- Confirmed music can start her listening motion even if its volume peaks don't
+  form a perfectly regular beat. Short musical bridges no longer keep switching
+  her listening motion off and on; speech and silence stop it.
+- Movement settings are retried when the renderer starts late or restarts.
+- The real model executable and local audio model are included in this update.
+  The installer now checks the bundled classifier's native dependencies too.
+- The release build works after moving the project to a different drive.
+
+Required update. Your settings, selected voice, conversations, and protected keys
+stay in place. Music classification can still be uncertain with unusual mixes.
 
 ## 6.7.4 — More present in games
 

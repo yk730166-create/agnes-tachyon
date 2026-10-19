@@ -54,9 +54,11 @@ licenses. Important direct dependencies include:
 | PySide6 and Shiboken6 | LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only |
 | cryptography | Apache-2.0 OR BSD-3-Clause |
 | httpx | BSD-3-Clause |
-| keyboard, mss, toml | MIT |
+| comtypes, keyboard, mss, pycaw, toml | MIT |
 | OpenAI Python library | Apache-2.0 |
 | NumPy | BSD-3-Clause |
+| ONNX Runtime | MIT |
+| PyAudioWPatch / PortAudio | MIT |
 | Pillow | HPND |
 | psutil | BSD-3-Clause |
 | pygame | LGPL |
@@ -70,12 +72,28 @@ transfer their copyrights to y4x5lol. Source and corresponding license texts
 are available from each package's official project page and installed package
 metadata.
 
+## Local music classification
+
+YAMNet was created by Google. The packaged ONNX model is the unmodified-weight
+conversion from Audio Magic, revision `f25b741c2f0bdc6d7e6db24b5fddda23347dbafd`.
+The model and conversion are under Apache 2.0; AudioSet labels are CC BY 4.0.
+The full model license is installed beside the model in `_runtime/assets/audio`.
+The model checks short, in-memory speaker-audio buffers for music versus speech.
+It does not transcribe audio or identify songs, and no sound is saved or uploaded.
+
+- Original model: https://github.com/tensorflow/models/tree/master/research/audioset/yamnet
+- ONNX conversion: https://huggingface.co/audiomagic/yamnet-onnx
+- AudioSet ontology: https://research.google.com/audioset/ontology/index.html
+- ONNX Runtime: https://github.com/microsoft/onnxruntime
+- PyAudioWPatch: https://github.com/s0d3s/PyAudioWPatch
+
 ## Hosted speech service
 
-The default speech path calls Fish Audio S2.1 Pro Free with public community model ID
-`e34bac0a56564919ae6be88f5c80bfe5`, titled “Agnes Tachyon” and published on
-Fish Audio by user `raaah`. Fish Audio reported the model as public when checked
-on 13 August 2026. Public availability is not an ownership transfer or a promise
+The speech path calls Fish Audio S2.1 Pro Free with two selectable public
+community model IDs: `e34bac0a56564919ae6be88f5c80bfe5` (shown in Options as
+“Agnes - Normal”) and `cd5782d09b8e4c30941bfc431372ba63` (shown as
+“Agnes - Adult”). Fish Audio reported both model pages as public when checked
+on 20 August 2026. Public availability is not an ownership transfer or a promise
 that every possible use is licensed. The model, generated voice, service, and
 underlying performances remain subject to Fish Audio's terms and applicable
 rightsholder rights. The installer contains no Fish model weights, sample audio,
@@ -85,6 +103,7 @@ on 13 August 2026, said the free window was extended through 31 August 2026.
 Availability and terms can change; Agnes has no automatic paid TTS fallback.
 
 - Model page: https://fish.audio/m/e34bac0a56564919ae6be88f5c80bfe5
+- Model page: https://fish.audio/m/cd5782d09b8e4c30941bfc431372ba63
 - Fish Audio API documentation: https://docs.fish.audio/api-reference/introduction
 - Fish Audio terms: https://fish.audio/terms
 
