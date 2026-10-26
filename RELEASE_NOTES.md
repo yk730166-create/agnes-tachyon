@@ -1,4 +1,52 @@
-# Agnes Tachyon AI Companion 6.7.5
+# Agnes Tachyon AI Companion 6.7.6
+
+## 6.7.6 — A calmer companion and a real workbench
+
+- She can react to a new game moment even if it is the same kind of event as
+  the last one. Identical screens and repeated lines stay guarded, and your
+  daily vision budget still applies. She uses recent setbacks to give a
+  situation-specific tip when there is enough evidence.
+- Helper Studio is now Agnes's workbench. Ask her to draw, watch the pen trace
+  the drawing, and hear a calculated time estimate. She sits on her cardboard
+  while working. Stop keeps the strokes she actually finished; hiding the
+  window doesn't magically finish the picture. The longest supported plan is
+  30 minutes, not a fake waiting timer.
+- The local cat study has more deliberate contour, ear, paw, and shading work.
+  This is digital pen drawing, not an image-generation service or a human artist.
+- Music without clear drum beats gets a gentle original-model sway instead of
+  a made-up beat clock. Acoustic music detection now also considers melodic and
+  instrument categories while keeping the speech guard. Music detection still
+  stays local and uses no API credits.
+- Idle gestures keep their normal speed, with 10–18-second quiet rests between
+  cycles. Short desktop walks happen roughly every 1½–2½ minutes, not constantly.
+  Random wandering pauses during games, music, drawing, and conversation, and
+  overdue walks/emotes no longer pile up together. Music motion stays separate.
+- Local AI uses compatible request fields and discovers loaded model IDs.
+  Missing listening keys no longer disable typed chat. Local models get time
+  to load instead of being cut off by the short cloud chat timeout.
+  Optional local-server tokens are now saved securely and used by health checks.
+- Actual provider errors aren't hidden behind a generic successful reply.
+  The dialog lets you review a key-scrubbed TXT and choose whether to report it.
+  Nothing is sent automatically. Failed delivery never displays a fake success.
+- Fixed stale drawing exports, whole-shape drawing jumps, repeated music beats
+  over sustained notes, and Options silently lowering an existing Gemini guard
+  to five reviews. Drawing paths are cached to reduce repeated paint work.
+- Updated the image library and certificate bundle after the release audit
+  found newly reported vulnerabilities in the previously pinned versions.
+- Fixed late drawing ticks after Stop, a misleading rounded drawing estimate,
+  filled shapes tracing with the wrong ink, stale local-model lists after a
+  server change, and repeated error reports filling the bugs folder. Reports
+  are now reused briefly for the same failure instead of deleting old TXT files.
+- Background reactions no longer pull Agnes off her cardboard mid-drawing.
+  The error reporter can also handle HTTP errors that have no request attached.
+
+Owner deployment note: direct report delivery needs the new Apps Script handler
+deployed to the existing receiver. The anonymous browser form remains available
+as a fallback. Synced bug reports go into the private `feedbacks-reports/bugs`
+folder as readable TXT files. Settings, conversations, and protected keys stay.
+
+Required update. The installer refreshes the bundled app, model executable,
+guide, and managed assets while preserving your settings and protected keys.
 
 ## 6.7.5 — Less staring, better listening
 

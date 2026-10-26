@@ -4,7 +4,7 @@ Hey, this is my Agnes fan companion for Windows. I made it because I wanted an
 Agnes who actually hangs out on the desktop, talks back, reacts to games, and
 does not need ten confusing windows just to change a microphone.
 
-The current version is **6.7.5**. It supports 64-bit Windows 10 version 1809 or
+The current version is **6.7.6**. It supports 64-bit Windows 10 version 1809 or
 newer—including Enterprise LTSC 2019, LTSC 2021, and LTSC 2024—and all 64-bit
 Windows 11 releases.
 
@@ -22,7 +22,7 @@ Windows 11 releases.
 - a small typed chat opened by middle-clicking Agnes outside full-screen games;
 - live lookup for newer hardware, news and other facts that can change;
 - signed in-app updates with a proper download and install progress screen;
-- feedback and bug reports without a GitHub account.
+- feedback and bug reports without a GitHub account;
 - permission-based help rewriting visible drafts, drafting replies, explaining
   errors, summarizing pages, and pointing out the next safe step. Agnes only
   pastes after you say yes and never types into secret fields.
@@ -30,6 +30,13 @@ Windows 11 releases.
 I tried to keep Options understandable even if you are not a computer expert.
 The easy defaults are safe to start with, and **Check my setup** explains what
 is missing instead of throwing a wall of error text at you.
+
+## Calmer movement
+
+Agnes takes short rests between her normal-speed idle gestures and only takes
+an occasional short walk on the desktop. She doesn't randomly wander during a
+full-screen game, music, drawing, or a conversation. Automatic game reactions
+and music motion still use their own settings and evidence checks.
 
 ## Helper Studio
 
@@ -42,12 +49,30 @@ including presentations, interview and language practice, comparing choices,
 checking claims, planning test cases, drawing exercises, and tone feedback.
 
 Try “Draw a little cat” or “Review this code:” followed by your code. Drawings
-are simple editable sketches, not image-generator artwork. You can draw over
-them, undo and redo, save a PNG, or ask Agnes to review your canvas. Four local
-starter sketches—a cat, mountains, a flower, and a rocket—load instantly without
-using your AI key. Pick your ink color and pen size to make them your own. Notes stay readable
-in their own tab, with copy and save buttons. Agnes gives a short voice summary
-instead of reading every line of a long result.
+are traced visibly on paper by a local pen engine, with a calculated time
+estimate capped at 30 minutes. Agnes uses her cardboard sitting animation while
+she draws. The studio is her presentation window, not a user drawing editor.
+Ask for changes through chat or voice; you can stop the drawing or save its
+finished strokes as a PNG. Four locally composed studies—a cat, mountains,
+a flower, and a rocket—need no image-generation service. More specific drawings
+use your chosen AI to plan bounded paths; the pen engine draws them, and quality
+can vary. These are digital sketches, not a claim of human authorship. Notes
+stay in their own tab, with copy and save buttons.
+
+For Ollama or LM Studio, start the server, load a model, then use **Find my
+loaded local models** in Options. Local text chat doesn't require a cloud AI
+key. Voice listening and Fish speech are separate services and still need their
+own credentials. Pick a screen model only if the loaded model supports images.
+If your local server requires its own token, enter it in the key field; it is
+kept in Windows Credential Manager too, not written into the normal settings.
+
+Errors show the actual sanitized service message and offer an optional report.
+Readable local TXT reports are saved in `%LOCALAPPDATA%\AgnesTachyon\bugs`.
+Direct delivery uses the owner's private receiver and only counts as sent after
+a receipt. If it isn't available, the dialog can copy the report and open the
+existing anonymous form. Owner sync saves bug reports under `feedbacks-reports/bugs`.
+The owner must redeploy the prepared Apps Script handler before direct in-app
+delivery is enabled; the local dialog does not silently claim this is done.
 
 If you refer to something on screen, she takes a fresh picture when screen
 reading is configured. Pasted text does not need one. She does not run code,
